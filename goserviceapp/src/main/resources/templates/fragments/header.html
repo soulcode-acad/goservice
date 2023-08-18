@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<header class="shadow p-3" th:fragment="header">
+    <div class="container">
+        <div class="d-flex gap-3 align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                <h1>GoService</h1>
+            </a>
+
+            <ul class="nav flex-grow-1 mb-2 mb-md-0">
+                <!-- ADM -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Administrador
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/admin/servicos">Serviços</a></li>
+                        <li><a class="dropdown-item" href="/admin/usuarios">Usuários</a></li>
+                    </ul>
+                </div>
+                <!-- PRESTADOR -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Prestador
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/prestador/dados">Dados Cadastrais</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/prestador/agenda">Agenda de Serviços</a></li>
+                    </ul>
+                </div>
+                <!-- CLIENTE -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Cliente
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/cliente/dados">Dados Cadastrais</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/cliente/agendar">Agendar Serviço</a></li>
+                        <li><a class="dropdown-item" href="/cliente/historico">Histórico de Serviços</a></li>
+                    </ul>
+                </div>
+            </ul>
+
+            <div class="text-end">
+                <a href="/auth/login" type="button" class="btn btn-outline-primary me-3">Login</a>
+                <a href="/auth/cadastro" type="button" class="btn btn-primary">Cadastre-se</a>
+            </div>
+
+            <div class="dropdown text-end">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item" href="/auth/password/new">Editar Senha</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><form method="post" action="/logout"><button class="dropdown-item" type="submit">Logout</button></form></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+</html>
