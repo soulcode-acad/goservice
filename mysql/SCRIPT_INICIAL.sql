@@ -1,0 +1,1 @@
+create database goservice_db;

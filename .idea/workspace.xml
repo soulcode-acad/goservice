@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4b2a41ba-d55b-4aac-aef3-cc6cbdd6652c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/img/banners/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/banners/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/banners/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/banners/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/banners/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/banners/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/logos/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/logos/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/logos/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/logos/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/prormos/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/prormos/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/prormos/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/prormos/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/prormos/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/prormos/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/prormos/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/prormos/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notesCristian.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notesIcomaSan.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2U7HrldGksiwpbRx4NAheKZHHWw" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Desenvolvimento/goservice&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b2a41ba-d55b-4aac-aef3-cc6cbdd6652c" name="Changes" comment="" />
+      <created>1692283899892</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692283899892</updated>
+    </task>
+    <servers />
+  </component>
+</project>
