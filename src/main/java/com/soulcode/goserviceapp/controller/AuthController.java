@@ -18,4 +18,9 @@ public class AuthController {
     public String cadastro() {
         return "cadastroCliente";
     }
+
+    @GetMapping(value = "/password/new")
+    public String alterarSenha() {
+        return "alterarSenha";
+    }
 }
