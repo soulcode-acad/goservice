@@ -12,4 +12,8 @@ public class AdministradorController {
     public String servico(){
         return "servicosAdmin";
     }
+    @GetMapping(value = "/usuarios")
+    public String usuario(){
+        return "usuariosAdmin";
+    }
 }
