@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdministradorController {
 
     @GetMapping(value = "/servicos")
-    public String servico() {
+    public String servicos() {
         return "servicosAdmin";
+    }
+
+    @GetMapping(value = "/usuarios")
+    public String usuarios() {
+        return "usuariosAdmin";
     }
 }
