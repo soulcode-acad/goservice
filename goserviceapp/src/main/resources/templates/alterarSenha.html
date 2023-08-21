@@ -1,0 +1,40 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Alterar Senha | GoService</title>
+</head>
+<body>
+
+<div id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <main class="container mt-4">
+        <h2>Alterar Senha</h2>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <form method="post" th:action="@{/auth/password/new}">
+                    <div class="mb-3">
+                        <label for="senhaAtual" class="form-label">Senha Atual<span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="senhaAtual" name="senhaAtual" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="senhaNova" class="form-label">Senha Nova<span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="senhaNova" name="senhaNova" required>
+                        <div class="form-text"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Alterar <i class="bi bi-pencil-fill ms-2"></i></button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
