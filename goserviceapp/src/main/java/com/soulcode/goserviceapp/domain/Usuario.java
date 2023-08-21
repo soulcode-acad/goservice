@@ -135,6 +135,12 @@ public class Usuario implements UserDetails {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Usuario usuario = (Usuario) obj;
+        return Objects.equals(id, usuario.id) &&
+                Objects.equals(nome, usuario.nome) &&
+                Objects.equals(senha, usuario.senha) &&
+                perfil == usuario.perfil;
     }
 }
