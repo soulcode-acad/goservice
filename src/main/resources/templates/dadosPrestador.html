@@ -1,0 +1,100 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+  <title>Dados Cadastrais | GoService</title>
+</head>
+<body>
+
+<div id="content">
+  <div th:replace="fragments/header :: header"></div>
+
+  <div class="container mt-4">
+    <h2>Dados Cadastrais</h2>
+
+    <div class="card w-100 mt-5">
+      <div class="card-body">
+        <h5 class="card-title mb-2">Alterar Dados</h5>
+
+        <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+        <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+        <form method="post" th:action="@{/prestador/dados}">
+          <input type="hidden" name="id" th:value="${prestador?.id}">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="nome" name="nome" th:value="${prestador?.nome}" required>
+            <div class="form-text"></div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="email" name="email" th:value="${prestador?.email}" required>
+            <div class="form-text"></div>
+          </div>
+          <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição Profissional</label>
+            <input type="text" class="form-control" id="descricao" th:value="${prestador?.descricao}" name="descricao">
+            <div class="form-text"></div>
+          </div>
+          <div class="mb-3">
+            <label for="taxaPorHora" class="form-label">Taxa de Atendimento por Hora</label>
+            <input type="number" class="form-control" id="taxaPorHora" th:value="${prestador?.taxaPorHora}" name="taxaPorHora">
+            <div class="form-text"></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
+        </form>
+
+        <h5 class="card-title mb-2 mt-5">Especialidades</h5>
+
+        <form class="d-flex gap-3 my-3" method="post" th:action="@{/prestador/dados/adicionar/especialidade}">
+          <select class="form-select" id="servicoId" name="servicoId" required>
+            <option value="" disabled selected>Selecione uma especialidade</option>
+          </select>
+          <button type="submit" class="btn btn-primary" style="width: 9rem">Adicionar <i class="bi bi-plus-circle ms-2"></i></button>
+        </form>
+
+        <table class="table w-100">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Especialidade</th>
+            <th>Apagar</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>Dentista</td>
+            <td>
+              <button class="btn btn-danger">
+                Excluir <i class="bi bi-trash-fill ms-2"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Desenvolvedor</td>
+            <td>
+              <button class="btn btn-danger">
+                Excluir <i class="bi bi-trash-fill ms-2"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Médico</td>
+            <td>
+              <button class="btn btn-danger">
+                Excluir <i class="bi bi-trash-fill ms-2"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
