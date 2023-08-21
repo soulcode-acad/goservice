@@ -16,6 +16,11 @@ public class AuthController {
     @GetMapping(value = "/signup")
     public String cadastro(){
         return "signup";
+    }
+
+    @GetMapping(value = "/password/new")
+    public String alterarSenha(){
+        return "alterarSenha";
 
     }
 }
