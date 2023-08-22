@@ -20,7 +20,7 @@ public class UsuarioService {
     //DI = Dependency injection
 
     @Autowired
-    private PasswordEncoder encoder ;
+    private PasswordEncoder encoder;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -37,7 +37,7 @@ public class UsuarioService {
       throw new UsuarioNaoEncontradoException();
     }
     public Usuario createUser(Usuario usuario){
-        String passwordEnconded = encoder.encode(usuario.getPassword());
+        String passwordEnconded = encoder.encode(usuario.getSenha());
         usuario.setSenha(passwordEnconded);
         usuario.setId(null);
 
