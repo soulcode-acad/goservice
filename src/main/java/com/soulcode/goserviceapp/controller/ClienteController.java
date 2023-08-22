@@ -12,4 +12,8 @@ public class ClienteController {
     public String dados() {
         return "dadosCliente";
     }
+    @GetMapping(value = "/agendar")
+    public String agendar() {
+        return "agendarServico";
+    }
 }
