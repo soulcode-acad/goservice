@@ -17,10 +17,17 @@ public class AuthController {
     public String cadastro() {
         return "cadastroCliente";
     }
+ agendar-servico
+=======
+
+ main
     @GetMapping(value = "/password/new")
     public String alterarSenha() {
         return "alterarSenha";
     }
+ agendar-servico
 
 
+=======
+ main
 }

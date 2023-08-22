@@ -13,7 +13,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
+ agendar-servico
     public PasswordEncoder passwordEncoder(){
+=======
+    public PasswordEncoder passwordEncoder() {
+main
         return new BCryptPasswordEncoder();
     }
 

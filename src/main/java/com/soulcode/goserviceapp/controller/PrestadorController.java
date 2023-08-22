@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/prestador")
 public class PrestadorController {
 
+ agendar-servico
     @GetMapping(value= "/dados")
+
+    @GetMapping(value = "/dados")
+main
     public String dados() {
         return "dadosPrestador";
     }

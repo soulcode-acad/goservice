@@ -12,9 +12,18 @@ public class AdministradorController {
     public String servicos() {
         return "servicosAdmin";
     }
+agendar-servico
     @GetMapping(value = "/usuarios")
     public String usuarios(){
         return "usuariosAdmin";
     }
 
 }
+=======
+
+    @GetMapping(value = "/usuarios")
+    public String usuarios() {
+        return "usuariosAdmin";
+    }
+}
+ main
