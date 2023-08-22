@@ -17,4 +17,9 @@ public class ClienteController {
     public String agendar(){
         return "agendarServico";
     }
+
+    @GetMapping(value = "/historico")
+    public String historico(){
+        return "historicoCliente";
+    }
 }
