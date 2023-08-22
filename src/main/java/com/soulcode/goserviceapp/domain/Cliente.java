@@ -52,13 +52,19 @@ public class Cliente extends Usuario{
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(telefone, cliente.telefone) &&
+                Objects.equals(cpf, cliente.cpf) &&
+                Objects.equals(dataNascimento, cliente.dataNascimento);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(telefone, cpf, dataNascimento);
     }
-
 }
