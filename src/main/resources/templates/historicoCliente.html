@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Histórico de Agendamento | GoService</title>
+</head>
+<body>
+
+<div id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container my-4">
+        <h2>Histórico de Agendamento</h2>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <table class="table w-100">
+                    <thead>
+                    <tr>
+                        <th>Prestador</th>
+                        <th>Serviço</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Status</th>
+                        <th>Cancelar</th>
+                        <th>Concluir</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>José Almir</td>
+                        <td>Desenvolvimento de Aplicativos</td>
+                        <td>23/08/2023</td>
+                        <td>11:00</td>
+                        <td>Aguardando Confirmação</td>
+                        <td>
+                            <button class="btn btn-danger" style="width: 8rem" data-bs-toggle="modal">
+                                Cancelar <i class="bi bi-x-square-fill ms-2"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" style="width: 8rem" data-bs-toggle="modal" disabled>
+                                Concluir <i class="bi bi-check-square-fill ms-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
