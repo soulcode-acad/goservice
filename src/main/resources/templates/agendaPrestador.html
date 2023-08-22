@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Agenda | GoService</title>
+</head>
+<body>
+
+<div id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container my-4">
+        <h2>Agenda de Serviços</h2>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <table class="table w-100">
+                    <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Especialidade</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Status</th>
+                        <th>Cancelar</th>
+                        <th>Confirmar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>José Leonardo</td>
+                        <td>Desenvolvedor</td>
+                        <td>12/09/2023</td>
+                        <td>10:30</td>
+                        <td>Aguardando Confirmação</td>
+                        <td>
+                            <button class="btn btn-danger" style="width: 8rem">
+                                Cancelar <i class="bi bi-x-square-fill ms-2"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" style="width: 8rem">
+                                Confirmar <i class="bi bi-check-square-fill ms-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bruna Muller</td>
+                        <td>Dentista</td>
+                        <td>30/08/2023</td>
+                        <td>11:30</td>
+                        <td>Confirmado</td>
+                        <td>
+                            <button class="btn btn-danger" style="width: 8rem" disabled>
+                                Cancelar <i class="bi bi-x-square-fill ms-2"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" style="width: 8rem" disabled>
+                                Confirmar <i class="bi bi-check-square-fill ms-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
