@@ -33,6 +33,7 @@ public class Usuario implements UserDetails {
     private Perfil perfil;
 
     public Usuario() {
+        this.habilitado = true;
     }
 
     public Usuario(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado){

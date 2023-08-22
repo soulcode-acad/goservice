@@ -36,7 +36,7 @@ public class UserService {
 
     public Usuario createUser(Usuario usuario){
 
-        String passwordEnconded = encoder.encode(usuario.getPassword());
+        String passwordEnconded = encoder.encode(usuario.getSenha());
         usuario.setSenha(passwordEnconded);
         usuario.setId(null);
 
