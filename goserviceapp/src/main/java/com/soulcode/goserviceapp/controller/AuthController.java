@@ -13,4 +13,10 @@ public class AuthController {
 
     @GetMapping(value = "/cadastroCliente")
     public String cadastro(){return "cadastroCliente";}
+
+    @GetMapping(value = "/password/new")
+    public String alterarSenha(){
+        return "alterarSenha";
+    }
+
 }

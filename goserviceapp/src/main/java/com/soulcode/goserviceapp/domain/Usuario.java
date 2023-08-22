@@ -126,13 +126,21 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
     @Override
-    public int hashCode() {
-        return Objects.hash(id, nome, email, senha, perfil);
+    public boolean equals(Object ob) {
+        if (this == ob) return true;
+        if (ob == null || getClass() != ob.getClass()) return false;
+        Usuario usuario = (Usuario) ob;
+        return Objects.equals(id, usuario.id) &&
+                Objects.equals(nome, usuario.nome) &&
+                Objects.equals(email, usuario.email) &&
+                Objects.equals(senha, usuario.senha) &&
+                perfil == usuario.perfil;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(id, nome, email, senha, perfil);
     }
 }

@@ -13,6 +13,7 @@ public class Cliente extends Usuario {
 
     @Column(length = 14)
     private String cpf;
+
     private LocalDate dataNascimento;
 
     public Cliente() {
@@ -56,13 +57,17 @@ public class Cliente extends Usuario {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(telefone, cliente.telefone) &&
+                Objects.equals(cpf, cliente.cpf) &&
+                Objects.equals(dataNascimento, cliente.dataNascimento);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(telefone, cpf, dataNascimento);
     }
-
 }
