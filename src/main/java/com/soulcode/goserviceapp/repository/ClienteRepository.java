@@ -1,10 +1,6 @@
 package com.soulcode.goserviceapp.repository;
 
 import com.soulcode.goserviceapp.domain.Cliente;
-<<<<<<< HEAD
-import com.soulcode.goserviceapp.domain.Usuario;
-=======
->>>>>>> d61300c5660454b872554b197d73615c5aba6fed
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
