@@ -6,7 +6,6 @@ import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.domain.Usuario;
 import com.soulcode.goserviceapp.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +37,7 @@ public class UsuarioService {
     }
 
     public Usuario createUser(Usuario usuario){
-        String passwordEncoded = encoder.encode(usuario.getPassword());
+        String passwordEncoded = encoder.encode(usuario.getSenha());
         usuario.setSenha(passwordEncoded);
 
         switch (usuario.getPerfil()){
