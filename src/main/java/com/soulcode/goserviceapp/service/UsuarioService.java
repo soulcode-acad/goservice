@@ -35,7 +35,7 @@ public class UsuarioService {
     }
 
     public Usuario createUser(Usuario usuario){
-        String passwordEncoded = encoder.encode(usuario.getPassword());
+        String passwordEncoded = encoder.encode(usuario.getSenha());
         usuario.setSenha(passwordEncoded);
 
         switch (usuario.getPerfil()){
