@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuarios")
 public class Usuario implements UserDetails {
 
     @Id
@@ -35,13 +35,13 @@ public class Usuario implements UserDetails {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nome, String email, String senha, Boolean habilitado, Perfil perfil) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.habilitado = habilitado;
-        this.perfil = perfil;
+    public Usuario(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado){
+        this.id=id;
+        this.nome=nome;
+        this.email=email;
+        this.senha=senha;
+        this.perfil=perfil;
+        this.habilitado=habilitado;
     }
 
     public Long getId() {

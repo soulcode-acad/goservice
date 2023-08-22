@@ -11,7 +11,7 @@ public class Administrador extends Usuario{
         setPerfil(Perfil.ADMIN);
     }
 
-    public Administrador(Long id, String nome, String email, String senha, Boolean habilitado, Perfil perfil) {
-        super(id, nome, email, senha, habilitado, perfil);
+    public Administrador(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado) {
+        super(id, nome, email, senha, perfil, habilitado);
     }
 }

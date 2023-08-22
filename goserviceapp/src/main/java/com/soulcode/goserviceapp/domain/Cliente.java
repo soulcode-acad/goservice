@@ -19,15 +19,15 @@ public class Cliente extends Usuario{
         setPerfil(Perfil.CLIENTE);
     }
 
-    public Cliente(Long id, String nome, String email, String senha, Boolean habilitado, Perfil perfil, String telefone, String cpf, LocalDate dataNascimento) {
-        super(id, nome, email, senha, habilitado, perfil);
+    public Cliente(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado , String telefone, String cpf, LocalDate dataNascimento) {
+        super(id, nome, email, senha, perfil, habilitado);
         this.telefone = telefone;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
     }
 
-    public Cliente(Long id, String nome, String email, String senha, Boolean habilitado, Perfil perfil) {
-        super(id, nome, email, senha, habilitado, perfil);
+    public Cliente(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado) {
+        super(id, nome, email, senha, perfil, habilitado);
     }
 
     public String getTelefone() {
