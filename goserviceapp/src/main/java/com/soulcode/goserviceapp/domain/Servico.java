@@ -11,7 +11,7 @@ public class Servico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "O nome do serviço não pode ser vazio")
     @Column(nullable = false, length = 100)
@@ -39,7 +39,7 @@ public class Servico {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
