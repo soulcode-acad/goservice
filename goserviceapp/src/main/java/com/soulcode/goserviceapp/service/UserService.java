@@ -1,5 +1,6 @@
 package com.soulcode.goserviceapp.service;
 
+import com.fasterxml.jackson.core.io.JsonStringEncoder;
 import com.soulcode.goserviceapp.domain.Administrador;
 import com.soulcode.goserviceapp.domain.Cliente;
 import com.soulcode.goserviceapp.domain.Prestador;
