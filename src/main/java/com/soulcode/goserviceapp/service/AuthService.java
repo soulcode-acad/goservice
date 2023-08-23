@@ -3,11 +3,11 @@ package com.soulcode.goserviceapp.service;
 import com.soulcode.goserviceapp.domain.Cliente;
 import com.soulcode.goserviceapp.domain.Usuario;
 import com.soulcode.goserviceapp.repository.UsuarioRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -20,7 +20,6 @@ public class AuthService {
     @Autowired
     private PasswordEncoder encoder;
 
-
     public Cliente createCliente(Cliente cliente){
         String passwordEncoded = encoder.encode(cliente.getSenha());
         cliente.setSenha(passwordEncoded);
@@ -30,20 +29,20 @@ public class AuthService {
 
     @Transactional
     public void updatePassword(Authentication authentication, String senhaAtual, String senhaNova){
-        if (authentication != null && authentication.isAuthenticated()){
+        if(authentication != null && authentication.isAuthenticated()) {
             String emailAuthenticated = authentication.getName();
-            Optional<Usuario> usuario = usuarioRepository.findByEmail(authentication.getName());
-            if (usuario.isPresent()){
+            Optional<Usuario> usuario = usuarioRepository.findByEmail(emailAuthenticated);
+            if(usuario.isPresent()) {
                 String passwordEncoded = usuario.get().getSenha();
                 boolean passwordVerified = encoder.matches(senhaAtual, passwordEncoded);
-                if (passwordVerified){
+                if(passwordVerified) {
                     String passwordEncodedNew = encoder.encode(senhaNova);
                     usuarioRepository.updatePasswordByEmail(passwordEncodedNew, emailAuthenticated);
                     return;
                 }
                 throw new RuntimeException("Senha incorreta.");
             }
-            throw new RuntimeException("Usuario não encontrado.");
+            throw new RuntimeException("Usuário não encontrado.");
         }
         throw new RuntimeException("Autenticação necessária.");
     }
