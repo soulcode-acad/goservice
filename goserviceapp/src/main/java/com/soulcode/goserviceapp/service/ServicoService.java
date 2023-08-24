@@ -1,8 +1,10 @@
 package com.soulcode.goserviceapp.service;
 
+import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.repository.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,5 +43,4 @@ public class ServicoService {
         updateServico.setCategoria((servico.getCategoria()));
         return servicoRepository.save(updateServico);
     }
-
 }
