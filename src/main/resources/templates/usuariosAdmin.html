@@ -64,37 +64,66 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Gabriel</td>
-                        <td>gabriel.braga@soulcode</td>
-                        <td>Administrador</td>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.nome}"></td>
+                        <td th:text="${usuario.email}"></td>
+                        <td th:text="${usuario.perfil.descricao}"></td>
                         <td>
-                            <button th:if="true" class="btn btn-danger" style="width: 9rem">
+                            <button th:if="${usuario.habilitado}" class="btn btn-danger" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#disableModal' + ${usuario.id}">
                                 Desabilitar <i class="bi bi-person-fill-x ms-2"></i>
                             </button>
-                            <button th:if="false" class="btn btn-success" style="width: 9rem">
+                            <button th:if="not ${usuario.habilitado}" class="btn btn-success" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#enableModal' + ${usuario.id}">
                                 Habilitar <i class="bi bi-person-fill-check ms-2"></i>
                             </button>
                         </td>
-                    <tr>
-                    <tr>
-                        <td>Victor</td>
-                        <td>victor@soulcode</td>
-                        <td>Prestador</td>
-                        <td>
-                            <button th:if="false" class="btn btn-danger" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#disableModal' + ${usuario?.id}">
-                                Desabilitar <i class="bi bi-person-fill-x ms-2"></i>
-                            </button>
-                            <button th:if="true" class="btn btn-success" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#enableModal' + ${usuario?.id}">
-                                Habilitar <i class="bi bi-person-fill-check ms-2"></i>
-                            </button>
-                        </td>
-                    <tr>
+                    </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
+
+    <!--  MODAL DISABLE  -->
+    <div th:each="usuario : ${usuarios}" th:if="${usuario.habilitado}">
+        <div class="modal fade" th:id="'disableModal' + ${usuario.id}" tabindex="-1" role="dialog" aria-labelledby="disableModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="disableModalLabel">Confirmar Ação</h5>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza de que deseja desabilitar o usuário: <strong th:text="${usuario.nome}"></strong>?
+                    </div>
+                    <form class="modal-footer" method="post" th:action="@{/admin/usuarios/disable}">
+                        <input type="hidden" name="usuarioId" th:value="${usuario.id}">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Confimar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  MODAL ENABLE  -->
+    <div th:each="usuario : ${usuarios}" th:if="not ${usuario.habilitado}">
+        <div class="modal fade" th:id="'enableModal' + ${usuario?.id}" tabindex="-1" role="dialog" aria-labelledby="enableModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="enableModalLabel">Confirmar Ação</h5>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza de que deseja habilitar o usuário: <strong th:text="${usuario.nome}"></strong>?
+                    </div>
+                    <form class="modal-footer" method="post" th:action="@{/admin/usuarios/enable}">
+                        <input type="hidden" name="usuarioId" th:value="${usuario.id}">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Confimar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
