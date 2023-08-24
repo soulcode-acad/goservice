@@ -19,3 +19,5 @@ VALUE (
     "$2a$10$r3r9V682sIhE/61jZjqkauT.08pxrBx.GE1T.yEogN5r8Ly2S8eTK",
     1
 ); # 123456
+
+UPDATE usuarios SET habilitado = 0 WHERE id IN(1, 2, 4); 
