@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Cadastro | GoService</title>
+</head>
+<body>
+
+<main id="content" class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <div style="width: 22rem">
+        <form method="post" th:action="@{/auth/cadastro}">
+            <h1 class="h3 mb-3 fw-normal text-center">Cadastre-se | GoService</h1>
+
+            <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+            <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+            <div class="mb-3">
+                <label class="form-label" for="nome">Nome<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="email">E-mail<span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="senha">Senha<span class="text-danger">*</span></label>
+                <input type="password" class="form-control" id="senha" name="senha" required>
+            </div>
+            <div class="form-check text-start my-3">
+                <input class="form-check-input" type="checkbox" id="termos" required>
+                <label class="form-check-label" for="termos">
+                    Aceito os Termos e Condições de Uso e Política de Privacidade
+                </label>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2" type="submit" id="btn-confirm" disabled>Confirmar</button>
+        </form>
+        <div class="mt-3 d-flex gap-3 flex-wrap">
+            <a href="/" class="btn btn-light btn-sm text-primary flex-grow-1">
+                Página Principal <i class="bi bi-house-fill ms-2"></i>
+            </a>
+        </div>
+    </div>
+    <script defer>
+        const btnConfirm = document.querySelector("#btn-confirm");
+        const checkTerms = document.querySelector("#termos");
+        checkTerms.addEventListener("change", (event) => {
+            const checked = event.target.checked;
+            if(checked) {
+                btnConfirm.disabled = false;
+            }
+            else {
+                btnConfirm.disabled = true;
+            }
+        });
+    </script>
+</main>
+
+</body>
+</html>
