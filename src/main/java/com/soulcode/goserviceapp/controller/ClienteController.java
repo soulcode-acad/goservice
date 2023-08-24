@@ -12,4 +12,14 @@ public class ClienteController {
     public String dados() {
         return "dadosCliente";
     }
+
+    @GetMapping(value = "/agendar")
+    public String agendar() {
+        return "agendarServico";
+    }
+
+    @GetMapping(value = "/historico")
+    public String historico() {
+        return "historicoCliente";
+    }
 }
