@@ -39,15 +39,13 @@ public class UserService {
 
         String passwordEnconded = encoder.encode(usuario.getSenha());
         usuario.setSenha(passwordEnconded);
-        usuario.setId(null);
 
         switch (usuario.getPerfil()){
             case ADMIN:
                 return createAndSaveAdministrador(usuario);
-            case CLIENTE:
-                return createAndSaveCliente(usuario);
             case PRESTADOR:
                 return createAndSavePrestador(usuario);
+            case CLIENTE:
             default:
                 return createAndSaveCliente(usuario);
         }
