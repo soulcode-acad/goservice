@@ -5,10 +5,12 @@ import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.repository.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ServicoService {
 
     @Autowired

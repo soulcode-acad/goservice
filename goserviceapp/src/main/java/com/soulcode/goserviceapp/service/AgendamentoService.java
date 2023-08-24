@@ -23,9 +23,6 @@ public class AgendamentoService {
     private ServicoService servicoService;
 
     @Autowired
-    private AgendamentoService agendamentoService;
-
-    @Autowired
     private ClienteService clienteService;
 
     @Autowired
@@ -41,7 +38,7 @@ public class AgendamentoService {
     }
 
     public Agendamento create(Authentication authentication, Long servicoId, Long prestadorId, LocalDate data, LocalTime hora){
-        Cliente cliente = clienteService.findAuthentication(authentication);
+        Cliente cliente = clienteService.findAuthenticated(authentication);
         Prestador prestador = prestadorService.findById(prestadorId);
         Servico servico = servicoService.findById(servicoId);
         Agendamento agendamento = new Agendamento();
