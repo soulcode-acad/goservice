@@ -2,6 +2,7 @@ package com.soulcode.goserviceapp.service;
 
 import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.repository.ServicoRepository;
+import com.soulcode.goserviceapp.service.exceptions.ServicoNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,7 @@ public class ServicoService {
             return servico.get();
         }
         else {
-            throw new RuntimeException("Serviço não encontrado");
+            throw new ServicoNaoEncontradoException();
         }
     }
 
