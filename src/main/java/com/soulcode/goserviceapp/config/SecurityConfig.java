@@ -14,6 +14,8 @@ public class SecurityConfig {
 
     private final String[] PUBLIC_ROUTES = {"/", "/home", "/auth/**"};
 
+    private final String[] ADMIN_ROUTES = {"/admin/**", "/prestador/**"};
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -24,7 +26,7 @@ public class SecurityConfig {
         http.authorizeRequests()
                 .requestMatchers(PUBLIC_ROUTES)
                 .permitAll()
-                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/admin/**", "/prestador/**").hasRole("ADMIN")
                 .requestMatchers("/prestador/**").hasRole("PRESTADOR")
                 .requestMatchers("/cliente/**").hasRole("CLIENTE")
                 .anyRequest()

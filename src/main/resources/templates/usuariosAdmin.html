@@ -64,10 +64,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Gabriel</td>
-            <td>gabriel.braga@soulcode</td>
-            <td>Administrador</td>
+          <tr th:each="usuario: ${usuarios}">
+            <td th:text="${usuario.nome}"></td>
+            <td th:text="${usuario.email}"></td>
+            <td th:text="${usuario.perfil}"></td>
             <td>
               <button th:if="true" class="btn btn-danger" style="width: 9rem">
                 Desabilitar <i class="bi bi-person-fill-x ms-2"></i>
@@ -76,20 +76,7 @@
                 Habilitar <i class="bi bi-person-fill-check ms-2"></i>
               </button>
             </td>
-          <tr>
-          <tr>
-            <td>Victor</td>
-            <td>victor@soulcode</td>
-            <td>Prestador</td>
-            <td>
-              <button th:if="false" class="btn btn-danger" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#disableModal' + ${usuario?.id}">
-                Desabilitar <i class="bi bi-person-fill-x ms-2"></i>
-              </button>
-              <button th:if="true" class="btn btn-success" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#enableModal' + ${usuario?.id}">
-                Habilitar <i class="bi bi-person-fill-check ms-2"></i>
-              </button>
-            </td>
-          <tr>
+          </tr>
           </tbody>
         </table>
       </div>
