@@ -53,7 +53,11 @@
                 <ul class="dropdown-menu text-small">
                     <li><a class="dropdown-item" href="/auth/password/new">Editar Senha</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><form method="post" action="/logout"><button class="dropdown-item" type="submit">Logout</button></form></li>
+                    <li>
+                        <form method="post" th:action="@{/logout}">
+                        <button class="dropdown-item" type="submit">Logout</button>
+                    </form>
+                    </li>
                 </ul>
             </div>
         </div>
