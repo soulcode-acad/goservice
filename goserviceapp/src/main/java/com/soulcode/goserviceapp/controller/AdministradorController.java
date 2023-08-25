@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -48,5 +49,30 @@ public class AdministradorController {
         }
         return "redirect:/admin/usuarios";
     }
+
+    @PostMapping(value = "/usuarios/disable")
+    public String disableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes){
+        try {
+            usuarioService.disableUser(id);
+        }catch (Exception ex){
+            attributes.addFlashAttribute("errorMessage", "erro ao desabilitar Usuario");
+        }
+        return "redirect:/admin/usuarios";
+
+
+    }
+
+    @PostMapping(value = "/usuarios/enable")
+    public String enableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes){
+        try {
+            usuarioService.enableUser(id);
+        }catch (Exception ex){
+            attributes.addFlashAttribute("errorMessage", "erro ao habilitar Usuario");
+        }
+        return "redirect:/admin/usuarios";
+
+
+    }
+
 
 }
