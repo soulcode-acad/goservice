@@ -1,9 +1,13 @@
 package com.soulcode.goserviceapp.controller;
 
+import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.domain.Usuario;
+import com.soulcode.goserviceapp.service.ServicoService;
 import com.soulcode.goserviceapp.service.UserService;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoExeption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +24,25 @@ public class AdministradorController {
     @Autowired
     private UserService usuarioService;
 
+    @Autowired
+    private ServicoService servicoService;
+
     @GetMapping(value = "/servicos")
     public String servico(){
         return "servicosAdmin";
+    }
+
+    @PostMapping(value = "/servicos")
+    public String createService(Servico servico, RedirectAttributes attributes){
+        try {
+            servicoService.createServico(servico);
+            attributes.addFlashAttribute("successMessage", "Novo serviço adicionado");
+        }catch (Exception ex){
+            attributes.addFlashAttribute("errorMessage", "Erro ao adicionar novo servico");
+        }
+
+
+        return "redirect:/admin/servicos";
     }
 
 
@@ -44,7 +64,9 @@ public class AdministradorController {
         try {
             usuarioService.createUser(usuario);
             attributes.addFlashAttribute("successMessage", "Novo Usuario Cadastrado");
-        } catch (Exception ex){
+        }catch (UsuarioNaoEncontradoExeption ex){
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
+        }catch (Exception ex){
             attributes.addFlashAttribute("errorMessage", "Erro ao cadastrar novo usuario");
         }
         return "redirect:/admin/usuarios";
@@ -54,7 +76,10 @@ public class AdministradorController {
     public String disableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes){
         try {
             usuarioService.disableUser(id);
-        }catch (Exception ex){
+        }catch (UsuarioNaoEncontradoExeption ex){
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
+        }
+        catch (Exception ex){
             attributes.addFlashAttribute("errorMessage", "erro ao desabilitar Usuario");
         }
         return "redirect:/admin/usuarios";
@@ -66,13 +91,15 @@ public class AdministradorController {
     public String enableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes){
         try {
             usuarioService.enableUser(id);
+        }catch (UsuarioNaoEncontradoExeption ex){
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
         }catch (Exception ex){
             attributes.addFlashAttribute("errorMessage", "erro ao habilitar Usuario");
         }
         return "redirect:/admin/usuarios";
-
-
     }
+
+
 
 
 }
