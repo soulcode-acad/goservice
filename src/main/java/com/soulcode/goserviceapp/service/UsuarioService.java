@@ -72,7 +72,7 @@ public class UsuarioService {
             usuarioRepository.updateEnableById(false, id);
             return;
         }
-        throw new RuntimeException("Usuario não encontrado");
+        throw new UsuarioNaoEncontradoException();
     }
 
     @Transactional
@@ -82,6 +82,6 @@ public class UsuarioService {
             usuarioRepository.updateEnableById(true, id);
             return;
         }
-        throw new RuntimeException("Usuario não encontrado");
+        throw new UsuarioNaoEncontradoException();
     }
 }
