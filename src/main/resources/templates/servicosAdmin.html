@@ -70,12 +70,12 @@
                         <td th:text="${servico.descricao}"></td>
                         <td th:text="${servico.categoria}"></td>
                         <td>
-                            <a th:href="@{/admin/servicos/editar/{id}(id=${servico?.id})}" class="btn btn-success" style="width: 7rem">
+                            <a th:href="@{/admin/servicos/editar/{id}(id=${servico.id})}" class="btn btn-success" style="width: 7rem">
                                 Editar <i class="bi bi-pencil-fill ms-2"></i>
                             </a>
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="width: 7rem">
+                            <button class="btn btn-danger" style="width: 7rem" data-bs-toggle="modal" th:data-bs-target="'#deleteModal' + ${servico.id}">
                                 Excluir <i class="bi bi-trash-fill ms-2"></i>
                             </button>
                         </td>
@@ -85,6 +85,26 @@
             </div>
         </div>
     </main>
+
+    <div th:each="servico : ${servicos}">
+        <div class="modal fade" th:id="'deleteModal' + ${servico.id}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza de que deseja excluir o serviço: <strong th:text="${servico.nome}"></strong>?
+                    </div>
+                    <form class="modal-footer" method="post" th:action="@{/admin/servicos/remover}">
+                        <input type="hidden" name="servicoId" th:value="${servico.id}">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
