@@ -10,8 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface PrestadorRepository extends JpaRepository<Prestador, Long> {
-<<<<<<< HEAD
-=======
     Optional<Prestador> findByEmail(String email);
     @Query(value =
             "SELECT u.*" +
@@ -20,6 +18,6 @@ public interface PrestadorRepository extends JpaRepository<Prestador, Long> {
                     " JOIN servicos s ON s.id = p.servico_id" +
                     " WHERE s.id = ?", nativeQuery = true)
     List<Prestador> findByServicoId(Long id);
->>>>>>> ae5c1949c1ab10903b767836d3435a3d7af3dae2
+
 }
 
