@@ -3,6 +3,8 @@ package com.soulcode.goserviceapp.service;
 import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.repository.PrestadorRepository;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoAutenticadoException;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoExeption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ public class PrestadorService {
         if(result.isPresent()){
             return result.get();
         }
-        throw new RuntimeException("Prestador não encontrado");
+        throw new UsuarioNaoEncontradoExeption();
     }
 
     public Prestador update(Prestador prestador){
@@ -42,9 +44,9 @@ public class PrestadorService {
             if (prestador.isPresent()){
                 return prestador.get();
             }
-            throw new RuntimeException("Prestador não encontrado");
+            throw new UsuarioNaoEncontradoExeption();
         }
-        throw new RuntimeException("Usuario não autenticado");
+        throw new UsuarioNaoAutenticadoException();
     }
 
     public void addServicoPrestador(Authentication authentication, Long id) {

@@ -74,7 +74,7 @@ public class UserService {
             usuarioRepository.updateEnableByEmail(false, id);
             return;
         }
-        throw new RuntimeException("Usuario não encontrado");
+        throw new UsuarioNaoEncontradoExeption();
     }
     @Transactional
     public void enableUser(Long id){
@@ -83,7 +83,7 @@ public class UserService {
             usuarioRepository.updateEnableByEmail(true, id);
             return;
         }
-        throw new RuntimeException("Usuario não encontrado");
+        throw new UsuarioNaoEncontradoExeption();
     }
 
 
