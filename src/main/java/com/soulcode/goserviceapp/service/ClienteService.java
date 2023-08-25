@@ -2,6 +2,7 @@ package com.soulcode.goserviceapp.service;
 
 import com.soulcode.goserviceapp.domain.Cliente;
 import com.soulcode.goserviceapp.repository.ClienteRepository;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoAutenticadoException;
 import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -25,7 +26,7 @@ public class ClienteService {
                 throw new UsuarioNaoEncontradoException();
             }
         } else {
-            throw  new UsuarioNaoEncontradoException();
+            throw new UsuarioNaoAutenticadoException();
         }
     }
 
