@@ -47,4 +47,26 @@ public class AdministradorController {
         }
         return "redirect:/admin/usuarios";
     }
+
+    // Habilita Usuário
+    @PostMapping(value = "/usuarios/enable")
+    public String enableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes){
+        try {
+            usuarioService.enableUser(id);
+        }catch (Exception e){
+            attributes.addFlashAttribute("errorMessage", "Erro ao desabilitar usuário");
+        }
+        return "redirect:/admin/usuarios";
+    }
+
+//     Desabilita Usuário
+    @PostMapping(value = "/usuarios/disable")
+    public String disableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes){
+        try {
+            usuarioService.disableUser(id);
+        }catch (Exception e){
+            attributes.addFlashAttribute("errorMessage", "Erro ao desabilitar usuário");
+        }
+        return "redirect:/admin/usuarios";
+    }
 }
