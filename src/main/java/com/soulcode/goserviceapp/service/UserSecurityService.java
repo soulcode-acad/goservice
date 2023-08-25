@@ -23,6 +23,6 @@ public class UserSecurityService implements UserDetailsService {
         if(result.isPresent()) {
             return result.get();
         }
-        throw new UsuarioNaoEncontradoException();
+        throw new UsernameNotFoundException("Usuário não encontrado.");
     }
 }
