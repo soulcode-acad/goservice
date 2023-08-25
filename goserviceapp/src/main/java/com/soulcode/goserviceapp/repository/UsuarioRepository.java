@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -16,4 +17,10 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Modifying
     @Query(value = "UPDATE usuarios AS u SET u.senha = ? WHERE u.email = ? ", nativeQuery = true)
     void updatePasswordByEmail(String senha, String email);
+
+
+    @Modifying
+    @Query(value = "UPDATE usuarios u SET u.habilitado = ? WHERE u.id = ?", nativeQuery = true)
+    void updateEnableByEmail(boolean habilitado, Long id);
+
 }
