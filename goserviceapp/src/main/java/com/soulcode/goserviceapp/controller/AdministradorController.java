@@ -4,14 +4,12 @@ import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.domain.Usuario;
 import com.soulcode.goserviceapp.service.ServicoService;
 import com.soulcode.goserviceapp.service.UserService;
+import com.soulcode.goserviceapp.service.exceptions.ServicoNaoEncontradoException;
 import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoExeption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -28,8 +26,15 @@ public class AdministradorController {
     private ServicoService servicoService;
 
     @GetMapping(value = "/servicos")
-    public String servico(){
-        return "servicosAdmin";
+    public ModelAndView servicos(){
+        ModelAndView mv = new ModelAndView("servicosAdmin");
+        try {
+            List<Servico> servicos = servicoService.findAll();
+            mv.addObject("servicos", servicos);
+        }catch (ServicoNaoEncontradoException ex) {
+            mv.addObject("errorMessage", "Erro ao adicionar novo servico");
+        }
+        return mv;
     }
 
     @PostMapping(value = "/servicos")
@@ -40,12 +45,31 @@ public class AdministradorController {
         }catch (Exception ex){
             attributes.addFlashAttribute("errorMessage", "Erro ao adicionar novo servico");
         }
+        return "redirect:/admin/servicos";
+    }
 
+    @PostMapping(value = "/servicos/remover")
+    public String removeService(@RequestParam(name = "servicoId") Long id, RedirectAttributes attributes){
+        try {
+            servicoService.removeServicoById(id);
+            attributes.addFlashAttribute("successMessage", "Serviço removido");
+
+        }catch (ServicoNaoEncontradoException ex){
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
+        }
+        catch (Exception ex){
+            attributes.addFlashAttribute("errorMessage", "Erro ao excluir serviço");
+        }
 
         return "redirect:/admin/servicos";
     }
 
+    @GetMapping(value = "/servicos/editar/{id}")
+    public String editService(@PathVariable Long id){
+        System.err.println(id);
+        return "editarServico";
 
+    }
 
     @GetMapping(value = "/usuarios")
     public ModelAndView usuario(){
