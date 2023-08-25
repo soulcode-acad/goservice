@@ -1,7 +1,10 @@
 package com.soulcode.goserviceapp.controller;
 
+import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.domain.Usuario;
+import com.soulcode.goserviceapp.service.ServicoService;
 import com.soulcode.goserviceapp.service.UsuarioService;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +23,23 @@ public class AdministradorController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private ServicoService servicoService;
+
     @GetMapping(value = "/servicos")
     public String servicos() {
         return "servicosAdmin";
+    }
+
+    @PostMapping(value = "/servicos")
+    public String createService(Servico servico, RedirectAttributes attributes){
+        try {
+            servicoService.createServico(servico);
+            attributes.addFlashAttribute("errorMessage", "Novo serviço adicionado");
+        }catch (Exception e){
+            attributes.addFlashAttribute("errorMessage", "Erro ao adicionar novo serviço");
+        }
+        return "redirect:/admin/servicos";
     }
 
     @GetMapping(value = "/usuarios")
@@ -53,7 +70,11 @@ public class AdministradorController {
     public String enableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes){
         try {
             usuarioService.enableUser(id);
-        }catch (Exception e){
+        }
+        catch (UsuarioNaoEncontradoException e){
+            attributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
+        catch (Exception e){
             attributes.addFlashAttribute("errorMessage", "Erro ao desabilitar usuário");
         }
         return "redirect:/admin/usuarios";
@@ -64,9 +85,15 @@ public class AdministradorController {
     public String disableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes){
         try {
             usuarioService.disableUser(id);
-        }catch (Exception e){
+        }
+        catch (UsuarioNaoEncontradoException e){
+            attributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
+        catch (Exception e){
             attributes.addFlashAttribute("errorMessage", "Erro ao desabilitar usuário");
         }
         return "redirect:/admin/usuarios";
     }
+
+
 }
