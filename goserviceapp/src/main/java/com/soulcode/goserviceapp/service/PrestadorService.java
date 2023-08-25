@@ -36,7 +36,7 @@ public class PrestadorService {
         return prestadorRepository.save(updatePrestador);
     }
 
-    private Prestador findAuthenticated(Authentication authentication) {
+    public Prestador findAuthenticated(Authentication authentication) {
         if (authentication != null && authentication.isAuthenticated()){
             Optional<Prestador> prestador = prestadorRepository.findByEmail(authentication.getName());
             if (prestador.isPresent()){
