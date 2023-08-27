@@ -9,6 +9,7 @@ import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoExceptio
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +40,6 @@ public class UsuarioService {
     public Usuario createUser(Usuario usuario){
         String passwordEnconded = encoder.encode(usuario.getSenha());
         usuario.setSenha(passwordEnconded);
-        usuario.setId(null);
 
         switch (usuario.getPerfil()){
             case ADMIN:
@@ -67,4 +67,26 @@ public class UsuarioService {
         Cliente cliente = new Cliente(u.getId(), u.getNome(), u.getEmail(), u.getSenha(), u.getPerfil(), u.getHabilitado());
         return usuarioRepository.save(cliente);
     }
+
+    @Transactional
+    public void disableUser(Long id){
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        if(usuario.isPresent()){
+            usuarioRepository.updateEnableById(false, id);
+            return;
+        }
+        throw new  UsuarioNaoEncontradoException();
+    }
+
+    @Transactional
+    public void anableUser(Long id){
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+
+        if(usuario.isPresent()){
+            usuarioRepository.updateEnableById(true, id);
+            return;
+        }
+        throw new  UsuarioNaoEncontradoException();
+    }
+
 }

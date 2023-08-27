@@ -3,6 +3,8 @@ package com.soulcode.goserviceapp.service;
 import com.soulcode.goserviceapp.domain.Cliente;
 import com.soulcode.goserviceapp.domain.Usuario;
 import com.soulcode.goserviceapp.repository.UsuarioRepository;
+import com.soulcode.goserviceapp.service.exceptions.SenhaIncorretaException;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoAutenticadoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,10 +42,10 @@ public class AuthService {
                     // atualização da senha
                     return;
                 }
-                throw new RuntimeException("Senha incorreta.");
+                throw new SenhaIncorretaException();
             }
-            throw new RuntimeException("Usuario não encontrado.");
+            throw new UsuarioNaoAutenticadoException();
         }
-        throw new RuntimeException("Autenticação necessária.");
+        throw new UsuarioNaoAutenticadoException();
     }
 }
