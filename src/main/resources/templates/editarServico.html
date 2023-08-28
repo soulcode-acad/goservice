@@ -19,21 +19,21 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <form method="post" th:action="@{/admin/servicos/editar}">
-                    <input type="hidden" name="id">
+                <form th:if="${servico != null}" method="post" th:action="@{/admin/servicos/editar}">
+                    <input type="hidden" name="id" th:field="*{servico.id}" required>
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="nome" name="nome" required>
+                        <input type="text" class="form-control" id="nome" name="nome" th:field="*{servico.nome}" required>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="descricao" class="form-label">Descrição<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="descricao" name="descricao" required>
+                        <input type="text" class="form-control" id="descricao" name="descricao" th:field="*{servico.descricao}" required>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="categoria" class="form-label">Categoria<span class="text-danger">*</span></label>
-                        <select class="form-select" id="categoria" name="categoria" required>
+                        <select class="form-select" id="categoria" name="categoria" th:field="*{servico.categoria}" required>
                             <option value="" disabled selected>Selecione uma categoria</option>
                             <option value="Limpeza">Limpeza</option>
                             <option value="Manutenção">Manutenção</option>
