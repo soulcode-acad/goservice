@@ -5,10 +5,9 @@ import com.soulcode.goserviceapp.domain.Usuario;
 import com.soulcode.goserviceapp.service.ServicoService;
 import com.soulcode.goserviceapp.service.UserService;
 import com.soulcode.goserviceapp.service.exceptions.ServicoNaoEncontradoException;
-import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoExeption;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -110,7 +109,7 @@ public class AdministradorController {
         try {
             usuarioService.createUser(usuario);
             attributes.addFlashAttribute("successMessage", "Novo Usuario Cadastrado");
-        }catch (UsuarioNaoEncontradoExeption ex){
+        }catch (UsuarioNaoEncontradoException ex){
             attributes.addFlashAttribute("errorMessage", ex.getMessage());
         }catch (Exception ex){
             attributes.addFlashAttribute("errorMessage", "Erro ao cadastrar novo usuario");
@@ -122,7 +121,7 @@ public class AdministradorController {
     public String disableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes){
         try {
             usuarioService.disableUser(id);
-        }catch (UsuarioNaoEncontradoExeption ex){
+        }catch (UsuarioNaoEncontradoException ex){
             attributes.addFlashAttribute("errorMessage", ex.getMessage());
         }
         catch (Exception ex){
@@ -137,7 +136,7 @@ public class AdministradorController {
     public String enableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes){
         try {
             usuarioService.enableUser(id);
-        }catch (UsuarioNaoEncontradoExeption ex){
+        }catch (UsuarioNaoEncontradoException ex){
             attributes.addFlashAttribute("errorMessage", ex.getMessage());
         }catch (Exception ex){
             attributes.addFlashAttribute("errorMessage", "erro ao habilitar Usuario");

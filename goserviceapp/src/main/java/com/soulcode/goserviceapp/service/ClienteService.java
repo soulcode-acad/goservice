@@ -1,11 +1,9 @@
 package com.soulcode.goserviceapp.service;
 
 import com.soulcode.goserviceapp.domain.Cliente;
-import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.repository.ClienteRepository;
-import com.soulcode.goserviceapp.repository.PrestadorRepository;
 import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoAutenticadoException;
-import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoExeption;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -23,7 +21,7 @@ import java.util.Optional;
                 if (cliente.isPresent()){
                     return cliente.get();
                 }
-                throw new UsuarioNaoEncontradoExeption("Cliente não encontrado");
+                throw new UsuarioNaoEncontradoException("Cliente não encontrado");
             }
             throw new UsuarioNaoAutenticadoException("Cliente não autenticado");
         }
@@ -33,7 +31,7 @@ import java.util.Optional;
             if(result.isPresent()){
                 return result.get();
             }
-            throw new UsuarioNaoEncontradoExeption("Prestador não encontrado");
+            throw new UsuarioNaoEncontradoException("Prestador não encontrado");
         }
 
         public Cliente update(Cliente cliente){
