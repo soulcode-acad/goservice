@@ -16,6 +16,7 @@ delete from usuarios where id = 7;
 select * from usuarios;
 select * from servicos;
 select * from prestadores_servicos;
+select * from agendamentos;
 
 delete from prestadores_servicos where servico_id = 20;
 delete from servicos where id = 20;
