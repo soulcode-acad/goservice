@@ -18,26 +18,26 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <form method="post" th:action="@{/prestador/dados}">
-                    <input type="hidden" name="id" th:value="${prestador?.id}">
+                <form th:if="${prestador != null}" method="post" th:action="@{/prestador/dados}">
+                    <input type="hidden" name="id" th:field="*{prestador.id}">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="nome" name="nome" th:value="${prestador?.nome}" required>
+                        <input type="text" class="form-control" id="nome" name="nome" th:field="*{prestador.nome}" required>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" id="email" name="email" th:value="${prestador?.email}" required>
+                        <input type="email" class="form-control" id="email" name="email" th:field="*{prestador.email}" required>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="descricao" class="form-label">Descrição Profissional</label>
-                        <input type="text" class="form-control" id="descricao" th:value="${prestador?.descricao}" name="descricao">
+                        <input type="text" class="form-control" id="descricao" th:field="*{prestador.descricao}" name="descricao">
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="taxaPorHora" class="form-label">Taxa de Atendimento por Hora</label>
-                        <input type="number" class="form-control" id="taxaPorHora" th:value="${prestador?.taxaPorHora}" name="taxaPorHora">
+                        <input type="number" class="form-control" id="taxaPorHora" th:field="*{prestador.taxaPorHora}" name="taxaPorHora">
                         <div class="form-text"></div>
                     </div>
 
@@ -62,27 +62,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Dentista</td>
-                        <td>
-                            <button class="btn btn-danger">
-                                Excluir <i class="bi bi-trash-fill ms-2"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Desenvolvedor</td>
-                        <td>
-                            <button class="btn btn-danger">
-                                Excluir <i class="bi bi-trash-fill ms-2"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Médico</td>
+                    <tr th:each="especialidade, index : ${especialidades}">
+                        <td th:text="${index.count}"></td>
+                        <td th:text="${especialidade.nome}"></td>
                         <td>
                             <button class="btn btn-danger">
                                 Excluir <i class="bi bi-trash-fill ms-2"></i>
