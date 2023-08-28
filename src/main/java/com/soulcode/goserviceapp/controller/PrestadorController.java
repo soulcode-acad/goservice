@@ -37,6 +37,8 @@ public class PrestadorController {
             mv.addObject("prestador", prestador);
             List<Servico> especialidades = servicoService.findByPrestadorEmail(authentication.getName());
             mv.addObject("especialidades", especialidades);
+            List<Servico> servicos = servicoService.findAll();
+            mv.addObject("servicos", servicos);
         } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException ex) {
             mv.addObject("errorMessage", ex.getMessage());
         } catch (Exception ex) {
@@ -70,6 +72,22 @@ public class PrestadorController {
             attributes.addFlashAttribute("errorMessage", ex.getMessage());
         } catch (Exception ex) {
             attributes.addFlashAttribute("errorMessage", "Erro ao remover especialidade.");
+        }
+        return "redirect:/prestador/dados";
+    }
+
+    @PostMapping(value = "/dados/especialidade/adicionar")
+    public String adicionarEspecialidade(
+            @RequestParam(name = "servicoId") Long id,
+            Authentication authentication,
+            RedirectAttributes attributes) {
+        try {
+            prestadorService.addServicoPrestador(authentication, id);
+            attributes.addFlashAttribute("successMessage", "Especialidade adicionada.");
+        } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException | ServicoNaoEncontradoException ex) {
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
+        } catch (Exception ex) {
+            attributes.addFlashAttribute("errorMessage", "Erro ao adicionar nova especialidade.");
         }
         return "redirect:/prestador/dados";
     }

@@ -46,9 +46,10 @@
 
                 <h5 class="card-title mb-2 mt-5">Especialidades</h5>
 
-                <form class="d-flex gap-3 my-3" method="post" th:action="@{/prestador/dados/adicionar/especialidade}">
+                <form class="d-flex gap-3 my-3" method="post" th:action="@{/prestador/dados/especialidade/adicionar}">
                     <select class="form-select" id="servicoId" name="servicoId" required>
                         <option value="" disabled selected>Selecione uma especialidade</option>
+                        <option th:each="servico : ${servicos}" th:value="${servico.id}" th:text="${servico.nome}"></option>
                     </select>
                     <button type="submit" class="btn btn-primary" style="width: 9rem">Adicionar <i class="bi bi-plus-circle ms-2"></i></button>
                 </form>
