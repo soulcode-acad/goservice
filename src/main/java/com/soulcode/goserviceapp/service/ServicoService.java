@@ -15,7 +15,7 @@ public class ServicoService {
     private ServicoRepository servicoRepository;
 
     public List<Servico> findAll(){
-        return  servicoRepository.findAll();
+        return servicoRepository.findAll();
     }
 
     public Servico createServico(Servico servico){
@@ -42,5 +42,9 @@ public class ServicoService {
         updatedServico.setDescricao(servico.getDescricao());
         updatedServico.setCategoria(servico.getCategoria());
         return servicoRepository.save(updatedServico);
+    }
+
+    public List<Servico> findByPrestadorEmail(String email) {
+        return servicoRepository.findByPrestadorEmail(email);
     }
 }
