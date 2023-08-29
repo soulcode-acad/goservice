@@ -1,5 +1,6 @@
 package com.soulcode.goserviceapp.controller;
 
+import com.soulcode.goserviceapp.domain.Agendamento;
 import com.soulcode.goserviceapp.domain.Cliente;
 import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.domain.Servico;
@@ -7,9 +8,7 @@ import com.soulcode.goserviceapp.service.AgendamentoService;
 import com.soulcode.goserviceapp.service.ClienteService;
 import com.soulcode.goserviceapp.service.PrestadorService;
 import com.soulcode.goserviceapp.service.ServicoService;
-import com.soulcode.goserviceapp.service.exceptions.ServicoNaoEncontradoException;
-import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoAutenticadoException;
-import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
+import com.soulcode.goserviceapp.service.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -104,7 +103,50 @@ public class ClienteController {
     }
 
     @GetMapping(value = "/historico")
-    public String historico() {
-        return "historicoCliente";
+    public ModelAndView historico(Authentication authentication) {
+        ModelAndView mv = new ModelAndView("historicoCliente");
+        try {
+            List<Agendamento> agendamentos = agendamentoService.findByCliente(authentication);
+            mv.addObject("agendamentos", agendamentos);
+        } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException ex) {
+            mv.addObject("errorMessage", ex.getMessage());
+        } catch (Exception ex) {
+            mv.addObject("errorMessage", "Erro ao carregar dados de agendamentos.");
+        }
+        return mv;
+    }
+
+    @PostMapping(value = "/historico/cancelar")
+    public String cancelarAgendamento(
+            @RequestParam(name = "agendamentoId") Long agendamentoId,
+            Authentication authentication,
+            RedirectAttributes attributes) {
+        try {
+            agendamentoService.cancelAgendaCliente(authentication, agendamentoId);
+            attributes.addFlashAttribute("successMessage", "Agendamento cancelado.");
+        } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException |
+                 AgendamentoNaoEncontradoException | StatusAgendamentoImutavelException ex) {
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
+        } catch (Exception ex) {
+            attributes.addFlashAttribute("errorMessage", "Erro ao cancelar agendamento.");
+        }
+        return "redirect:/cliente/historico";
+    }
+
+    @PostMapping(value = "/historico/concluir")
+    public String concluirAgendamento(
+            @RequestParam(name = "agendamentoId") Long agendamentoId,
+            Authentication authentication,
+            RedirectAttributes attributes) {
+        try {
+            agendamentoService.completeAgenda(authentication, agendamentoId);
+            attributes.addFlashAttribute("successMessage", "Agendamento concluído.");
+        } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException |
+                 AgendamentoNaoEncontradoException | StatusAgendamentoImutavelException ex) {
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
+        } catch (Exception ex) {
+            attributes.addFlashAttribute("errorMessage", "Erro ao concluir agendamento.");
+        }
+        return "redirect:/cliente/historico";
     }
 }
