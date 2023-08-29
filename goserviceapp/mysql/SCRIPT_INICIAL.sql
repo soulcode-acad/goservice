@@ -11,6 +11,7 @@ describe prestadores_servicos;
 drop table usuarios;
 
 delete from usuarios where id = 7;
+update agendamentos set status_agendamento = "CONFIRMADO" where id = 4;
 
 -- CONSULTAS
 select * from usuarios;

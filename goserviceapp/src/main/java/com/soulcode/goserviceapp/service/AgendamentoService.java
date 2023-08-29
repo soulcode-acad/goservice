@@ -51,7 +51,7 @@ public class AgendamentoService {
         agendamento.setServico(servico);
         agendamento.setData(data);
         agendamento.setHora(hora);
-
+        System.err.println("Chegou");
         return agendamentoRepository.save(agendamento);
     }
 

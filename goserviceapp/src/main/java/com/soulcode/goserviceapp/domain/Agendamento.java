@@ -47,7 +47,6 @@ public class Agendamento {
     @Column(nullable = false)
     private LocalTime hora;
 
-    @NotNull(message = "A data e hora de agendamento não pode ser vazio")
     @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime dataHoraRegistro;
