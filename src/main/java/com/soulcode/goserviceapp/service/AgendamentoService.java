@@ -50,13 +50,9 @@ import java.util.Optional;
 
             return agendamentoRepository.save(agendamento);
         }
-    }
 
 
-<<<<<<< HEAD
-=======
-        return agendamentoRepository.save(agendamento);
-    }
+        
 
     public List<Agendamento> findByCliente(Authentication authentication){
         Cliente cliente = clienteService.findAuthenticated(authentication);
@@ -112,4 +108,4 @@ import java.util.Optional;
         throw new RuntimeException("Agendamento imutável");
     }
 }
->>>>>>> 0e27cde80f7684af17f56964a8ab609af1190858
+
