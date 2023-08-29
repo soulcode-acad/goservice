@@ -26,6 +26,14 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    public Usuario findByEmail(String email){
+        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+        if (usuario.isPresent()){
+            return usuario.get();
+        }
+        throw new UsuarioNaoEncontradoException();
+    }
+
     public List<Usuario> findAll(){
         return usuarioRepository.findAll();
     }
