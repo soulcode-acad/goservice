@@ -19,30 +19,30 @@
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
                 <form method="post" th:action="@{/cliente/dados}">
-                    <input type="hidden" name="id" th:value="${cliente?.id}">
+                    <input type="hidden" name="id" th:field="*{cliente.id}">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="nome" name="nome" th:value="${cliente?.nome}" required>
+                        <input type="text" class="form-control" id="nome" name="nome" th:field="*{cliente.nome}" required>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" id="email" name="email" th:value="${cliente?.email}" required>
+                        <input type="email" class="form-control" id="email" name="email" th:field="*{cliente.email}" required>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="cpf" class="form-label">Telefone</label>
-                        <input type="tel" class="form-control" id="telefone" name="telefone" th:value="${cliente?.telefone}">
+                        <input type="tel" class="form-control" id="telefone" name="telefone" th:field="*{cliente.telefone}">
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>
-                        <input type="text" class="form-control" id="cpf" name="cpf" th:value="${cliente?.cpf}">
+                        <input type="text" class="form-control" id="cpf" name="cpf" th:field="*{cliente.cpf}">
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="dataNascimento" class="form-label">Data de Nascimento</label>
-                        <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" th:value="${cliente?.dataNascimento}">
+                        <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" th:value="${cliente.dataNascimento}">
                         <div class="form-text"></div>
                     </div>
 
