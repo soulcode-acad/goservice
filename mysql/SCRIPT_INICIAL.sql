@@ -10,7 +10,7 @@ drop table usuarios;
 
 -- AUXILIAR
 delete from usuarios where id = 7;
-update agendamentos set status_agendamento = "CONFIRMADO" where id = 4;
+update agendamentos set status_agendamento = "CONCLUIDO" where id = 3;
 
 -- CONSULTAS
 select * from usuarios;

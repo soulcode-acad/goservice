@@ -7,7 +7,7 @@
 
             <ul class="nav flex-grow-1 mb-2 mb-md-0">
                 <!-- ADM -->
-                <div class="dropdown me-3">
+                <div class="dropdown me-3" th:if="${#authorization.expression('isAuthenticated() and hasRole(''ROLE_ADMIN'')')}">
                     <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Administrador
                     </button>
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
                 <!-- PRESTADOR -->
-                <div class="dropdown me-3">
+                <div class="dropdown me-3" th:if="${#authorization.expression('isAuthenticated() and hasRole(''ROLE_PRESTADOR'')')}">
                     <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Prestador
                     </button>
@@ -28,7 +28,7 @@
                     </ul>
                 </div>
                 <!-- CLIENTE -->
-                <div class="dropdown me-3">
+                <div class="dropdown me-3" th:if="${#authorization.expression('isAuthenticated() and hasRole(''ROLE_CLIENTE'')')}">
                     <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Cliente
                     </button>
@@ -41,12 +41,12 @@
                 </div>
             </ul>
 
-            <div class="text-end">
+            <div class="text-end" th:if="${not #authorization.expression('isAuthenticated()')}">
                 <a href="/auth/login" type="button" class="btn btn-outline-primary me-3">Login</a>
                 <a href="/auth/cadastro" type="button" class="btn btn-primary">Cadastre-se</a>
             </div>
 
-            <div class="dropdown text-end">
+            <div class="dropdown text-end" th:if="${#authorization.expression('isAuthenticated()')}">
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
