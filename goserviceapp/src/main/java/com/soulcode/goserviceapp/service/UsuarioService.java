@@ -13,6 +13,7 @@ import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.domain.Usuario;
 import com.soulcode.goserviceapp.repository.UsuarioRepository;
 import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UsuarioService {
@@ -63,6 +64,23 @@ public class UsuarioService {
         Cliente cliente= new Cliente(usuario.getId(), usuario.getNome(),usuario.getEmail(), usuario.getSenha(),usuario.getPerfil(), usuario.getHabilitado());
         return usuarioRepository.save(cliente);
     }
-
+    @Transactional
+    public void diableUser(Long id){
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        if(usuario.isPresent()){
+            usuarioRepository.updateEnableById(false,id);
+            return;
+        }
+        throw new UsuarioNaoEncontradoException();
+    }
+    @Transactional
+    public void enableUser(Long id){
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        if(usuario.isPresent()){
+            usuarioRepository.updateEnableById(true,id);
+            return;
+        }
+        throw new UsuarioNaoEncontradoException();
+    }
 }
    

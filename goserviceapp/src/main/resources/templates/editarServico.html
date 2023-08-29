@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Serviço</title>
+</head>
+<body>
+
+<div id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container my-4">
+        <h2>Editar Serviço</h2>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+                <h5 class="card-title mb-2">Alterar Dados</h5>
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <form th:if="${servico != null}" method="post" th:action="@{/admin/servicos/editar}">
+                    <input type="hidden" name="id" th:field="*{servico.id}" required>
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="nome" name="nome" th:field="*{servico.nome}" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="descricao" name="descricao" th:field="*{servico.descricao}" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoria<span class="text-danger">*</span></label>
+                        <select class="form-select" id="categoria" name="categoria" th:field="*{servico.categoria}" required>
+                            <option value="" disabled selected>Selecione uma categoria</option>
+                            <option value="Limpeza">Limpeza</option>
+                            <option value="Manutenção">Manutenção</option>
+                            <option value="Consultoria">Consultoria</option>
+                            <option value="Entrega">Entrega</option>
+                            <option value="Design">Design</option>
+                            <option value="Desenvolvimento">Desenvolvimento</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Suporte">Suporte</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Treinamento">Treinamento</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

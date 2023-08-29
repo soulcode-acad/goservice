@@ -2,7 +2,10 @@ package com.soulcode.goserviceapp.controller;
 
 import java.lang.ProcessBuilder.Redirect;
 
-import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
+import com.soulcode.goserviceapp.service.exceptions.SenhaIncorretaException;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoAutenticadoException;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -62,7 +65,10 @@ public class AuthController {
             authService.createCliente(cliente);
             attributes.addFlashAttribute("successMessage", "Novo cliente cadastrado com sucesso!");
             return "redirect:/auth/login";
-        } catch (Exception ex) {
+        } catch(UsuarioNaoEncontradoException | UsuarioNaoAutenticadoException | SenhaIncorretaException ex) {
+            attributes.addFlashAttribute(ex.getMessage());
+            return "redirect:/auth/cadastro";
+        }catch(Exception ex) {
             attributes.addFlashAttribute("errorMessage", "Erro ao cadastrar novo cliente.");
             return "redirect:/auth/cadastro";
         }

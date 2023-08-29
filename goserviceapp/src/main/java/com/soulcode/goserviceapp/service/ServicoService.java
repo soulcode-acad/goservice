@@ -33,7 +33,9 @@ public class ServicoService {
             throw new RuntimeException("Servico não encontrado");
         }
     }
-    
+    public List<Servico> findByPrestadorEmail(String email){
+        return servicoRepository.findByPrestadorEmail(email);
+    }
     public Servico update(Servico servico){
         Servico updatedServico = this.findById(servico.getId());
         updatedServico.setNome(servico.getNome());

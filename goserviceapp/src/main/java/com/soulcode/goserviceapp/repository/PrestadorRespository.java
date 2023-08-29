@@ -5,7 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
+
+import java.util.List;
 import java.util.Optional;
 
 
@@ -17,6 +18,5 @@ public interface PrestadorRespository extends JpaRepository<Prestador,Long> {
                 "JOIN prestadores_servicos p ON u.id = p.prestador_id"+
                 "JOIN servicos s ON s.id = p.servico_id"+
             "WHERE s.id = ?", nativeQuery = true)
-
-    ArrayList<Prestador> findByServicoId(Long id);
+    List<Prestador> findByServicoId(Long id);
 }

@@ -3,6 +3,8 @@ package com.soulcode.goserviceapp.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoAutenticadoException;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ public class PrestadorService {
         if(prestador.isPresent()){
             return prestador.get();
         }else{
-            throw new RuntimeException("prestador não encontrado");
+            throw new UsuarioNaoEncontradoException("prestador não encontrado");
         }
     }
     public Prestador update(Prestador prestador){
@@ -50,18 +52,18 @@ public class PrestadorService {
         prestador.removeEspecialidade(servico);
         prestadorRepository.save(prestador);    
     }
-    public List<Prestador> findByService(Long id){
+    public List<Prestador> findByServicoId(Long id){
        return prestadorRepository.findByServicoId(id);
         
     }
-    private Prestador findAuthenticated(Authentication authentication) {
+    public Prestador findAuthenticated(Authentication authentication) {
         if(authentication != null && authentication.isAuthenticated()){
             Optional<Prestador>  prestador = prestadorRepository.findByEmail(authentication.getName());
             if(prestador.isPresent()){
                 return prestador.get();
             }else{
-                throw new RuntimeException("Prestador não encontrado");
+                throw new UsuarioNaoEncontradoException("Prestador não encontrado");
             }
-        } throw new RuntimeException("Usuário não autenticado");
+        } throw new UsuarioNaoAutenticadoException("Usuário não autenticado");
     }
 }

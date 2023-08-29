@@ -2,6 +2,9 @@ package com.soulcode.goserviceapp.service;
 
 import java.util.Optional;
 
+import com.soulcode.goserviceapp.service.exceptions.SenhaIncorretaException;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoAutenticadoException;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,7 +33,7 @@ public class AuthService {
     }
     @Transactional
     public void updatePassword(Authentication authentication, String senhaAtual, String senhaNova){
-        if(authentication == null && authentication.isAuthenticated()){
+        if(authentication != null && authentication.isAuthenticated()){
             String emailAuthenticated = authentication.getName();
             Optional <Usuario> usuario = usuarioRepository.findByEmail(authentication.getName());
             if(usuario.isPresent()){
@@ -42,15 +45,15 @@ public class AuthService {
                     return;
                 }
                 else{
-                    throw new RuntimeException("Senha não coincide");
+                    throw new SenhaIncorretaException("Senha não coincide");
                 }
             }
             else{
-                throw new RuntimeException("Usuario não encontrado");
+                throw new UsuarioNaoEncontradoException("Usuario não encontrado");
             }
         }
         else{
-            throw new RuntimeException("Autenticação necessaria");
+            throw new UsuarioNaoAutenticadoException("Autenticação necessaria");
         }
     }
 }

@@ -6,7 +6,7 @@ public class UsuarioNaoEncontradoException extends RuntimeException {
         super("Usuário não econtrado");
     }
     
-    public UsuarioNaoEncontradoException(String messagem){
-        super("String");
+    public UsuarioNaoEncontradoException(String message){
+        super(message);
     }
 }
