@@ -1,16 +1,16 @@
 
 
+-- INICIAIS
 drop database goservice_db;
 create database goservice_db;
-
 use goservice_db;
-
 describe usuarios;
 describe prestadores_servicos;
-
 drop table usuarios;
 
+-- AUXILIAR
 delete from usuarios where id = 7;
+update agendamentos set status_agendamento = "CONFIRMADO" where id = 4;
 
 -- CONSULTAS
 select * from usuarios;
