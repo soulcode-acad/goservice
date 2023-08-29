@@ -108,6 +108,4 @@ public class AgendamentoService {
         }
         throw new StatusAgendamentoImutavelException();
     }
-
-
 }
