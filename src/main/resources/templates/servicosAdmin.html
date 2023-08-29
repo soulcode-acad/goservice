@@ -1,0 +1,111 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Serviços | GoService</title>
+</head>
+<body>
+
+<div id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <main class="container my-4">
+        <h2>Serviços</h2>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+                <h5 class="card-title mb-2">Novo serviço</h5>
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <form method="post" th:action="@{/admin/servicos}">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="descricao" name="descricao" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoria<span class="text-danger">*</span></label>
+                        <select class="form-select" id="categoria" name="categoria" required>
+                            <option value="" disabled selected>Selecione uma categoria</option>
+                            <option value="Limpeza">Limpeza</option>
+                            <option value="Manutencao">Manutenção</option>
+                            <option value="Consultoria">Consultoria</option>
+                            <option value="Entrega">Entrega</option>
+                            <option value="Design">Design</option>
+                            <option value="Desenvolvimento">Desenvolvimento</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Suporte">Suporte</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Treinamento">Treinamento</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+                <h5 class="card-title mb-2">Serviços cadastrados</h5>
+
+                <table class="table w-100">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Categoria</th>
+                        <th>Alterar</th>
+                        <th>Apagar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="servico : ${servicos}">
+                        <td th:text="${servico.nome}"></td>
+                        <td th:text="${servico.descricao}"></td>
+                        <td th:text="${servico.categoria}"></td>
+                        <td>
+                            <a th:href="@{/admin/servicos/editar/{id}(id=${servico.id})}" class="btn btn-success" style="width: 7rem">
+                                Editar <i class="bi bi-pencil-fill ms-2"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" style="width: 7rem" data-bs-toggle="modal" th:data-bs-target="'#deleteModal' + ${servico.id}">
+                                Excluir <i class="bi bi-trash-fill ms-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div th:each="servico : ${servicos}">
+        <div class="modal fade" th:id="'deleteModal' + ${servico.id}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza de que deseja excluir o serviço: <strong th:text="${servico.nome}"></strong>?
+                    </div>
+                    <form class="modal-footer" method="post" th:action="@{/admin/servicos/remover}">
+                        <input type="hidden" name="servicoId" th:value="${servico.id}">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

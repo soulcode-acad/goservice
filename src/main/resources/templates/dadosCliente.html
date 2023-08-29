@@ -1,0 +1,57 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Dados Cadastrais | GoService</title>
+</head>
+<body>
+
+<div id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container my-4">
+        <h2>Dados Cadastrais</h2>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+                <h5 class="card-title mb-2">Alterar Dados</h5>
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <form method="post" th:action="@{/cliente/dados}">
+                    <input type="hidden" name="id" th:field="*{cliente.id}">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="nome" name="nome" th:field="*{cliente.nome}" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="email" name="email" th:field="*{cliente.email}" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cpf" class="form-label">Telefone</label>
+                        <input type="tel" class="form-control" id="telefone" name="telefone" th:field="*{cliente.telefone}">
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cpf" class="form-label">CPF</label>
+                        <input type="text" class="form-control" id="cpf" name="cpf" th:field="*{cliente.cpf}">
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                        <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" th:value="${cliente.dataNascimento}">
+                        <div class="form-text"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

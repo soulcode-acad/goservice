@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Agendar Serviço</title>
+</head>
+<body>
+
+<div id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container my-4">
+        <h2>Agendar Serviço</h2>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+                <h5 class="card-title mb-2">Procure por prestadores</h5>
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <form method="get" th:action="@{/cliente/agendar}">
+                    <div class="mb-3">
+                        <div class="w-100 d-flex gap-3">
+                            <select class="form-select" id="especialidade" name="especialidade" required>
+                                <option value="" disabled selected>Selecione uma especialidade</option>
+                                <option th:each="servico : ${servicos}" th:value="${servico.id}" th:text="${servico.nome}"></option>
+                            </select>
+                            <button class="btn btn-primary" style="width: 9rem">Procurar <i class="bi bi-search ms-2"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card w-100 mt-5" th:if="${prestadores != null}">
+
+            <div class="card-body" th:if="${#lists.isEmpty(prestadores)}">
+                <h5>Nenhum resultado encontrado.</h5>
+            </div>
+
+            <div class="card-body" th:unless="${#lists.isEmpty(prestadores)}">
+                <h5 class="card-title mb-2">Preencha o formulário</h5>
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <form method="post" th:action="@{/cliente/agendar}">
+                    <input type="hidden" name="servicoId" th:value="${servicoId}">
+                    <div class="mb-3">
+                        <label class="form-label" for="prestadorId">Prestador<span class="text-danger">*</span></label>
+                        <select class="form-select" id="prestadorId" name="prestadorId" required>
+                            <option value="" selected disabled>Selecione um prestador</option>
+                            <option th:each="prestador : ${prestadores}" th:value="${prestador.id}" th:text="${prestador.nome}"></option>
+                        </select>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Data de Serviço<span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="data" name="data" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="hora" class="form-label">Horário<span class="text-danger">*</span></label>
+                        <input type="time" class="form-control" id="hora" name="hora" required>
+                        <div class="form-text"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Agendar <i class="bi bi-calendar-check-fill ms-2"></i></button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

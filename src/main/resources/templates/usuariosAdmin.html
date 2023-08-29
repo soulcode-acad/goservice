@@ -1,0 +1,130 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Usuários | GoService</title>
+</head>
+<body>
+
+<div id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <main class="container my-4">
+        <h2>Usuários</h2>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+                <h5 class="card-title mb-2">Novo usuário</h5>
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <form method="post" th:action="@{/admin/usuarios}">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">Senha<span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="senha" name="senha" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="perfil" class="form-label">Perfil<span class="text-danger">*</span></label>
+                        <select class="form-select" id="perfil" name="perfil" required>
+                            <option value="" selected disabled>Selecione um perfil</option>
+                            <option value="CLIENTE">Cliente</option>
+                            <option value="PRESTADOR">Prestador</option>
+                            <option value="ADMIN">Administrador</option>
+                        </select>
+                        <div class="form-text"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+                <h5 class="card-title mb-2">Usuários cadastrados</h5>
+
+                <table class="table w-100">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Perfil</th>
+                        <th>Editar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.nome}"></td>
+                        <td th:text="${usuario.email}"></td>
+                        <td th:text="${usuario.perfil.descricao}"></td>
+                        <td>
+                            <button th:if="${usuario.habilitado}" class="btn btn-danger" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#disableModal' + ${usuario.id}">
+                                Desabilitar <i class="bi bi-person-fill-x ms-2"></i>
+                            </button>
+                            <button th:if="not ${usuario.habilitado}" class="btn btn-success" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#enableModal' + ${usuario.id}">
+                                Habilitar <i class="bi bi-person-fill-check ms-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!--  MODAL DISABLE  -->
+    <div th:each="usuario : ${usuarios}" th:if="${usuario.habilitado}">
+        <div class="modal fade" th:id="'disableModal' + ${usuario.id}" tabindex="-1" role="dialog" aria-labelledby="disableModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="disableModalLabel">Confirmar Ação</h5>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza de que deseja desabilitar o usuário: <strong th:text="${usuario.nome}"></strong>?
+                    </div>
+                    <form class="modal-footer" method="post" th:action="@{/admin/usuarios/disable}">
+                        <input type="hidden" name="usuarioId" th:value="${usuario.id}">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Confimar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  MODAL ENABLE  -->
+    <div th:each="usuario : ${usuarios}" th:if="not ${usuario.habilitado}">
+        <div class="modal fade" th:id="'enableModal' + ${usuario?.id}" tabindex="-1" role="dialog" aria-labelledby="enableModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="enableModalLabel">Confirmar Ação</h5>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza de que deseja habilitar o usuário: <strong th:text="${usuario.nome}"></strong>?
+                    </div>
+                    <form class="modal-footer" method="post" th:action="@{/admin/usuarios/enable}">
+                        <input type="hidden" name="usuarioId" th:value="${usuario.id}">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Confimar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
