@@ -30,25 +30,65 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>José Almir</td>
-                        <td>Desenvolvimento de Aplicativos</td>
-                        <td>23/08/2023</td>
-                        <td>11:00</td>
-                        <td>Aguardando Confirmação</td>
+                    <tr th:each="agendamento : ${agendamentos}">
+                        <td th:text="${agendamento.prestador.nome}"></td>
+                        <td th:text="${agendamento.servico.nome}"></td>
+                        <td th:text="${agendamento.data}"></td>
+                        <td th:text="${agendamento.hora}"></td>
+                        <td th:text="${agendamento.statusAgendamento.descricao}"></td>
                         <td>
-                            <button class="btn btn-danger" style="width: 8rem" data-bs-toggle="modal">
+                            <button class="btn btn-danger" style="width: 8rem" th:disabled="${not agendamento.isCancelable()}" data-bs-toggle="modal" th:data-bs-target="'#cancelModal' + ${agendamento.id}">
                                 Cancelar <i class="bi bi-x-square-fill ms-2"></i>
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-primary" style="width: 8rem" data-bs-toggle="modal" disabled>
+                            <button class="btn btn-primary" style="width: 8rem" th:disabled="${not agendamento.isRealizable()}" data-bs-toggle="modal" th:data-bs-target="'#completeModal' + ${agendamento.id}">
                                 Concluir <i class="bi bi-check-square-fill ms-2"></i>
                             </button>
                         </td>
                     </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <div th:each="agendamento : ${agendamentos}" th:if="${agendamento.isCancelable()}">
+        <div class="modal fade" th:id="'cancelModal' + ${agendamento?.id}" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cancelModalLabel">Confirmar Ação</h5>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza que deseja cancelar o agendamento do serviço: <strong th:text="${agendamento.servico.nome}"></strong>?
+                    </div>
+                    <form class="modal-footer" method="post" th:action="@{/cliente/historico/cancelar}">
+                        <input type="hidden" name="agendamentoId" th:value="${agendamento.id}">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:each="agendamento : ${agendamentos}" th:if="${agendamento.isRealizable()}">
+        <div class="modal fade" th:id="'completeModal' + ${agendamento?.id}" tabindex="-1" role="dialog" aria-labelledby="completeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="completeModalLabel">Confirmar Ação</h5>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza que deseja concluir o serviço: <strong th:text="${agendamento.servico.nome}"></strong>?
+                    </div>
+                    <form class="modal-footer" method="post" th:action="@{/cliente/historico/concluir}">
+                        <input type="hidden" name="agendamentoId" th:value="${agendamento.id}">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Concluir</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
