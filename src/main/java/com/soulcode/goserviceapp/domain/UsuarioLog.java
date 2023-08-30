@@ -3,11 +3,6 @@ package com.soulcode.goserviceapp.domain;
 
 import jakarta.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-@Document(collection = "usuarios")
-public class UsuarioLog {
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 
