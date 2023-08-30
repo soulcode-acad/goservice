@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Dashboard | GoService</title>
+</head>
+<body>
+
+<div id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <main class="container mt-4">
+        <h2>Dashboard</h2>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <table class="table w-100">
+                    <thead>
+                    <tr>
+                        <th>Perfil</th>
+                        <th>Usuário</th>
+                        <th>E-mail</th>
+                        <th>Data de Autenticação</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="log : ${logsAuth}">
+                        <td th:text="${log?.perfil}"></td>
+                        <td th:text="${log?.nome}"></td>
+                        <td th:text="${log?.email}"></td>
+                        <td th:text="${log?.dataLog}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
