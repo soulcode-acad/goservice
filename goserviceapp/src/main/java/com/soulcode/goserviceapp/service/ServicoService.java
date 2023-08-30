@@ -4,6 +4,7 @@ import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.repository.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,9 @@ public class ServicoService {
     @Autowired
     private ServicoRepository servicoRepository;
 
+    @Cacheable(cacheNames = "redisCache")
     public List<Servico> findAll(){
+        System.err.println("Buscando no banco de dados...");
         return servicoRepository.findAll();
     }
 
