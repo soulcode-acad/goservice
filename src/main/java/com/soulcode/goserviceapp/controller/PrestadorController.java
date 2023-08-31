@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -97,18 +98,24 @@ public class PrestadorController {
     }
 
     @GetMapping(value = "/agenda")
-    public ModelAndView agenda(Authentication authentication) {
+    public ModelAndView agenda(Authentication authentication,
+                            @RequestParam(required = false) LocalDate startDate,
+                            @RequestParam(required = false) LocalDate endDate) {
         ModelAndView mv = new ModelAndView("agendaPrestador");
         try {
-            List<Agendamento> agendamentos = agendamentoService.findByPrestador(authentication);
+            List<Agendamento> agendamentos;
+            if (startDate != null && endDate != null) {
+                agendamentos = agendamentoService.findByPrestadorAndDateRange(authentication, startDate, endDate);
+            } else {
+                agendamentos = agendamentoService.findByPrestador(authentication);
+            }
             mv.addObject("agendamentos", agendamentos);
-        } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException ex) {
-            mv.addObject("errorMessage", ex.getMessage());
         } catch (Exception ex) {
             mv.addObject("errorMessage", "Erro ao carregar dados de agendamentos.");
         }
         return mv;
     }
+
 
     @PostMapping(value = "/agenda/cancelar")
     public String cancelarAgendamento(
