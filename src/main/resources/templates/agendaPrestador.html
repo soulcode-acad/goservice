@@ -10,6 +10,14 @@
 
     <div class="container my-4">
         <h2>Agenda de Serviços</h2>
+        
+        <div class="mt-3 mb-5">
+            <form action="/prestador/agenda" method="get">
+                Data de Início: <input type="date" name="startDate">
+                Data de Fim: <input type="date" name="endDate">
+                <input type="submit" value="Filtrar">
+            </form>
+        </div>
 
         <div class="card w-100 mt-5">
             <div class="card-body">

@@ -110,4 +110,9 @@ public class AgendamentoService {
         }
         throw new StatusAgendamentoImutavelException();
     }
+
+    public List<Agendamento> findByPrestadorAndDateRange(Authentication authentication, LocalDate startDate, LocalDate endDate) {
+        String email = authentication.getName();
+        return agendamentoRepository.findByPrestadorEmailAndDateRange(email, startDate, endDate);
+    }
 }
