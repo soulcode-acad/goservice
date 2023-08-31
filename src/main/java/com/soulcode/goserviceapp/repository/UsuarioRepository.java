@@ -13,6 +13,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     Optional<Usuario> findByEmail(String email);
 
+    @Query(value = "SELECT perfil,  COUNT(*) AS quantidade_de_usuarios" +
+            "FROM usuarios" +
+            "GROUP BY perfil; ", nativeQuery = true)
+    void usersByPerfil();
+
     @Modifying
     @Query(value = "UPDATE usuarios u SET u.senha = ? WHERE u.email = ?", nativeQuery = true)
     void updatePasswordByEmail(String senha, String email);
