@@ -9,6 +9,7 @@ import com.soulcode.goserviceapp.repository.AgendamentoRepository;
 import com.soulcode.goserviceapp.service.exceptions.AgendamentoNaoEncontradoException;
 import com.soulcode.goserviceapp.service.exceptions.StatusAgendamentoImutavelException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,7 @@ import java.util.Optional;
         }
 
 
+<<<<<<< HEAD
 
 
 
@@ -60,12 +62,20 @@ import java.util.Optional;
 
         
 
+=======
+        return agendamentoRepository.save(agendamento);
+    }
+    @Cacheable(cacheNames = "redisCache")
+>>>>>>> 8392d4d45b4bc4d077a20ec42a1af6134cc8ad6f
     public List<Agendamento> findByCliente(Authentication authentication){
+        System.err.println("BUSCANDO AGENDAMENTOS CLIENTE NO BANCO...");
         Cliente cliente = clienteService.findAuthenticated(authentication);
         return agendamentoRepository.findByClienteEmail(cliente.getEmail());
     }
 
+    @Cacheable(cacheNames = "redisCache")
     public List<Agendamento> findByPrestador(Authentication authentication){
+        System.err.println("BUSCANDO AGENDAMENTOS PRESTADOR NO BANCO...");
         Prestador prestador = prestadorService.findAuthenticated(authentication);
         return  agendamentoRepository.findByPrestadorEmail(prestador.getEmail());
     }
