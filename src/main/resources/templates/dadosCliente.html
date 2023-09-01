@@ -20,33 +20,57 @@
 
                 <form method="post" th:action="@{/cliente/dados}">
                     <input type="hidden" name="id" th:field="*{cliente.id}">
-                    <div class="mb-3">
+                    <div class="col-8">
                         <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="nome" name="nome" th:field="*{cliente.nome}" required>
                         <div class="form-text"></div>
                     </div>
-                    <div class="mb-3">
+                    <div class="col-8">
                         <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
                         <input type="email" class="form-control" id="email" name="email" th:field="*{cliente.email}" required>
                         <div class="form-text"></div>
                     </div>
-                    <div class="mb-3">
+                    <div class="col-md-4">
                         <label for="cpf" class="form-label">Telefone</label>
                         <input type="tel" class="form-control" id="telefone" name="telefone" th:field="*{cliente.telefone}">
                         <div class="form-text"></div>
                     </div>
-                    <div class="mb-3">
+                    <div class="col-md-4">
                         <label for="cpf" class="form-label">CPF</label>
                         <input type="text" class="form-control" id="cpf" name="cpf" th:field="*{cliente.cpf}">
                         <div class="form-text"></div>
                     </div>
-                    <div class="mb-3">
+                    <div class="col-md-4">
                         <label for="dataNascimento" class="form-label">Data de Nascimento</label>
                         <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" th:value="${cliente.dataNascimento}">
                         <div class="form-text"></div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
+                    <h5 class="card-title mb-2 mt-4">Endereço</h5>
+
+                    <form class="row g-3">
+                        <div class="col-8">
+                            <label for="logradouro" class="form-label">Logradouro</label>
+                            <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Insira o nome da sua rua, avenida ou alameda.">
+
+                        <div class="col-md-4">
+                            <label for="numero" class="form-label">Número</label>
+                            <input type="text" class="form-control" id="numero" name="numero">
+                        </div>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="cidade" class="form-label">Cidade</label>
+                            <input type="text" class="form-control" id="cidade" name="cidade">
+                        </div>
+                        <div class="mb-5">
+                            <label for="uf" class="form-label">Estado</label>
+                            <select class="form-select" id="uf" name="uf">
+                                <option selected>Selecione seu estado</option>
+                                <option th:each="estado : ${estados}" th:value="${estado}" th:text="${estado}">...</option>
+                            </select>
+                        </div>
+                    </form>
+                    <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2-mb-2"></i></button>
                 </form>
             </div>
         </div>

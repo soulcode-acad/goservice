@@ -3,10 +3,7 @@ package com.soulcode.goserviceapp.controller;
 import com.soulcode.goserviceapp.domain.Agendamento;
 import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.domain.Servico;
-import com.soulcode.goserviceapp.service.AgendamentoService;
-import com.soulcode.goserviceapp.service.PrestadorService;
-import com.soulcode.goserviceapp.service.ServicoService;
-import com.soulcode.goserviceapp.service.UsuarioService;
+import com.soulcode.goserviceapp.service.*;
 import com.soulcode.goserviceapp.service.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -37,9 +34,14 @@ public class PrestadorController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private EnderecoService enderecoService;
+
     @GetMapping(value = "/dados")
     public ModelAndView dados(Authentication authentication) {
         ModelAndView mv = new ModelAndView("dadosPrestador");
+        System.out.println(enderecoService.getEstados());
+        mv.addObject("estados", enderecoService.getEstados());
         try {
             Prestador prestador = prestadorService.findAuthenticated(authentication);
             mv.addObject("prestador", prestador);

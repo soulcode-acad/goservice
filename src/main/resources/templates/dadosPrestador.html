@@ -41,6 +41,28 @@
                         <div class="form-text"></div>
                     </div>
 
+                    <h5 class="card-title mb-2 mt-4">Endereço</h5>
+
+                    <div class="col-8">
+                        <label for="logradouro" class="form-label">Logradouro</label>
+                        <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Insira o nome da sua rua, avenida ou alameda.">
+
+                        <div class="col-md-4">
+                            <label for="numero" class="form-label">Número</label>
+                            <input type="text" class="form-control" id="numero" name="numero">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="cidade" name="cidade">
+                    </div>
+                    <div class="mb-5">
+                        <label for="uf" class="form-label">Estado</label>
+                        <select class="form-select" id="uf" name="uf">
+                            <option selected>Selecione seu estado</option>
+                            <option th:each="estado : ${estados}" th:value="${estado}" th:text="${estado}">...</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
                 </form>
 
