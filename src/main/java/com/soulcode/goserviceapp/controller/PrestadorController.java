@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -67,7 +68,7 @@ public class PrestadorController {
             attributes.addFlashAttribute("errorMessage", "Erro ao alterar dados cadastrais.");
         }
         Boolean emailModified = usuarioService.updatedEmail(prestador);
-        if (emailModified == true){
+        if (emailModified == true) {
             return "redirect:/auth/login";
         }
         return "redirect:/prestador/dados";
@@ -119,6 +120,23 @@ public class PrestadorController {
         return mv;
     }
 
+    @PostMapping(value = "/agenda/busca")
+    public String findAgendamentoByData(@RequestParam(required = false) LocalDate dataInicio, @RequestParam(required = false) LocalDate dataFim, Authentication authentication, RedirectAttributes attributes) {
+        try {
+            List<Agendamento> agendamentos = agendamentoService.findByDataAgendamento(authentication, dataInicio, dataFim);
+            System.out.println(dataInicio);
+            System.out.println(dataFim);
+            attributes.addFlashAttribute("agendamentosPorData", agendamentos);
+        } catch (UsuarioNaoEncontradoException | UsuarioNaoAutenticadoException e) {
+            attributes.addFlashAttribute("errorMessage", e.getMessage());
+        } catch (RuntimeException e) {
+            attributes.addFlashAttribute("errorMessage", "Insira uma data válida");
+        } catch (Exception e) {
+            attributes.addFlashAttribute("errorMessage", "Erro ao exibir dados");
+        }
+        return "redirect:/prestador/agenda";
+    }
+
     @PostMapping(value = "/agenda/cancelar")
     public String cancelarAgendamento(
             @RequestParam(name = "agendamentoId") Long agendamentoId,
@@ -128,7 +146,7 @@ public class PrestadorController {
             agendamentoService.cancelAgendaPrestador(authentication, agendamentoId);
             attributes.addFlashAttribute("successMessage", "Agendamento cancelado.");
         } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException |
-                AgendamentoNaoEncontradoException | StatusAgendamentoImutavelException ex) {
+                 AgendamentoNaoEncontradoException | StatusAgendamentoImutavelException ex) {
             attributes.addFlashAttribute("errorMessage", ex.getMessage());
         } catch (Exception ex) {
             attributes.addFlashAttribute("errorMessage", "Erro ao cancelar agendamento.");

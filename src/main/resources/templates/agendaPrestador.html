@@ -14,10 +14,31 @@
         <div class="card w-100 mt-5">
             <div class="card-body">
 
-                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
-                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success"
+                     role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger"
+                     role="alert"></div>
 
                 <table class="table w-100">
+
+                    <form method="post" th:action="@{/prestador/agenda/busca}" class="d-flex" role="search">
+                        <div class="row mb-3">
+                            <div class="col-sm-2">
+                                <label for="dataInicio" class="col-form-label">De:</label>
+                                <input type="date" class="form-control" id="dataInicio" name="dataInicio">
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="dataFim" class="col-form-label">Até:</label>
+                                <input type="date" class="form-control" id="dataFim" name="dataFim">
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                                <a class="btn btn-danger ms-1" href="/prestador/agenda"><i class="bi bi-x-circle"></i></a>
+                            </div>
+                        </div>
+
+                    </form>
+
                     <thead>
                     <tr>
                         <th>Cliente</th>
@@ -30,23 +51,50 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="agendamento : ${agendamentos}">
+                    <tr th:each="agendamento : ${agendamentos}" th:if="${agendamentosPorData == null}">
                         <td th:text="${agendamento.cliente.nome}"></td>
                         <td th:text="${agendamento.servico.nome}"></td>
                         <td th:text="${agendamento.data}"></td>
                         <td th:text="${agendamento.hora}"></td>
                         <td th:text="${agendamento.statusAgendamento.descricao}"></td>
                         <td>
-                            <button class="btn btn-danger" style="width: 8rem" th:disabled="${not agendamento.isCancelable()}" data-bs-toggle="modal" th:data-bs-target="'#cancelModal' + ${agendamento.id}">
+                            <button class="btn btn-danger" style="width: 8rem"
+                                    th:disabled="${not agendamento.isCancelable()}" data-bs-toggle="modal"
+                                    th:data-bs-target="'#cancelModal' + ${agendamento.id}">
                                 Cancelar <i class="bi bi-x-square-fill ms-2"></i>
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-primary" style="width: 8rem" th:disabled="${not agendamento.isConfirmable()}" data-bs-toggle="modal" th:data-bs-target="'#confirmModal' + ${agendamento.id}">
+                            <button class="btn btn-primary" style="width: 8rem"
+                                    th:disabled="${not agendamento.isConfirmable()}" data-bs-toggle="modal"
+                                    th:data-bs-target="'#confirmModal' + ${agendamento.id}">
                                 Confirmar <i class="bi bi-check-square-fill ms-2"></i>
                             </button>
                         </td>
                     </tr>
+
+                    <tr th:each="agendamentoData : ${agendamentosPorData}" th:if="${agendamentosPorData != null}">
+                        <td th:text="${agendamentoData.cliente.nome}"></td>
+                        <td th:text="${agendamentoData.servico.nome}"></td>
+                        <td th:text="${agendamentoData.data}"></td>
+                        <td th:text="${agendamentoData.hora}"></td>
+                        <td th:text="${agendamentoData.statusAgendamento.descricao}"></td>
+                        <td>
+                            <button class="btn btn-danger" style="width: 8rem"
+                                    th:disabled="${not agendamentoData.isCancelable()}" data-bs-toggle="modal"
+                                    th:data-bs-target="'#cancelModal' + ${agendamentoData.id}">
+                                Cancelar <i class="bi bi-x-square-fill ms-2"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" style="width: 8rem"
+                                    th:disabled="${not agendamentoData.isConfirmable()}" data-bs-toggle="modal"
+                                    th:data-bs-target="'#confirmModal' + ${agendamentoData.id}">
+                                Confirmar <i class="bi bi-check-square-fill ms-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -54,14 +102,16 @@
     </div>
 
     <div th:each="agendamento : ${agendamentos}" th:if="${agendamento.isCancelable()}">
-        <div class="modal fade" th:id="'cancelModal' + ${agendamento?.id}" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
+        <div class="modal fade" th:id="'cancelModal' + ${agendamento?.id}" tabindex="-1" role="dialog"
+             aria-labelledby="cancelModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="cancelModalLabel">Confirmar Ação</h5>
                     </div>
                     <div class="modal-body">
-                        Tem certeza que deseja cancelar o agendamento do serviço: <strong th:text="${agendamento.servico.nome}"></strong>?
+                        Tem certeza que deseja cancelar o agendamento do serviço: <strong
+                            th:text="${agendamento.servico.nome}"></strong>?
                     </div>
                     <form class="modal-footer" method="post" th:action="@{/prestador/agenda/cancelar}">
                         <input type="hidden" name="agendamentoId" th:value="${agendamento.id}">
@@ -74,14 +124,16 @@
     </div>
 
     <div th:each="agendamento : ${agendamentos}" th:if="${agendamento.isConfirmable()}">
-        <div class="modal fade" th:id="'confirmModal' + ${agendamento?.id}" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal fade" th:id="'confirmModal' + ${agendamento?.id}" tabindex="-1" role="dialog"
+             aria-labelledby="confirmModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="confirmModalLabel">Confirmar Ação</h5>
                     </div>
                     <div class="modal-body">
-                        Tem certeza que deseja confirmar o agendamento do serviço: <strong th:text="${agendamento.servico.nome}"></strong>?
+                        Tem certeza que deseja confirmar o agendamento do serviço: <strong
+                            th:text="${agendamento.servico.nome}"></strong>?
                     </div>
                     <form class="modal-footer" method="post" th:action="@{/prestador/agenda/confirmar}">
                         <input type="hidden" name="agendamentoId" th:value="${agendamento.id}">
