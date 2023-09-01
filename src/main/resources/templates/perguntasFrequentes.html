@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>GoService | Perguntas frequentes</title>
+</head>
+<body>
+
+<main id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container my-5">
+        <h1 class="text-center fs-2">FAQ - Perguntas Frequentes</h1>
+
+        <h2 class="mt-4 fs-4">Perguntas Gerais</h2>
+
+        <div class="accordion mt-4" id="faqAccordionGeral">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingGeral1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeral1" aria-expanded="true" aria-controls="collapseGeral1">
+                        O que é GoService?
+                    </button>
+                </h2>
+                <div id="collapseGeral1" class="accordion-collapse collapse show" aria-labelledby="headingGeral1" data-bs-parent="#faqAccordionGeral">
+                    <div class="accordion-body">
+                        <p>GoService é uma plataforma online de serviços que conecta clientes a profissionais,
+                            unindo aqueles que precisam de determinados serviços com aqueles que possuem as
+                            habilidades necessárias para realizá-los.</p>
+
+                        <p>Nossa plataforma oferece uma ampla variedade de serviços em diversas categorias,
+                            que vão desde serviços domésticos, consultorias, reformas e reparos, até moda e beleza,
+                            organização de eventos e diversas outras opções. Estamos aqui para simplificar a busca e
+                            a contratação de serviços, tornando a vida mais conveniente para nossos clientes e ajudando
+                            profissionais a encontrar oportunidades para aplicar suas habilidades. Bem-vindo à
+                            GoService, onde a conexão entre necessidades e talentos acontece.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingGeral2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeral2" aria-expanded="false" aria-controls="collapseGeral2">
+                        Como posso entrar em contato com a sua empresa?
+                    </button>
+                </h2>
+                <div id="collapseGeral2" class="accordion-collapse collapse" aria-labelledby="headingGeral2" data-bs-parent="#faqAccordionGeral">
+                    <div class="accordion-body">
+                        Através do nosso repositório no <a href="https://github.com/matheus-fraga/goservice" target="_blank">Github</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <h2 class="mt-4 fs-4">Cadastro</h2>
+
+        <div class="accordion mt-4" id="faqAccordionCadastro">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingCadastro1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCadastro1" aria-expanded="false" aria-controls="collapseCadastro1">
+                        Como faço para criar uma conta?
+                    </button>
+                </h2>
+                <div id="collapseCadastro1" class="accordion-collapse collapse" aria-labelledby="headingCadastro1" data-bs-parent="#faqAccordionCadastro">
+                    <div class="accordion-body">
+                        Para criar uma conta, visite a nossa página de cadastro e preencha o formulário de inscrição
+                        com as suas informações pessoais.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingCadastro2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCadastro2" aria-expanded="false" aria-controls="collapseCadastro2">
+                        Como faço para alterar a minha senha?
+                    </button>
+                </h2>
+                <div id="collapseCadastro2" class="accordion-collapse collapse" aria-labelledby="headingCadastro2" data-bs-parent="#faqAccordionCadastro">
+                    <div class="accordion-body">
+                        Você pode redefinir a sua senha clicando na opção "Editar senha" no menu suspenso do seu
+                        perfil e seguindo as instruções fornecidas.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-4 fs-4">Serviços e Preços</h2>
+
+        <div class="accordion mt-4" id="faqAccordionServicosPrecos">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingServicosPrecos1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseServicosPrecos1" aria-expanded="false" aria-controls="collapseServicosPrecos1">
+                        Quais serviços vocês oferecem?
+                    </button>
+                </h2>
+                <div id="collapseServicosPrecos1" class="accordion-collapse collapse" aria-labelledby="headingServicosPrecos1" data-bs-parent="#faqAccordionServicosPrecos">
+                    <div class="accordion-body">
+                        <p>Existem várias opções de serviços à sua disposição. Visite nossa seção de agendamento e
+                            explore a lista de serviços oferecidos pelos nossos prestadores para obter informações
+                            mais detalhadas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingServicosPrecos2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseServicosPrecos2" aria-expanded="false" aria-controls="collapseServicosPrecos2">
+                        Quanto custam os seus serviços?
+                    </button>
+                </h2>
+                <div id="collapseServicosPrecos2" class="accordion-collapse collapse" aria-labelledby="headingServicosPrecos2" data-bs-parent="#faqAccordionServicosPrecos">
+                    <div class="accordion-body">
+                        <p>Uma taxa horária correspondente é aplicada a cada serviço; ao fazer a reserva, por favor,
+                            verifique o custo associado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <h2 class="mt-4 fs-4">Agendamento e Reservas</h2>
+
+        <div class="accordion mt-4" id="faqAccordionAgendamentoReservas">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingAgendamentoReservas1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAgendamentoReservas1" aria-expanded="false" aria-controls="collapseAgendamentoReservas1">
+                        Como faço para agendar um serviço?
+                    </button>
+                </h2>
+                <div id="collapseAgendamentoReservas1" class="accordion-collapse collapse" aria-labelledby="headingAgendamentoReservas1" data-bs-parent="#faqAccordionAgendamentoReservas">
+                    <div class="accordion-body">
+                        <p>Para marcar um serviço, vá até o menu "Cliente", selecione a opção "Agendar serviço".
+                            Na página seguinte, você poderá visualizar os serviços oferecidos pelos prestadores e
+                            escolher o que deseja.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingAgendamentoReservas2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAgendamentoReservas2" aria-expanded="false" aria-controls="collapseAgendamentoReservas2">
+                        Qual é a sua política de cancelamento e reagendamento?
+                    </button>
+                </h2>
+                <div id="collapseAgendamentoReservas2" class="accordion-collapse collapse" aria-labelledby="headingAgendamentoReservas2" data-bs-parent="#faqAccordionAgendamentoReservas">
+                    <div class="accordion-body">
+                        <p>Quando você solicita um serviço, ele entra no estado "Aguardando Confirmação". Durante este
+                            período, é possível cancelar um serviço agendado. No entanto, assim que o prestador
+                            confirma o serviço, não é mais possível cancelá-lo.</p>
+                        <p>O prestador também tem o direito de cancelar um serviço, mas apenas se o serviço estiver
+                            na fase de "Aguardando Confirmação". Uma vez que o serviço tenha sido confirmado,
+                            o prestador não pode mais cancelá-lo, e o serviço deve ser concluído
+                            conforme o acordado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-4 fs-4">Suporte ao Cliente</h2>
+
+        <div class="accordion mt-4" id="faqAccordionSuporteCliente">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSuporteCliente1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSuporteCliente1" aria-expanded="false" aria-controls="collapseSuporteCliente1">
+                        Como posso obter suporte ao cliente?
+                    </button>
+                </h2>
+                <div id="collapseSuporteCliente1" class="accordion-collapse collapse" aria-labelledby="headingSuporteCliente1" data-bs-parent="#faqAccordionSuporteCliente">
+                    <div class="accordion-body">
+                        <p>Para obter suporte ao cliente, você pode entrar em contato diretamente com os nossos
+                            canais de atendimento. Estamos aqui para ajudar e responderemos o mais rápido possível
+                            para atender às suas necessidades.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSuporteCliente2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSuporteCliente2" aria-expanded="false" aria-controls="collapseSuporteCliente2">
+                        Vocês têm uma política de garantia de satisfação?
+                    </button>
+                </h2>
+                <div id="collapseSuporteCliente2" class="accordion-collapse collapse" aria-labelledby="headingSuporteCliente2" data-bs-parent="#faqAccordionSuporteCliente">
+                    <div class="accordion-body">
+                        <p>Sim, temos uma política de garantia de satisfação.
+                            Estamos comprometidos em fornecer a melhor experiência possível aos nossos clientes.
+                            Se, por qualquer motivo, você não estiver satisfeito com nossos serviços,
+                            entre em contato conosco e faremos o nosso melhor para resolver sua preocupação ou emitir
+                            um reembolso, conforme apropriado. Sua satisfação é nossa prioridade máxima. Para obter
+                            mais informações sobre nossa política de garantia de satisfação, consulte nossa página de
+                            políticas em nosso site.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <h2 class="mt-4 fs-4">Outras Perguntas</h2>
+
+        <div class="accordion mt-4" id="faqAccordionOutrasPerguntas">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOutrasPerguntas1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOutrasPerguntas1" aria-expanded="false" aria-controls="collapseOutrasPerguntas1">
+                        Vocês têm alguma política de privacidade ou segurança de dados?
+                    </button>
+                </h2>
+                <div id="collapseOutrasPerguntas1" class="accordion-collapse collapse" aria-labelledby="headingOutrasPerguntas1" data-bs-parent="#faqAccordionOutrasPerguntas">
+                    <div class="accordion-body">
+                        <p>Temos um profundo compromisso com a proteção da sua privacidade e a segurança dos seus dados
+                            pessoais.
+                            Nossa política de privacidade é uma parte fundamental do nosso compromisso e transparência
+                            com nossos clientes.
+                            Você pode acessar nossa política de privacidade completa para obter informações detalhadas
+                            sobre como coletamos,
+                            usamos, compartilhamos e protegemos suas informações pessoais. Para ler a nossa política
+                            de privacidade,
+                            <a href="/aceite/politica">clique aqui.</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOutrasPerguntas2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOutrasPerguntas2" aria-expanded="false" aria-controls="collapseOutrasPerguntas2">
+                        Como faço para deixar um feedback ou uma avaliação?
+                    </button>
+                </h2>
+                <div id="collapseOutrasPerguntas2" class="accordion-collapse collapse" aria-labelledby="headingOutrasPerguntas2" data-bs-parent="#faqAccordionOutrasPerguntas">
+                    <div class="accordion-body">
+                        <p>Agradecemos muito o seu feedback e suas avaliações, pois são uma parte fundamental para
+                            melhorarmos nossos produtos e serviços. Existem diversas maneiras de compartilhar suas
+                            opiniões conosco:</p>
+                        <p>Através do nosso Email de Feedback:</p>
+                        <p>Você pode entrar em contato conosco diretamente através do nosso endereço de e-mail
+                            dedicado para <a href="mailto:feedback@goservice.com">feedback</a>. Nossa equipe de
+                            atendimento ao cliente estará pronta para receber suas sugestões, elogios ou críticas
+                            construtivas. Certifique-se de incluir detalhes específicos sobre sua experiência para
+                            que possamos entender melhor o contexto.</p>
+                        <p>Através de Redes Sociais:</p>
+                        <p>Siga-nos nas redes sociais e compartilhe seus pensamentos por meio de mensagens diretas
+                            ou comentários em nossas postagens. Estamos atentos às mídias sociais e valorizamos seu
+                            envolvimento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+</body>
+</html>
