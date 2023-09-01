@@ -54,6 +54,12 @@
             <div class="card-body">
                 <h5 class="card-title mb-2">Usuários cadastrados</h5>
 
+                <form method="post" th:action="@{/admin/usuarios/busca}" class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" name="usuarioNome" placeholder="Procurar por usuário" aria-label="Search">
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                    <a class="btn btn-danger ms-1" href="/admin/usuarios"><i class="bi bi-x-circle"></i></a>
+                </form>
+
                 <table class="table w-100">
                     <thead>
                     <tr>
@@ -64,7 +70,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="usuario : ${usuarios}">
+                    <tr th:each="usuario : ${usuarios}" th:if="${usuariosPorNome == null}">
                         <td th:text="${usuario.nome}"></td>
                         <td th:text="${usuario.email}"></td>
                         <td th:text="${usuario.perfil.descricao}"></td>
@@ -73,6 +79,19 @@
                                 Desabilitar <i class="bi bi-person-fill-x ms-2"></i>
                             </button>
                             <button th:if="not ${usuario.habilitado}" class="btn btn-success" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#enableModal' + ${usuario.id}">
+                                Habilitar <i class="bi bi-person-fill-check ms-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr type="hidden" th:each="usuarioNome : ${usuariosPorNome}" th:if="${usuariosPorNome != null}">
+                        <td th:text="${usuarioNome.nome}"></td>
+                        <td th:text="${usuarioNome.email}"></td>
+                        <td th:text="${usuarioNome.perfil.descricao}"></td>
+                        <td>
+                            <button th:if="${usuarioNome.habilitado}" class="btn btn-danger" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#disableModal' + ${usuarioNome.id}">
+                                Desabilitar <i class="bi bi-person-fill-x ms-2"></i>
+                            </button>
+                            <button th:if="not ${usuarioNome.habilitado}" class="btn btn-success" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#enableModal' + ${usuarioNome.id}">
                                 Habilitar <i class="bi bi-person-fill-check ms-2"></i>
                             </button>
                         </td>
