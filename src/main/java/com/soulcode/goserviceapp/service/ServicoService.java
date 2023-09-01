@@ -15,7 +15,7 @@ public class ServicoService {
     @Autowired
     private ServicoRepository servicoRepository;
 
-    @Cacheable(cacheNames = "redisCache")
+//    @Cacheable(cacheNames = "redisCache")
     public List<Servico> findAll(){
         System.err.println("BUSCANDO NO BANCO DE DADOS...");
         return servicoRepository.findAll();
