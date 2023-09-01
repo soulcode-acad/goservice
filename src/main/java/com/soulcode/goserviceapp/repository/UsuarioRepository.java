@@ -4,8 +4,10 @@ import com.soulcode.goserviceapp.domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -20,4 +22,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Modifying
     @Query(value = "UPDATE usuarios u SET u.habilitado = ? WHERE u.id = ?", nativeQuery = true)
     void updateEnableById(boolean habilitado, Long id);
+
+    @Query(value = "SELECT perfil, COUNT(*) AS TotalUsuarios\n" +
+            "FROM usuarios\n" +
+            "GROUP BY perfil", nativeQuery = true)
+    List<Usuario> totalByUsuarioPerfil(String perfil);
 }
