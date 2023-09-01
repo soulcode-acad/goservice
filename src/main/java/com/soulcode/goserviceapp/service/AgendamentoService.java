@@ -1,9 +1,6 @@
 package com.soulcode.goserviceapp.service;
 
-import com.soulcode.goserviceapp.domain.Agendamento;
-import com.soulcode.goserviceapp.domain.Cliente;
-import com.soulcode.goserviceapp.domain.Prestador;
-import com.soulcode.goserviceapp.domain.Servico;
+import com.soulcode.goserviceapp.domain.*;
 import com.soulcode.goserviceapp.domain.enums.StatusAgendamento;
 import com.soulcode.goserviceapp.repository.AgendamentoRepository;
 import com.soulcode.goserviceapp.service.exceptions.AgendamentoNaoEncontradoException;
@@ -109,5 +106,9 @@ public class AgendamentoService {
             return;
         }
         throw new StatusAgendamentoImutavelException();
+    }
+
+    public List<Agendamento> totalAgendamentosByStatus(String statusAgendamento) {
+        return agendamentoRepository.totalAgendamentosByStatus(statusAgendamento);
     }
 }
