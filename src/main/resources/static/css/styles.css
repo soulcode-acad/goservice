@@ -14,3 +14,12 @@
     height: 80px;
     background-color: white;
 }
+
+#logo{
+    width: 50px;
+    height: 50px;
+}
+
+.mainBox{
+    padding-bottom: 75px;
+}
