@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Dados Cadastrais | GoService</title>
+</head>
+<body>
+
+<div id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container my-4 mainBox">
+        <h2>Dados Cadastrais</h2>
+
+        <div class="card w-100 mt-5">
+            <div class="card-body">
+                <h5 class="card-title mb-2">Alterar Dados</h5>
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <form method="post" th:action="@{/admin/dados}">
+                    <input type="hidden" name="id" th:field="*{admin.id}">
+                    <div class="mb-3">
+                        <label for="foto" class="form-label">Foto de Perfil</label>
+                        <input type="file" class="form-control" id="foto" name="foto">
+                        <div class="form-text"></div>
+                        <img src="https://w7.pngwing.com/pngs/268/996/png-transparent-account-avatar-profile-profile-icon-profile-picture-user-user-profile-business-and-management-line-icon-thumbnail.png" alt="mdo" width="100" height="100" class="rounded-circle">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="nome" name="nome" th:field="*{admin.nome}" required>
+                        <div class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="email" name="email" th:field="*{admin.email}" required>
+                        <div class="form-text"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+
+</body>
+</html>
