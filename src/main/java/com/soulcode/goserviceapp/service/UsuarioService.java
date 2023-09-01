@@ -57,6 +57,10 @@ public class UsuarioService {
         return false;
     }
 
+    public List<Usuario> findUsuarioByNome(String nome) {
+        return usuarioRepository.findUsuarioByNome(nome);
+    }
+
     public Usuario findByEmail(String email){
         Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
         if (usuario.isPresent()){
