@@ -113,6 +113,17 @@ public class AdministradorController {
         return "redirect:/admin/usuarios";
     }
 
+    @PostMapping(value = "/usuarios/busca")
+    public String findUser(@RequestParam(name = "usuarioNome") String usuarioNome, RedirectAttributes attributes) {
+        try {
+            List<Usuario> usuariosPorNome = usuarioService.findUsuarioByNome(usuarioNome);
+            attributes.addFlashAttribute("usuariosPorNome", usuariosPorNome);
+        } catch (Exception e) {
+            attributes.addFlashAttribute("errorMessage", "Erro ao procurar usuário");
+        }
+        return "redirect:/admin/usuarios";
+    }
+
     @PostMapping(value = "/usuarios/disable")
     public String disableUser(@RequestParam(name = "usuarioId") Long id, RedirectAttributes attributes) {
         try {
