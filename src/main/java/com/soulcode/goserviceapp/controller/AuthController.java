@@ -72,4 +72,14 @@ public class AuthController {
         }
         return "redirect:/auth/password/new";
     }
+
+    @GetMapping(value = "/termos-de-uso")
+    public String termosUso(){
+        return "termosUso";
+    }
+
+    @GetMapping(value = "/politicas-de-privacidade")
+    public String politicasPrivacidade(){
+        return "politicasPrivacidade";
+    }
 }
