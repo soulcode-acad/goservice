@@ -9,6 +9,7 @@ import com.soulcode.goserviceapp.service.UsuarioService;
 import com.soulcode.goserviceapp.service.exceptions.ServicoNaoEncontradoException;
 import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -138,11 +139,13 @@ public class AdministradorController {
     }
 
     @GetMapping(value = "/dashboard")
-    public ModelAndView dashboard() {
+    public ModelAndView dashboard(String perfil) {
         ModelAndView mv = new ModelAndView("dashboard");
         try {
             List<UsuarioLog> logsAuth = usuarioLogService.findAll();
             mv.addObject("logsAuth", logsAuth);
+            List<Usuario> totalUsers = usuarioService.totalByUsuarioPerfil(perfil);
+            mv.addObject("totalUsers", totalUsers);
         } catch (Exception ex) {
             mv.addObject("errorMessage", "Erro ao buscar dados de log de autenticação.");
         }
