@@ -3,6 +3,7 @@ package com.soulcode.goserviceapp.controller;
 import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.domain.Usuario;
 import com.soulcode.goserviceapp.domain.UsuarioLog;
+import com.soulcode.goserviceapp.service.EnderecoService;
 import com.soulcode.goserviceapp.service.ServicoService;
 import com.soulcode.goserviceapp.service.UsuarioLogService;
 import com.soulcode.goserviceapp.service.UsuarioService;
@@ -30,6 +31,9 @@ public class AdministradorController {
 
     @Autowired
     private UsuarioLogService usuarioLogService;
+
+    @Autowired
+    private EnderecoService enderecoService;
 
     @GetMapping(value = "/servicos")
     public ModelAndView servicos() {
@@ -176,6 +180,8 @@ public class AdministradorController {
     @GetMapping(value = "/dados")
     public ModelAndView dados(Authentication authentication){
         ModelAndView mv = new ModelAndView("dadosAdmin");
+        System.out.println(enderecoService.getEstados());
+        mv.addObject("estados", enderecoService.getEstados());
         try {
             Usuario administrador = usuarioService.findAuthenticated(authentication);
             mv.addObject("admin", administrador);

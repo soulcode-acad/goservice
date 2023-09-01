@@ -1,9 +1,6 @@
 package com.soulcode.goserviceapp.controller;
 
-import com.soulcode.goserviceapp.domain.Agendamento;
-import com.soulcode.goserviceapp.domain.Cliente;
-import com.soulcode.goserviceapp.domain.Prestador;
-import com.soulcode.goserviceapp.domain.Servico;
+import com.soulcode.goserviceapp.domain.*;
 import com.soulcode.goserviceapp.service.*;
 import com.soulcode.goserviceapp.service.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -39,9 +37,18 @@ public class ClienteController {
     @Autowired
     private UsuarioService usuarioService;
 
+//    @Autowired
+//    private Endereco endereco;
+//
+    @Autowired
+    private EnderecoService enderecoService;
+
+
     @GetMapping(value = "/dados")
     public ModelAndView dados(Authentication authentication) {
         ModelAndView mv = new ModelAndView("dadosCliente");
+        System.out.println(enderecoService.getEstados());
+        mv.addObject("estados", enderecoService.getEstados());
         try {
             Cliente cliente = clienteService.findAuthenticated(authentication);
             mv.addObject("cliente", cliente);

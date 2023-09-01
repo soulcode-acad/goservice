@@ -90,4 +90,5 @@ public class Endereco {
     public int hashCode() {
         return Objects.hash(id, logradouro, numero, cidade, uf);
     }
+
 }
