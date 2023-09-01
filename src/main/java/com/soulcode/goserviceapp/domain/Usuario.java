@@ -35,17 +35,22 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private Perfil perfil;
 
+    @OneToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
+
     public Usuario(){
         this.habilitado =true;
     }
 
-    public Usuario(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado){
+    public Usuario(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, Endereco endereco){
         this.id=id;
         this.nome=nome;
         this.email=email;
         this.senha=senha;
         this.perfil=perfil;
         this.habilitado=habilitado;
+        this.endereco=endereco;
     }
 
     public Long getId() {
@@ -96,6 +101,14 @@ public class Usuario implements UserDetails {
         this.perfil = perfil;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
@@ -136,7 +149,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, email, senha, perfil);
+        return Objects.hash(id, nome, email, senha, perfil, endereco);
     }
 
     @Override
@@ -148,6 +161,7 @@ public class Usuario implements UserDetails {
                 Objects.equals(nome, usuario.nome) &&
                 Objects.equals(email, usuario.email) &&
                 Objects.equals(senha, usuario.senha) &&
-                perfil == usuario.perfil;
+                perfil == usuario.perfil &&
+                Objects.equals(endereco, usuario.endereco);
     }
 }
