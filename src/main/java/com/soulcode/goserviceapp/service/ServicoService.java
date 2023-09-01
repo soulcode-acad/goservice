@@ -5,6 +5,10 @@ import com.soulcode.goserviceapp.repository.ServicoRepository;
 import com.soulcode.goserviceapp.service.exceptions.ServicoNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,4 +54,5 @@ public class ServicoService {
     public List<Servico> findByPrestadorEmail(String email) {
         return servicoRepository.findByPrestadorEmail(email);
     }
+
 }
