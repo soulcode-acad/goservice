@@ -1,3 +1,28 @@
+
+.first-p {
+    margin-top: 50px;
+}
+
+.content-perguntas {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.space {
+    text-align: center;
+}
+
+.sub {
+    text-decoration: underline;
+    margin-top: 50px;
+}
+
+.mg {
+    margin-bottom: 10px;
+}
+
 .logo {
     width: 95px;
 }

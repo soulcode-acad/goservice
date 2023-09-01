@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>GoService | Home</title>
+</head>
+<body>
+
+<main id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="content-perguntas">
+        <h1 class="space sub">Perguntas Frequentes</h1>
+    <p class="first-p space">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+            Como funciona o processo de contratação?
+        </button>
+    </p>
+    <div class="collapse mg" id="collapseExample1">
+        <div class="card card-body space">
+            Os clientes geralmente querem entender o passo a passo de como podem contratar o serviço. Isso inclui informações sobre a solicitação, pagamento e agendamento, se aplicável.        </div>
+    </div>
+
+    <p class="space">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+            Quais são os preços e opções de pagamento disponíveis?
+        </button>
+    </p>
+    <div class="collapse mg" id="collapseExample2">
+        <div class="card card-body space">
+            Os clientes costumam ter dúvidas sobre os custos associados ao serviço e as diferentes formas de pagamento aceitas, como cartão de crédito, boleto, transferência bancária, entre outras.    </div>
+    </div>
+    <p class="space">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+            Quais são as políticas de garantia e reembolso?
+        </button>
+    </p>
+    <div class="collapse mg" id="collapseExample3">
+        <div class="card card-body space">
+            As políticas de garantia e reembolso são importantes para os clientes que desejam saber o que acontece se não ficarem satisfeitos com o serviço ou se ocorrerem problemas após a conclusão.    </div>
+    </div>
+    <p class="space">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
+            Quais são os prazos de execução típicos?
+        </button>
+    </p>
+    <div class="collapse mg" id="collapseExample4">
+        <div class="card card-body space">
+            Os clientes desejam saber quanto tempo levará para que o serviço seja concluído, para que possam planejar adequadamente.    </div>
+    </div>
+    <p class="space">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample5">
+            Quais são as qualificações e experiência dos prestadores de serviços?
+        </button>
+    </p>
+    <div class="collapse mg" id="collapseExample5">
+        <div class="card card-body space">
+            É comum que os clientes queiram informações sobre a expertise e a formação dos prestadores de serviços, a fim de garantir que estão escolhendo profissionais qualificados.    </div>
+    </div>
+    <p class="space">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample6" aria-expanded="false" aria-controls="collapseExample6">
+            Como faço para obter suporte ou assistência em caso de problemas?
+        </button>
+    </p>
+    <div class="collapse mg" id="collapseExample6">
+        <div class="card card-body space">
+            Os clientes precisam saber como entrar em contato com a empresa ou o profissional de serviço em caso de dúvidas ou problemas durante ou após a prestação do serviço.    </div>
+    </div>
+    </div>
+</main>
+
+</body>
+</html>
