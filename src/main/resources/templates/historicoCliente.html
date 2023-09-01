@@ -31,7 +31,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="agendamento : ${agendamentos}">
-                        <td th:text="${agendamento.prestador.nome}"></td>
+                        <td><a class="btn" th:text="${agendamento.prestador.nome}" data-bs-toggle="modal" th:data-bs-target="'#detailModal' + ${agendamento.id}"></a></td>
                         <td th:text="${agendamento.servico.nome}"></td>
                         <td th:text="${agendamento.data}"></td>
                         <td th:text="${agendamento.hora}"></td>
@@ -49,6 +49,34 @@
                     </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <div th:each="agendamento : ${agendamentos}">
+        <div class="modal fade" th:id="'detailModal' + ${agendamento?.id}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailModalLabel">Detalhes do prestador</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex flex-column gap-3">
+                        <div>
+                            <strong>Nome: </strong><span th:text="${agendamento.prestador.nome}"></span>
+                        </div>
+                        <div>
+                            <strong>Descrição: </strong><span th:text="${agendamento.prestador.descricao}"></span>
+                        </div>
+                        <div>
+                            <strong>Taxa por hora: </strong><span th:text="${agendamento.prestador.taxaPorHora}"></span>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
