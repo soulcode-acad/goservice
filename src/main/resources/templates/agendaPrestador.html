@@ -6,8 +6,8 @@
 <body>
 
 <div id="content">
-    <div th:replace="fragments/header :: header"></div>
 
+    <div th:replace="fragments/header :: header"></div>
     <div class="container my-4">
         <h2>Agenda de Serviços</h2>
 
@@ -31,7 +31,9 @@
                     </thead>
                     <tbody>
                     <tr th:each="agendamento : ${agendamentos}">
-                        <td th:text="${agendamento.cliente.nome}"></td>
+                        <td>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalCliente" th:text="${agendamento.cliente.nome}"></a>
+                        </td>
                         <td th:text="${agendamento.servico.nome}"></td>
                         <td th:text="${agendamento.data}"></td>
                         <td th:text="${agendamento.hora}"></td>
@@ -52,6 +54,36 @@
             </div>
         </div>
     </div>
+
+    <div id="modal-cliente" th:each="agendamento : ${agendamentos}">
+        <div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Dados do Cliente</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Nome: </h4>
+                        <p th:text="${agendamento.cliente.nome}"></p>
+
+                        <h4>E-mail: </h4>
+                        <p th:text="${agendamento.cliente.email}"></p>
+
+                        <h4>telefone: </h4>
+                        <p th:text="${agendamento.cliente.telefone}"></p>
+
+                        <h4>Data de Nascimento: </h4>
+                        <p th:text="${agendamento.cliente.dataNascimento}"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <div th:each="agendamento : ${agendamentos}" th:if="${agendamento.isCancelable()}">
         <div class="modal fade" th:id="'cancelModal' + ${agendamento?.id}" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
@@ -92,6 +124,7 @@
             </div>
         </div>
     </div>
+    <div th:replace="fragments/footer :: footer"></div>
 
 </div>
 
