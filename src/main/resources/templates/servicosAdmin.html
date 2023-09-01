@@ -82,6 +82,25 @@
                     </tr>
                     </tbody>
                 </table>
+
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" th:if="${currentPage > 0}">
+                            <a class="page-link" th:href="@{/admin/servicos(page=${currentPage - 1})}" aria-label="Anterior">
+                                <span aria-hidden="true">Anterior</span>
+                            </a>
+                        </li>
+                        <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, totalPages - 1)}"
+                            th:classappend="${pageNo == currentPage} ? 'active' : ''">
+                            <a class="page-link" th:href="@{/admin/servicos(page=${pageNo})}" th:text="${pageNo + 1}"></a>
+                        </li>
+                        <li class="page-item" th:if="${currentPage < totalPages - 1}">
+                            <a class="page-link" th:href="@{/admin/servicos(page=${currentPage + 1})}" aria-label="Próxima">
+                                <span aria-hidden="true">Próxima</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </main>
