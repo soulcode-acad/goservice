@@ -26,3 +26,48 @@
 .logo {
     width: 95px;
 }
+
+.cards{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 20px;
+    gap: 40px;
+}
+
+.card {
+    width: 270px;
+    height:540px;
+    margin-bottom: 10px;
+}
+
+.card img{
+    height: 270px;
+    width: px;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title{
+    height:50px;
+}
+
+.card-text{
+    height:110px;
+}
+
+.btn-ht{
+    display: flex;
+    margin:auto;
+    height: 65px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
