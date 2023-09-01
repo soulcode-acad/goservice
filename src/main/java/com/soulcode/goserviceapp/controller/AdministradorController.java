@@ -1,5 +1,6 @@
 package com.soulcode.goserviceapp.controller;
 
+import com.soulcode.goserviceapp.domain.Administrador;
 import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.domain.Usuario;
 import com.soulcode.goserviceapp.domain.UsuarioLog;
@@ -7,8 +8,10 @@ import com.soulcode.goserviceapp.service.ServicoService;
 import com.soulcode.goserviceapp.service.UsuarioLogService;
 import com.soulcode.goserviceapp.service.UsuarioService;
 import com.soulcode.goserviceapp.service.exceptions.ServicoNaoEncontradoException;
+import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoAutenticadoException;
 import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -147,5 +150,37 @@ public class AdministradorController {
             mv.addObject("errorMessage", "Erro ao buscar dados de log de autenticação.");
         }
         return mv;
+    }
+
+    @GetMapping(value = "/dados")
+    public ModelAndView dados(Authentication authentication){
+        ModelAndView mv = new ModelAndView("dadosAdmin");
+        try {
+            Usuario administrador = usuarioService.findAuthenticated(authentication);
+            mv.addObject("admin", administrador);
+        } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException ex){
+            mv.addObject("errorMessage", ex.getMessage());
+        } catch (Exception ex){
+            mv.addObject("errorMessage", "Erro ao buscar dados do administrador.");
+        }
+        return mv;
+    }
+
+    @PostMapping(value = "/dados")
+    public String alterarDados(Usuario usuario, RedirectAttributes attributes){
+        try {
+            usuarioService.update(usuario);
+            attributes.addFlashAttribute("successMessage", "Dados alterados.");
+        } catch (UsuarioNaoEncontradoException ex){
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
+        } catch (Exception ex){
+            attributes.addFlashAttribute("errorMessage", "Erro ao alterar os dados cadastrais.");
+        }
+        Boolean emailModified = usuarioService.updatedEmail(usuario);
+        System.err.println(emailModified);
+        if (emailModified == true){
+            return "redirect:/auth/login";
+        }
+        return "redirect:/admin/dados";
     }
 }
