@@ -10,6 +10,11 @@ import java.util.List;
 @Repository
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
 
+    @Query(value = "SELECT status_agendamento, COUNT(*) AS quantidade_servicos" +
+            "FROM agendamentos" +
+            "GROUP BY status_agendamento;", nativeQuery = true)
+    void agendamentoByStatus();
+
     @Query(value="SELECT a.* FROM agendamentos a JOIN usuarios u ON a.cliente_id = u.id WHERE u.email = ? ORDER BY data", nativeQuery = true)
     List<Agendamento> findByClienteEmail(String email);
 
