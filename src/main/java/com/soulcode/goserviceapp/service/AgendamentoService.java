@@ -8,13 +8,16 @@ import com.soulcode.goserviceapp.domain.enums.StatusAgendamento;
 import com.soulcode.goserviceapp.repository.AgendamentoRepository;
 import com.soulcode.goserviceapp.service.exceptions.AgendamentoNaoEncontradoException;
 import com.soulcode.goserviceapp.service.exceptions.StatusAgendamentoImutavelException;
+import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cglib.core.Local;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +45,9 @@ public class AgendamentoService {
 
     public List<Agendamento> findByDataAgendamento(Authentication authentication, LocalDate dataInicio, LocalDate dataFim) {
         Prestador prestador = prestadorService.findAuthenticated(authentication);
+        if (dataInicio == null || dataFim == null) {
+            throw new RuntimeException("Insira uma data válida");
+        }
         return agendamentoRepository.findByDataAgendamento(dataInicio, dataFim, prestador.getId());
     }
 

@@ -119,12 +119,16 @@ public class PrestadorController {
     }
 
     @PostMapping(value = "/agenda/busca")
-    public String findAgendamentoByData(@RequestParam LocalDate dataInicio, @RequestParam LocalDate dataFim, Authentication authentication, RedirectAttributes attributes) {
+    public String findAgendamentoByData(@RequestParam(required = false) LocalDate dataInicio, @RequestParam(required = false) LocalDate dataFim, Authentication authentication, RedirectAttributes attributes) {
         try {
             List<Agendamento> agendamentos = agendamentoService.findByDataAgendamento(authentication, dataInicio, dataFim);
+            System.out.println(dataInicio);
+            System.out.println(dataFim);
             attributes.addFlashAttribute("agendamentosPorData", agendamentos);
         } catch (UsuarioNaoEncontradoException | UsuarioNaoAutenticadoException e) {
             attributes.addFlashAttribute("errorMessage", e.getMessage());
+        } catch (RuntimeException e) {
+            attributes.addFlashAttribute("errorMessage", "Insira uma data válida");
         } catch (Exception e) {
             attributes.addFlashAttribute("errorMessage", "Erro ao exibir dados");
         }
