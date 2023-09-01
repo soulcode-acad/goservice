@@ -1,0 +1,31 @@
+.container-botoes{
+margin-top: 50px;
+margin-left: 25%;
+width: 50%;
+}
+
+.botao{
+margin-top: 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding-top: 20px;
+background-color: #0D6EFD;
+line-height: 30px;
+color: #DCDCDC !important;
+border-radius: 5px;
+border: 1px solid transparent;
+font-size: 20px;
+}
+
+
+.Resp{
+width: 100%;
+padding: 5px;
+line-height: 30px;
+font-color: #000000;
+font-size: 20px;
+align-items: center;
+border: 1px solid;
+}

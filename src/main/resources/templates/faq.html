@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+
+</head>
+<body>
+<main id="content">
+    <div th:replace="fragments/header :: header"></div>
+    <div class="container-botoes" >
+        <p class="botoes">
+        <div class="row">
+            <button class="botao" type="button" data-bs-toggle="collapse" data-bs-target="#botao1" aria-expanded="false" aria-controls="#botao1">Como funciona o serviço oferecido pela plataforma?</button>
+            <div class="col">
+                <div class="collapse multi-collapse" id="botao1">
+                    <div class="Resp">
+                        A nossa plataforma conecta usuários a profissionais qualificados que podem atender às suas necessidades. Você pode pesquisar e selecionar o serviço desejado, visualizar os perfis dos prestadores de serviços e entrar em contato com aqueles que melhor atendam às suas preferências.
+                    </div>
+                </div>
+            </div>
+            <button class="botao" type="button" data-bs-toggle="collapse" data-bs-target="#botao2" aria-expanded="false" aria-controls="#botao2">Quais são os benefícios de usar essa plataforma?</button>
+        <div class="col">
+            <div class="collapse multi-collapse" id="botao2">
+                <div class="Resp">
+                    Ao utilizar nossa plataforma, você terá acesso a uma variedade abrangente de serviços de alta qualidade, oferecidos por profissionais qualificados e verificados. Com agendamento flexível, avaliações transparentes de clientes anteriores e suporte ágil ao cliente, tornamos o processo conveniente e confiável. Nossa plataforma garante segurança em transações e fornece perfis detalhados de profissionais, permitindo escolhas informadas. Simplificamos o acesso a serviços excepcionais, economizando seu tempo e proporcionando uma experiência única, com histórico de serviços para facilitar futuros agendamentos. Estamos constantemente inovando para melhorar sua experiência. Seja qual for a sua necessidade, estamos aqui para atender você.
+                </div>
+            </div>
+        </div>
+            <button class="botao" type="button" data-bs-toggle="collapse" data-bs-target="#botao3" aria-expanded="false" aria-controls="#botao3">Quanto custa usar o serviço?</button>
+        <div class="col">
+            <div class="collapse multi-collapse" id="botao3">
+                <div class="Resp">
+                    Os custos variam de acordo com o tipo de serviço e o profissional selecionado. Os preços são exibidos nos perfis dos prestadores de serviços ou durante o processo de agendamento. Não há custos para criar uma conta e navegar pela plataforma.
+                </div>
+            </div>
+        </div>
+            <button class="botao" type="button" data-bs-toggle="collapse" data-bs-target="#botao4" aria-expanded="false" aria-controls="#botao4">Como faço para me cadastrar?</button>
+        <div class="col">
+            <div class="collapse multi-collapse" id="botao4">
+                <div class="Resp">
+                    É simples! Clique no botão "Registrar" no canto superior direito da página inicial. Preencha os detalhes necessários, como nome, e-mail e senha. Após o registro, você terá acesso completo à plataforma.
+                </div>
+            </div>
+        </div>
+            <button class="botao" type="button" data-bs-toggle="collapse" data-bs-target="#botao5" aria-expanded="false" aria-controls="#botao5">Como encontro e contrato um profissional?</button>
+        <div class="col">
+            <div class="collapse multi-collapse" id="botao5">
+                <div class="Resp">
+                    Depois de se cadastrar, basta pesquisar o serviço desejado e navegar pelos perfis dos profissionais disponíveis. Você pode comparar suas experiências, classificações e preços. Quando encontrar o profissional certo, selecione uma data e hora disponíveis para o serviço.
+                </div>
+            </div>
+        </div>
+            <button class="botao" type="button" data-bs-toggle="collapse" data-bs-target="#botao6" aria-expanded="false" aria-controls="#botao6">Qual é a política de reembolso em caso de insatisfação?</button>
+        <div class="col">
+            <div class="collapse multi-collapse" id="botao6">
+                <div class="Resp">
+                    Nossa política de reembolso varia de acordo com o tipo de serviço e as circunstâncias. Geralmente, oferecemos reembolsos completos se o serviço não for realizado conforme o acordado. Consulte nossos termos e condições para obter mais detalhes.
+                </div>
+            </div>
+        </div>
+            <button class="botao" type="button" data-bs-toggle="collapse" data-bs-target="#botao7" aria-expanded="false" aria-controls="#botao7">Qual é o tempo médio de resposta dos profissionais após a solicitação de serviço?</button>
+        <div class="col">
+            <div class="collapse multi-collapse" id="botao7">
+                <div class="Resp">
+                    Resposta: O tempo de resposta varia de acordo com a disponibilidade dos profissionais. Muitos respondem dentro de algumas horas, mas pode levar até 24 horas em alguns casos.
+                </div>
+            </div>
+        </div>
+            <button class="botao" type="button" data-bs-toggle="collapse" data-bs-target="#botao8" aria-expanded="false" aria-controls="#botao8">Existe uma garantia de qualidade para os serviços?</button>
+        <div class="col">
+            <div class="collapse multi-collapse" id="botao8">
+                <div class="Resp">
+                    Nós nos esforçamos para manter altos padrões de qualidade. Se você não estiver satisfeito com o serviço prestado, entre em contato conosco dentro de um determinado período e faremos o possível para resolver a situação ou reembolsar seu pagamento.
+                </div>
+            </div>
+        </div>
+            <button class="botao" type="button" data-bs-toggle="collapse" data-bs-target="#botao9" aria-expanded="false" aria-controls="#botao9">Posso agendar um serviço para um amigo ou familiar?</button>
+        <div class="col">
+            <div class="collapse multi-collapse" id="botao9">
+                <div class="Resp">
+                    Sim, você pode agendar um serviço para outra pessoa. Durante o processo de agendamento, você terá a opção de inserir os detalhes do destinatário do serviço.
+                </div>
+            </div>
+        </div>
+            <button class="botao" type="button" data-bs-toggle="collapse" data-bs-target="#botao10" aria-expanded="false" aria-controls="#botao10">Os profissionais trazem seus próprios materiais e equipamentos?</button>
+        <div class="col">
+            <div class="collapse multi-collapse" id="botao10">
+                <div class="Resp">
+                    Isso depende do tipo de serviço. Alguns profissionais trazem seus próprios materiais, enquanto outros podem usar os materiais do cliente. Essas informações estarão disponíveis nos perfis dos profissionais.
+                </div>
+            </div>
+        </div>
+    </div>
+        </p>
+    </div>
+    <div th:replace="fragments/footer:: footer"></div>
+</main>
+</body>
+
+</html>
