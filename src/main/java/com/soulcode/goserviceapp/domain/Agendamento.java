@@ -1,6 +1,7 @@
 package com.soulcode.goserviceapp.domain;
 
 import com.soulcode.goserviceapp.domain.enums.StatusAgendamento;
+import com.soulcode.goserviceapp.service.exceptions.DataInvalidaException;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
@@ -103,7 +104,9 @@ public class Agendamento implements Serializable{
     }
 
     public void setData(LocalDate data) {
-        this.data = data;
+          if(data.isBefore(LocalDate.now())){
+                throw new DataInvalidaException();
+            }
     }
 
     public LocalTime getHora() {
@@ -153,4 +156,15 @@ public class Agendamento implements Serializable{
     public int hashCode() {
         return Objects.hash(id, cliente, prestador, servico, statusAgendamento, data, hora, dataHoraRegistro);
     }
+
+
 }
+
+//    A data do agendamento é flexível ao cliente para que ele posso escolher.
+//    Porém ele pode escolher uma data que já passou, causando inconsistência nos
+//    dados da aplicação. Para evitar isso, crie uma validação simples antes de salvar
+//    o agendamento, o qual verifica se a data e hora é superior ao momento que ele efetuou
+//    o agendamento, lançando e tratando uma exceção personalizada para isso. Além disso,
+//    crie um script JS no template para bloquear a seleção de data anteriores, garantindo
+//     uma melhor usabilidade.
+

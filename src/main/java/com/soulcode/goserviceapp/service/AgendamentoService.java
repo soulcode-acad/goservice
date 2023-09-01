@@ -7,6 +7,7 @@ import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.domain.enums.StatusAgendamento;
 import com.soulcode.goserviceapp.repository.AgendamentoRepository;
 import com.soulcode.goserviceapp.service.exceptions.AgendamentoNaoEncontradoException;
+import com.soulcode.goserviceapp.service.exceptions.DataInvalidaException;
 import com.soulcode.goserviceapp.service.exceptions.StatusAgendamentoImutavelException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -48,7 +49,10 @@ public class AgendamentoService {
         agendamento.setCliente(cliente);
         agendamento.setPrestador(prestador);
         agendamento.setServico(servico);
-        agendamento.setData(data);
+        try{agendamento.setData(data);}
+        catch(DataInvalidaException e) {
+        e.getMessage();
+ }
         agendamento.setHora(hora);
 
         return agendamentoRepository.save(agendamento);
