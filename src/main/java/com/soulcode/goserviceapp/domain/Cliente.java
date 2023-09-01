@@ -3,6 +3,7 @@ package com.soulcode.goserviceapp.domain;
 import com.soulcode.goserviceapp.domain.enums.Perfil;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -10,6 +11,10 @@ import java.util.Objects;
 @Entity
 public class Cliente extends Usuario{
     private String telefone;
+
+    @ManyToOne
+    private Endereco endereco;
+
     @Column(length = 14)
     private String cpf;
 
@@ -20,9 +25,10 @@ public class Cliente extends Usuario{
         setPerfil(Perfil.CLIENTE);
     }
 
-    public Cliente(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, String telefone, String cpf, LocalDate dataNascimento) {
+    public Cliente(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, String telefone, Endereco endereco, String cpf, LocalDate dataNascimento) {
         super(id, nome, email, senha, perfil, habilitado);
         this.telefone = telefone;
+        this.endereco = endereco;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
     }
@@ -63,6 +69,14 @@ public class Cliente extends Usuario{
         return Objects.equals(telefone, cliente.telefone) &&
                 Objects.equals(cpf, cliente.cpf) &&
                 Objects.equals(dataNascimento, cliente.dataNascimento);
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @Override
