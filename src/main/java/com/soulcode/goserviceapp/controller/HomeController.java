@@ -18,7 +18,7 @@ public class HomeController {
         return "faq";}
 
     @GetMapping(value = "/PoliticaTermos")
-    public String politicaTermos(){
+    public String politicaETermos(){
         return "PoliticaTermos";
     }
 }
