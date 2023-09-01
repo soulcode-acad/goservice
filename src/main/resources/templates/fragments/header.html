@@ -41,6 +41,8 @@
                         <li><a class="dropdown-item" href="/cliente/historico">Histórico de Serviços</a></li>
                     </ul>
                 </div>
+                <!-- Link para Dúvidas Frequentes (Acessível a todos) -->
+                <li><a class="nav-link" href="/faq">Dúvidas Frequentes</a></li>
             </ul>
 
             <div class="text-end" th:if="${not #authorization.expression('isAuthenticated()')}">
