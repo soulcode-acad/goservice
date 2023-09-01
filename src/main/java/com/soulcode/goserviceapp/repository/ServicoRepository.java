@@ -17,4 +17,7 @@ public interface ServicoRepository extends JpaRepository<Servico, Long> {
             " JOIN usuarios u ON u.id = ps.prestador_id" +
             " WHERE u.email = ?", nativeQuery = true)
     List<Servico> findByPrestadorEmail(String email);
+
+    @Query(value = "SELECT * FROM servicos s WHERE s.nome LIKE ?%", nativeQuery = true)
+    List<Servico> findServicoByNome(String nome);
 }
