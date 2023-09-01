@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content}, ~{::#rodape})">
 <head>
     <title>Agendar Serviço</title>
 </head>
@@ -72,6 +72,10 @@
         </div>
     </div>
 </div>
+
+<footer id="rodape">
+    <div th:replace="fragments/footer :: footer"></div>
+</footer>
 
 </body>
 </html>

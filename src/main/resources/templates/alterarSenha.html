@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content}, ~{::#rodape})">
 <head>
     <title>Alterar Senha | GoService</title>
 </head>
@@ -35,6 +35,10 @@
         </div>
     </main>
 </div>
+
+<footer id="rodape">
+    <div th:replace="fragments/footer :: footer"></div>
+</footer>
 
 </body>
 </html>
