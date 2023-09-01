@@ -4,10 +4,7 @@ import com.soulcode.goserviceapp.domain.Agendamento;
 import com.soulcode.goserviceapp.domain.Cliente;
 import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.domain.Servico;
-import com.soulcode.goserviceapp.service.AgendamentoService;
-import com.soulcode.goserviceapp.service.ClienteService;
-import com.soulcode.goserviceapp.service.PrestadorService;
-import com.soulcode.goserviceapp.service.ServicoService;
+import com.soulcode.goserviceapp.service.*;
 import com.soulcode.goserviceapp.service.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -39,6 +36,9 @@ public class ClienteController {
     @Autowired
     private AgendamentoService agendamentoService;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     @GetMapping(value = "/dados")
     public ModelAndView dados(Authentication authentication) {
         ModelAndView mv = new ModelAndView("dadosCliente");
@@ -62,6 +62,10 @@ public class ClienteController {
             attributes.addFlashAttribute("errorMessage", ex.getMessage());
         } catch (Exception ex) {
             attributes.addFlashAttribute("errorMessage", "Erro ao alterar dados cadastrais.");
+        }
+        Boolean emailModified = usuarioService.updatedEmail(cliente);
+        if (emailModified == true){
+            return "redirect:/auth/login";
         }
         return "redirect:/cliente/dados";
     }

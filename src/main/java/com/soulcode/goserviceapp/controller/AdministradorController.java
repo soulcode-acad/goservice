@@ -1,6 +1,5 @@
 package com.soulcode.goserviceapp.controller;
 
-import com.soulcode.goserviceapp.domain.Administrador;
 import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.domain.Usuario;
 import com.soulcode.goserviceapp.domain.UsuarioLog;
@@ -199,7 +198,6 @@ public class AdministradorController {
             attributes.addFlashAttribute("errorMessage", "Erro ao alterar os dados cadastrais.");
         }
         Boolean emailModified = usuarioService.updatedEmail(usuario);
-        System.err.println(emailModified);
         if (emailModified == true){
             return "redirect:/auth/login";
         }
