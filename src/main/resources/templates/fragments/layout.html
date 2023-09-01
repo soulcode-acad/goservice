@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, content)">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, content, rodape)">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,7 @@
 <body>
 
 <div th:replace="${content}"></div>
+<div th:replace="${rodape}"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
