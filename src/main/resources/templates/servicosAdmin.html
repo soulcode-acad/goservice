@@ -54,6 +54,12 @@
             <div class="card-body">
                 <h5 class="card-title mb-2">Serviços cadastrados</h5>
 
+                <form method="post" th:action="@{/admin/servicos/busca}" class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" name="servicoNome" placeholder="Procurar por serviço" aria-label="Search">
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                    <a class="btn btn-danger ms-1" href="/admin/servicos"><i class="bi bi-x-circle"></i></a>
+                </form>
+
                 <table class="table w-100">
                     <thead>
                     <tr>
@@ -65,7 +71,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="servico : ${servicos}">
+                    <tr th:each="servico : ${servicos}" th:if="${servicosPorNome == null}">
                         <td th:text="${servico.nome}"></td>
                         <td th:text="${servico.descricao}"></td>
                         <td th:text="${servico.categoria}"></td>
@@ -80,6 +86,23 @@
                             </button>
                         </td>
                     </tr>
+
+                    <tr type="hidden" th:each="servicoNome : ${servicosPorNome}" th:if="${servicosPorNome != null}">
+                        <td th:text="${servicoNome.nome}"></td>
+                        <td th:text="${servicoNome.descricao}"></td>
+                        <td th:text="${servicoNome.categoria}"></td>
+                        <td>
+                            <a th:href="@{/admin/servicos/editar/{id}(id=${servicoNome.id})}" class="btn btn-success" style="width: 7rem">
+                                Editar <i class="bi bi-pencil-fill ms-2"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" style="width: 7rem" data-bs-toggle="modal" th:data-bs-target="'#deleteModal' + ${servicoNome.id}">
+                                Excluir <i class="bi bi-trash-fill ms-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+
                     </tbody>
                 </table>
             </div>

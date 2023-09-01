@@ -52,6 +52,17 @@ public class AdministradorController {
         return "redirect:/admin/servicos";
     }
 
+    @PostMapping(value = "/servicos/busca")
+    public String findService(@RequestParam(name = "servicoNome") String servicoNome, RedirectAttributes attributes) {
+        try {
+            List<Servico> servicosPorNome = servicoService.findServicoByNome(servicoNome);
+            attributes.addFlashAttribute("servicosPorNome", servicosPorNome);
+        } catch (Exception e) {
+            attributes.addFlashAttribute("errorMessage", "Erro ao procurar serviço");
+        }
+        return "redirect:/admin/servicos";
+    }
+
     @PostMapping(value = "/servicos/remover")
     public String removeService(@RequestParam(name = "servicoId") Long id, RedirectAttributes attributes) {
         try {
