@@ -14,6 +14,31 @@ VALUES
     ('Desenvolvimento', 'Desenvolvimento de site institucional', 'Desenvolvimento de Site Institucional'),
     ('Design', 'Design de interface de usuário para aplicativos', 'Design de Interface de Aplicativo');
 
+-- NOVOS SERVIÇOS:
+INSERT INTO servicos (categoria, descricao, nome) 
+VALUES 
+    ('Limpeza', 'Serviço de limpeza residencial', 'Limpeza Residencial Novo'),
+    ('Treinamento', 'Treinamento corporativo em liderança', 'Treinamento em Liderança Novo'),
+    ('Saúde', 'Consulta médica de clínico geral', 'Consulta Clínico Geral Novo'),
+    ('Desenvolvimento', 'Desenvolvimento de aplicativo móvel', 'Desenvolvimento de App Novo'),
+    ('Design', 'Design de logotipo para empresas', 'Design de Logotipo Novo'),
+    ('Limpeza', 'Limpeza de escritórios comerciais', 'Limpeza Comercial Novo'),
+    ('Treinamento', 'Treinamento em habilidades de comunicação', 'Treinamento em Comunicação Novo'),
+    ('Saúde', 'Sessão de fisioterapia para reabilitação', 'Fisioterapia de Reabilitação Novo'),
+    ('Desenvolvimento', 'Desenvolvimento de site institucional', 'Desenvolvimento de Site Institucional Novo'),
+    ('Design', 'Design de interface de usuário para aplicativos', 'Design de Interface de Aplicativo Novo'),
+    ('Limpeza', 'Limpeza de carpetes residenciais', 'Limpeza de Carpetes Residenciais Novo'),
+    ('Treinamento', 'Treinamento em gestão de projetos', 'Treinamento em Gestão de Projetos Novo'),
+    ('Saúde', 'Consulta médica de pediatria', 'Consulta Pediátrica Novo'),
+    ('Desenvolvimento', 'Desenvolvimento de software personalizado', 'Desenvolvimento de Software Personalizado Novo'),
+    ('Design', 'Design de embalagens para produtos', 'Design de Embalagens Novo'),
+    ('Limpeza', 'Limpeza de janelas de arranha-céus', 'Limpeza de Janelas em Arranha-céus Novo'),
+    ('Treinamento', 'Treinamento em atendimento ao cliente', 'Treinamento em Atendimento ao Cliente Novo'),
+    ('Saúde', 'Terapia ocupacional para crianças', 'Terapia Ocupacional Infantil Novo'),
+    ('Desenvolvimento', 'Desenvolvimento de jogos para dispositivos móveis', 'Desenvolvimento de Jogos Móveis Novo'),
+    ('Design', 'Design de site de comércio eletrônico', 'Design de Site de E-Commerce Novo');
+
+
 -- CLIENTES
 INSERT INTO usuarios (nome, email, senha, habilitado, perfil, dtype)
 VALUES
