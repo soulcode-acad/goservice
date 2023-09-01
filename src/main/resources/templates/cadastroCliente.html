@@ -8,7 +8,7 @@
 <main id="content" class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
     <div style="width: 22rem">
         <form method="post" th:action="@{/auth/cadastro}">
-            <h1 class="h3 mb-3 fw-normal text-center">Cadastre-se | GoService</h1>
+            <h1 class="h3 mb-3 fw-normal text-center">Cadastre-se | <img src="/assets/img/logos/2.png" alt="GoService" class="logo"></h1>
 
             <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
             <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>

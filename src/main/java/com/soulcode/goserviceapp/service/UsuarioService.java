@@ -26,31 +26,31 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario findByEmail(String email){
+    public Usuario findByEmail(String email) {
         Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
-        if (usuario.isPresent()){
+        if (usuario.isPresent()) {
             return usuario.get();
         }
         throw new UsuarioNaoEncontradoException();
     }
 
-    public List<Usuario> findAll(){
+    public List<Usuario> findAll() {
         return usuarioRepository.findAll();
     }
 
-    public Usuario findById(Long id){
+    public Usuario findById(Long id) {
         Optional<Usuario> result = usuarioRepository.findById(id);
-        if (result.isPresent()){
+        if (result.isPresent()) {
             return result.get();
         }
         throw new UsuarioNaoEncontradoException();
     }
 
-    public Usuario createUser(Usuario usuario){
+    public Usuario createUser(Usuario usuario) {
         String passwordEncoded = encoder.encode(usuario.getSenha());
         usuario.setSenha(passwordEncoded);
 
-        switch (usuario.getPerfil()){
+        switch (usuario.getPerfil()) {
             case PRESTADOR:
                 return createAndSavePrestador(usuario);
             case ADMIN:
@@ -61,7 +61,7 @@ public class UsuarioService {
         }
     }
 
-    private Administrador createAndSaveAdministrador(Usuario u){
+    private Administrador createAndSaveAdministrador(Usuario u) {
         Administrador admin = new Administrador(u.getId(), u.getNome(), u.getEmail(), u.getSenha(), u.getPerfil(), u.getHabilitado());
         return usuarioRepository.save(admin);
     }
@@ -77,21 +77,25 @@ public class UsuarioService {
     }
 
     @Transactional
-    public void disableUser(Long id){
+    public void disableUser(Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
-        if (usuario.isPresent()){
+        if (usuario.isPresent()) {
             usuarioRepository.updateEnableById(false, id);
             return;
         }
         throw new UsuarioNaoEncontradoException();
-     }
+    }
+
     @Transactional
     public void enableUser(Long id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
-        if(usuario.isPresent()) {
+        if (usuario.isPresent()) {
             usuarioRepository.updateEnableById(true, id);
             return;
         }
         throw new UsuarioNaoEncontradoException();
+    }
+    public List<Usuario> findbyPerfil() {
+        return usuarioRepository.findbyPerfil();
     }
 }
