@@ -17,7 +17,7 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <table class="table w-100">
+                <table class="table align-middle w-100">
                     <thead>
                     <tr>
                         <th>Cliente</th>
@@ -31,7 +31,10 @@
                     </thead>
                     <tbody>
                     <tr th:each="agendamento : ${agendamentos}">
-                        <td th:text="${agendamento.cliente.nome}"></td>
+                        <td class=" fw-medium text-primary botao-abrir-especificacoes"  style="cursor: pointer; " data-bs-toggle="modal"  th:data-bs-target="'#clienteInfo' + ${agendamento?.id}">
+                            <span th:text="${agendamento.cliente.nome}" class=" mr-1 "> </span>
+                            <i class="bi bi-clipboard "></i>
+                        </td>
                         <td th:text="${agendamento.servico.nome}"></td>
                         <td th:text="${agendamento.data}"></td>
                         <td th:text="${agendamento.hora}"></td>
@@ -93,6 +96,31 @@
         </div>
     </div>
 
+    <!-- Modal info Clientes -->
+    <div th:each="agendamento : ${agendamentos}" >
+        <div class="modal fade" th:id="'clienteInfo' + ${agendamento?.id}" tabindex="-1" role="dialog" aria-labelledby="infoClienteModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Informações do cliente</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Nome: <strong th:text="${agendamento.cliente.nome}"></strong></p>
+                        <p>Email: <strong th:text="${agendamento.cliente.email}"></strong></p>
+                        <p>Telefone: <strong th:text="${agendamento.cliente?.telefone}"></strong></p>
+                        <p>CPF: <strong th:text="${agendamento.cliente?.cpf}"></strong></p>
+                        <p>Data de Nascimento: <strong th:text="${agendamento.cliente?.dataNascimento}"></strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /.modal info Clientes -->
 </div>
 
 <footer id="rodape">
