@@ -24,3 +24,11 @@
 #logo-signup:hover{
     scale: 1.15;
 }
+.botao-abrir-especificacoes{
+    transition: all 0.3s;
+}
+.botao-abrir-especificacoes:hover{
+    color: 	dodgerblue !important;
+    letter-spacing: 0.1px;
+    text-decoration:underline;
+}
