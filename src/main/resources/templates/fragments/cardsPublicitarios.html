@@ -1,59 +1,68 @@
-<div class="shadow-sm  rounded " xmlns:th="http://www.thymeleaf.org"  th:fragment="cardsPublicitarios">
-    <div class="card-group w-100 my-5  px-5 flex-wrap justify-content-around gap-3" style="flex-wrap: wrap">
-        <div class="card " style="min-width: 18rem">
-            <img th:src="@{/assets/img/prormos/1.png}" class="card-img-top " alt="...">
+<div class="w-100 d-flex justify-content-center" xmlns:th="http://www.thymeleaf.org"  th:fragment="cardsPublicitarios" >
+    <div class="card-group my-5 px-2 flex-wrap" style=" display:grid; grid-template-columns:repeat(3, 1fr); justify-items: center; width:90%; gap:2.4rem; min-width:22rem;">
+        <div class="card shadow-sm"  style="min-width: 18rem;  margin: 20px 0;">
+            <img th:src="@{/assets/img/prormos/1.png}" class="card-img-top" style="max-height:380px; object-fit:cover; object-position:50% 0" alt="Seja Go Agent" >
             <div class="card-body">
                 <h5 class="card-title">Seja Go Agent</h5>
-                <p class="card-text">Construa seu sucesso conosco! Registre-se agora em nosso site e faça parte da nossa comunidade de prestadores de destaque</p>
+                <p class="card-text">Registre-se agora em nosso site e faça parte da nossa comunidade de prestadores de destaque</p>
+                <a href="/auth/login" class="btn btn-primary"> Veja mais </a>
             </div>
         </div>
-        <div class="card"  style="min-width: 18rem">
-            <img th:src="@{/assets/img/prormos/2.png}" class="card-img-top" alt="...">
+
+        <div class="card shadow-sm"  style="min-width: 18rem;  margin: 20px 0;">
+            <img th:src="@{/assets/img/prormos/2.png}" class="card-img-top" style="max-height:380px; object-fit:cover; object-position:50% 0" alt="...">
             <div class="card-body" >
-                <h5 class="card-title">Maior Plataforma do Brasil!</h5>
-                <p class="card-text">Junte-se à maior plataforma do Brasil e amplie suas oportunidades! Registre-se agora e faça parte da nossa rede de prestadores de excelência</p>
+                <h5 class="card-title">Sobre Nós!</h5>
+                <p class="card-text">Registre-se agora e faça parte da nossa rede de prestadores de excelência</p>
+            <a href="/auth/cadastro" class="btn btn-primary"> Veja mais </a>
             </div>
         </div>
-        <div class="card"  style="min-width: 18rem">
-            <img th:src="@{/assets/img/prormos/3.png}" class="card-img-top" alt="...">
+        <div class="card shadow-sm"  style="min-width: 18rem;  margin: 20px 0;">
+            <img th:src="@{/assets/img/prormos/3.png}" class="card-img-top" style="max-height:380px; object-fit:cover; object-position:50% 0" alt="Professores Afiliados">
             <div class="card-body">
-                <h5 class="card-title">Dificuldade com Escola?</h5>
+                <h5 class="card-title">Professores Afiliados</h5>
                 <p class="card-text">Descubra nossos incríveis professores e transforme seu aprendizado em uma experiência excepcional.</p>
+                <a href="/cliente/agendar" class="btn btn-primary"> Veja mais </a>
             </div>
         </div>
-        <div class="card"  style="min-width: 18rem">
-            <img th:src="@{/assets/img/prormos/4.png}" class="card-img-top" alt="...">
+        <div class="card shadow-sm"  style="min-width: 18rem;  margin: 20px 0;">
+            <img th:src="@{/assets/img/prormos/4.png}" class="card-img-top" style="max-height:380px; object-fit:cover; object-position:50% 0" alt="Faz-Tudo">
             <div class="card-body">
-                <h5 class="card-title">Tem coisa melhor para fazer? Chame nossos Agentes</h5>
+                <h5 class="card-title">Faz-Tudo</h5>
                 <p class="card-text"> Conte conosco para resolver todos os seus problemas domésticos!</p>
+                <a href="/cliente/agendar" class="btn btn-primary"> Veja mais </a>
             </div>
         </div>
-        <div class="card"  style="min-width: 18rem">
-            <img th:src="@{/assets/img/prormos/5.png}" class="card-img-top" alt="...">
+        <div class="card shadow-sm"  style="min-width: 18rem;  margin: 20px 0;">
+            <img th:src="@{/assets/img/prormos/5.png}" class="card-img-top" style="max-height:380px; object-fit:cover; " alt="Personal Shopping">
             <div class="card-body">
-                <h5 class="card-title">Encontre seu personal Shopping?</h5>
-                <p class="card-text">Experimente o luxo do Personal Shopping conosco. Deixe-nos cuidar do seu estilo e necessidades de compra com perfeição.</p>
+                <h5 class="card-title">Personal Shopping</h5>
+                <p class="card-text">Experimente o luxo do Personal Shopping conosco. </p>
+                <a href="/cliente/agendar" class="btn btn-primary"> Veja mais </a>
             </div>
         </div>
-        <div class="card"  style="min-width: 18rem">
-            <img th:src="@{/assets/img/prormos/6.png}" class="card-img-top" alt="...">
+        <div class="card shadow-sm"  style="min-width: 18rem;  margin: 20px 0;">
+            <img th:src="@{/assets/img/prormos/6.png}" class="card-img-top" style="max-height:380px; object-fit:cover; object-position:50% 0" alt="Social Media">
             <div class="card-body">
-                <h5 class="card-title">Deseja Crescer nas redes sociais</h5>
-                <p class="card-text">"Potencialize sua presença online com nosso serviço de divulgação nas redes sociais. Alcance um público maior e impulsione seu negócio!</p>
+                <h5 class="card-title">Social Media</h5>
+                <p class="card-text">"Potencialize sua presença online com nosso serviço de divulgação nas redes sociais!</p>
+                <a href="/cliente/agendar" class="btn btn-primary"> Veja mais </a>
             </div>
         </div>
-        <div class="card"  style="min-width: 18rem">
-            <img th:src="@{/assets/img/prormos/7.png}" class="card-img-top" alt="...">
+        <div class="card shadow-sm"  style="min-width: 18rem;  margin: 20px 0;">
+            <img th:src="@{/assets/img/prormos/7.png}" class="card-img-top" style="max-height:380px; object-fit:cover; object-position:50% 0" alt="Administrador">
             <div class="card-body">
-                <h5 class="card-title">Organize suas rotinas de trabalhos</h5>
-                <p class="card-text">Deixe-nos organizar suas rotinas de trabalho para que você possa conquistar mais produtividade e equilíbrio na sua vida profissional</p>
+                <h5 class="card-title">Administrador</h5>
+                <p class="card-text">Deixe-nos organizar suas rotinas de trabalho para que você possa conquistar sua vida profissional</p>
+                <a href="/cliente/agendar" class="btn btn-primary"> Veja mais </a>
             </div>
         </div>
-        <div class="card"  style="min-width: 18rem">
-            <img th:src="@{/assets/img/prormos/8.png}" class="card-img-top" alt="...">
+        <div class="card shadow-sm"  style="min-width: 18rem;  margin: 20px 0;">
+            <img th:src="@{/assets/img/prormos/8.png}" class="card-img-top" style="max-height:380px; object-fit:cover; object-position:50% 0" alt="Revisador de Propostas">
             <div class="card-body">
-                <h5 class="card-title">Presisa revisar suas propostas?</h5>
-                <p class="card-text">Procura alguém para revisar suas propostas? Conte com nossos serviços de revisão profissional para garantir qualidade e impacto</p>
+                <h5 class="card-title">Revisador de Propostas</h5>
+                <p class="card-text"> Conte com nossos serviços de revisão profissional para garantir qualidade e impacto</p>
+                <a href="/cliente/agendar" class="btn btn-primary"> Veja mais </a>
             </div>
         </div>
 
