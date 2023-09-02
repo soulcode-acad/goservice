@@ -1,0 +1,26 @@
+.logo{
+    width: fit-content;
+    padding: 5px;
+}
+
+#logo-header{
+    height: 80px;
+    margin-right:20px;
+}
+
+#logo-footer{
+   height: 60px;
+}
+
+#logo-login, #logo-signup{
+    height: 135px;
+    transition:all 0.5s;
+}
+
+#logo-login:hover{
+    scale: 1.15;
+}
+
+#logo-signup:hover{
+    scale: 1.15;
+}
