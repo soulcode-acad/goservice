@@ -61,10 +61,12 @@ public class AgendamentoService {
     }
 
     @Cacheable(cacheNames = "redisCache")
-    public List<Agendamento> findByPrestador(Authentication authentication){
+    public List<Agendamento> findByPrestador(Authentication authentication, LocalDate dataMin, LocalDate dataMax ){
         System.err.println("BUSCANDO AGENDAMENTOS PRESTADOR NO BANCO...");
+        System.err.println(dataMax);
+        System.err.println(dataMin);
         Prestador prestador = prestadorService.findAuthenticated(authentication);
-        return  agendamentoRepository.findByPrestadorEmail(prestador.getEmail());
+        return  agendamentoRepository.findByPrestadorEmail(prestador.getEmail(),dataMin, dataMax);
     }
 
     public void cancelAgendaPrestador(Authentication authentication, Long id){
