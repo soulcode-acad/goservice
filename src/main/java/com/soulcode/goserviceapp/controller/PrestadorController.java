@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -50,6 +51,7 @@ public class PrestadorController {
         }
         return mv;
     }
+
 
     @PostMapping(value = "/dados")
     public String editarDados(Prestador prestador, RedirectAttributes attributes) {
@@ -97,11 +99,12 @@ public class PrestadorController {
     }
 
     @GetMapping(value = "/agenda")
-    public ModelAndView agenda(Authentication authentication) {
+    public ModelAndView agenda(@RequestParam(name = "dataMax", required = false) LocalDate dataMax, @RequestParam(name = "dataMin", required = false) LocalDate dataMin, Authentication authentication) {
         ModelAndView mv = new ModelAndView("agendaPrestador");
         try {
-            List<Agendamento> agendamentos = agendamentoService.findByPrestador(authentication);
+            List<Agendamento> agendamentos = agendamentoService.findByPrestador(authentication,dataMin, dataMax);
             mv.addObject("agendamentos", agendamentos);
+            System.err.println(agendamentos);
         } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException ex) {
             mv.addObject("errorMessage", ex.getMessage());
         } catch (Exception ex) {
@@ -110,11 +113,13 @@ public class PrestadorController {
         return mv;
     }
 
+
     @PostMapping(value = "/agenda/cancelar")
     public String cancelarAgendamento(
             @RequestParam(name = "agendamentoId") Long agendamentoId,
             Authentication authentication,
             RedirectAttributes attributes) {
+        System.err.println("tetando");
         try {
             agendamentoService.cancelAgendaPrestador(authentication, agendamentoId);
             attributes.addFlashAttribute("successMessage", "Agendamento cancelado.");

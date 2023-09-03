@@ -12,10 +12,21 @@
         <h2>Agenda de Serviços</h2>
 
         <div class="card w-100 mt-5">
+            <h5 class="card-title mb-2">Escolha a data minima e maxima para filtrar os agendanentos</h5>
             <div class="card-body">
 
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <form method="get" th:action="@{/prestador/agenda}">
+                    <div class="mb-3">
+                        <label for="dataMin" class="form-label ">Data de Minima<span class="text-danger">*</span></label>
+                        <input type="date" class="form-control mb-2" id="dataMin" name="dataMin" >
+                        <label for="dataMax" class="form-label">Data de Máxima<span class="text-danger">*</span></label>
+                        <input type="date" class="form-control mb-2" id="dataMax" name="dataMax" >
+                        <button class="btn btn-primary mt-3" style="width: 9rem">Procurar <i class="bi bi-search ms-2"></i></button>
+                    </div>
+                </form>
 
                 <table class="table w-100">
                     <thead>
