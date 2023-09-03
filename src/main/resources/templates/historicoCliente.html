@@ -31,7 +31,10 @@
                     </thead>
                     <tbody>
                     <tr th:each="agendamento : ${agendamentos}">
-                        <td th:text="${agendamento.prestador.nome}"></td>
+                        <td class=" fw-medium text-primary botao-abrir-especificacoes"  style="cursor: pointer; " data-bs-toggle="modal"  th:data-bs-target="'#prestadorInfo' + ${agendamento?.id}">
+                            <span th:text="${agendamento.prestador.nome}" class=" mr-1 "> </span>
+                            <i class="bi bi-clipboard "></i>
+                        </td>
                         <td th:text="${agendamento.servico.nome}"></td>
                         <td th:text="${agendamento.data}"></td>
                         <td th:text="${agendamento.hora}"></td>
@@ -92,6 +95,31 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal dados cliente -->
+    <div th:each="agendamento : ${agendamentos}" >
+        <div class="modal fade" th:id="'prestadorInfo' + ${agendamento?.id}" tabindex="-1" role="dialog" aria-labelledby="infoPrestadorModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Informações do prestador</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Nome: <strong th:text="${agendamento.prestador.nome}"></strong></p>
+                        <p>Email: <strong th:text="${agendamento.prestador.email}"></strong></p>
+                        <p>Descrição Profissional: <strong th:text="${agendamento.prestador?.descricao}"></strong></p>
+                        <p>Taxa de Atendimento por Hora: <strong th:text="${agendamento.prestador?.taxaPorHora}"></strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal dados cliente -->
 
 </div>
 
