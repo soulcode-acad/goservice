@@ -8,9 +8,8 @@
 <main id="content" class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
     <div style="width: 22rem">
         <form method="post" th:action="@{/auth/cadastro}">
-            <div class="d-flex justify-content-center align-items-center">
-            <img th:src="@{/assets/img/logos/2.png}" width="200px">
-            </div>
+            <h1 class="h3 mb-3 fw-normal text-center">Cadastre-se | GoService</h1>
+
             <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
             <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
@@ -33,15 +32,11 @@
                 </label>
             </div>
 
-            <button class="btn btn-primary w-100 py-2" type="submit" id="btn-confirm" disabled data-bs-toggle="tooltip" data-bs-placement="top"
-                    data-bs-custom-class="custom-tooltip"
-                    data-bs-title="Clique aqui para confirmar seu cadastro">Confirmar</button>
+            <button class="btn btn-primary w-100 py-2" type="submit" id="btn-confirm" disabled>Confirmar</button>
         </form>
         <div class="mt-3 d-flex gap-3 flex-wrap">
-            <a href="/" class="btn btn-light btn-sm text-primary flex-grow-1" data-bs-toggle="tooltip" data-bs-placement="top"
-               data-bs-custom-class="custom-tooltip"
-               data-bs-title="Volte para a página principal">
-                Página Principal<i class="bi bi-house-fill ms-2"></i>
+            <a href="/" class="btn btn-light btn-sm text-primary flex-grow-1">
+                Página Principal <i class="bi bi-house-fill ms-2"></i>
             </a>
         </div>
     </div>

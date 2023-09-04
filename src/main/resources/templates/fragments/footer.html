@@ -3,58 +3,58 @@
 <head>
 </head>
 <body>
-    <footer xmlns:th="http://www.thymeleaf.org" class="rodape shadow p-3" th:fragment="footer">
-        <div class="footer">
-            <div class="container">
-                <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-                    <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 GoService</p>
-        
-                    <a href="/"
-                        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                        <img th:src="@{/assets/img/logos/2.png}" width="200px" class="d-fixed">
-                    </a>
-        
-                    <ul class="nav flex-grow-1 mb-2 mb-md-0 justify-content-end">
-                        <!-- ADM -->
-                        <div class="dropdown me-3" th:if="${#authorization.expression('isAuthenticated() and hasRole(''ROLE_ADMIN'')')}">
-                            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Administrador
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/admin/servicos">Serviços</a></li>
-                                <li><a class="dropdown-item" href="/admin/usuarios">Usuários</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/admin/dashboard">Dashboard</a></li>
-                            </ul>
-                        </div>
-                        <!-- PRESTADOR -->
-                        <div class="dropdown me-3" th:if="${#authorization.expression('isAuthenticated() and hasRole(''ROLE_PRESTADOR'')')}">
-                            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Prestador
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/prestador/dados">Dados Cadastrais</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/prestador/agenda">Agenda de Serviços</a></li>
-                            </ul>
-                        </div>
-                        <!-- CLIENTE -->
-                        <div class="dropdown me-3" th:if="${#authorization.expression('isAuthenticated() and hasRole(''ROLE_CLIENTE'')')}">
-                            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Cliente
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/cliente/dados">Dados Cadastrais</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="/cliente/agendar">Agendar Serviço</a></li>
-                                <li><a class="dropdown-item" href="/cliente/historico">Histórico de Serviços</a></li>
-                            </ul>
-                        </div>
-                    </ul>
-                </footer>
-            </div>
+<footer xmlns:th="http://www.thymeleaf.org" class="rodape shadow p-3" th:fragment="footer">
+    <div class="footer">
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 GoService</p>
+
+                <a href="/"
+                   class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    <h1>GoService</h1>
+                </a>
+
+                <ul class="nav flex-grow-1 mb-2 mb-md-0 justify-content-end">
+                    <!-- ADM -->
+                    <div class="dropdown me-3" th:if="${#authorization.expression('isAuthenticated() and hasRole(''ROLE_ADMIN'')')}">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Administrador
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/admin/servicos">Serviços</a></li>
+                            <li><a class="dropdown-item" href="/admin/usuarios">Usuários</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/admin/dashboard">Dashboard</a></li>
+                        </ul>
+                    </div>
+                    <!-- PRESTADOR -->
+                    <div class="dropdown me-3" th:if="${#authorization.expression('isAuthenticated() and hasRole(''ROLE_PRESTADOR'')')}">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Prestador
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/prestador/dados">Dados Cadastrais</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/prestador/agenda">Agenda de Serviços</a></li>
+                        </ul>
+                    </div>
+                    <!-- CLIENTE -->
+                    <div class="dropdown me-3" th:if="${#authorization.expression('isAuthenticated() and hasRole(''ROLE_CLIENTE'')')}">
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Cliente
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/cliente/dados">Dados Cadastrais</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/cliente/agendar">Agendar Serviço</a></li>
+                            <li><a class="dropdown-item" href="/cliente/historico">Histórico de Serviços</a></li>
+                        </ul>
+                    </div>
+                </ul>
+            </footer>
         </div>
-    </footer>
-    
+    </div>
+</footer>
+
 </body>
 </html>
