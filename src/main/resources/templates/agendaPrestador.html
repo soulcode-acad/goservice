@@ -19,6 +19,16 @@
 
                 <table class="table align-middle w-100">
                     <thead>
+
+                    <form method="post" th:action="@{/prestador/agenda/buscarPorData}">
+                        <div class="d-flex w-100 gap-3 ">
+                            <input type="date" class="form-control" name="dataInicio" id="dataInicio">
+                            <input type="date" class="form-control" name="dataFim" id="dataFim">
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary mt-1 me-2 mb-3 mt-2"><i class="bi bi-search"></i></button>
+                        <a class="btn btn-outline-danger mt-1 mb-3 mt-2" href="/prestador/agenda"><i class="bi bi-arrow-clockwise"></i></a>
+                    </form>
+
                     <tr>
                         <th>Cliente</th>
                         <th>Especialidade</th>
@@ -30,7 +40,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="agendamento : ${agendamentos}">
+                    <tr th:each="agendamento : ${agendamentos}" th:if="${agendamentosPorData == null}">
                         <td class=" fw-medium text-primary botao-abrir-especificacoes"  style="cursor: pointer; " data-bs-toggle="modal"  th:data-bs-target="'#clienteInfo' + ${agendamento?.id}">
                             <span th:text="${agendamento.cliente.nome}" class=" mr-1 "> </span>
                             <i class="bi bi-clipboard "></i>
@@ -50,6 +60,28 @@
                             </button>
                         </td>
                     </tr>
+
+                    <tr th:each="agendamentoData : ${agendamentosPorData}" th:if="${agendamentosPorData != null}">
+                        <td class=" fw-medium text-primary botao-abrir-especificacoes"  style="cursor: pointer; " data-bs-toggle="modal"  th:data-bs-target="'#clienteInfo' + ${agendamentoData?.id}">
+                            <span th:text="${agendamentoData.cliente.nome}" class=" mr-1 "> </span>
+                            <i class="bi bi-clipboard "></i>
+                        </td>
+                        <td th:text="${agendamentoData.servico.nome}"></td>
+                        <td th:text="${agendamentoData.data}"></td>
+                        <td th:text="${agendamentoData.hora}"></td>
+                        <td th:text="${agendamentoData.statusAgendamento.descricao}"></td>
+                        <td>
+                            <button class="btn btn-danger" style="width: 8rem" th:disabled="${not agendamentoData.isCancelable()}" data-bs-toggle="modal" th:data-bs-target="'#cancelModal' + ${agendamentoData.id}">
+                                Cancelar <i class="bi bi-x-square-fill ms-2"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" style="width: 8rem" th:disabled="${not agendamentoData.isConfirmable()}" data-bs-toggle="modal" th:data-bs-target="'#confirmModal' + ${agendamentoData.id}">
+                                Confirmar <i class="bi bi-check-square-fill ms-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -120,6 +152,34 @@
     </div>
 
     <!-- /.modal info Clientes -->
+
+    <!-- Modal info Clientes -->
+    <div th:each="agendamentoData : ${agendamentosPorData}" >
+        <div class="modal fade" th:id="'clienteInfo' + ${agendamentoData?.id}" tabindex="-1" role="dialog" aria-labelledby="infoClienteModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel1">Informações do cliente</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Nome: <strong th:text="${agendamentoData.cliente.nome}"></strong></p>
+                        <p>Email: <strong th:text="${agendamentoData.cliente.email}"></strong></p>
+                        <p>Telefone: <strong th:text="${agendamentoData?.cliente.telefone}"></strong></p>
+                        <p>Data de Nascimento: <strong th:text="${agendamentoData?.cliente.dataNascimento}"></strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /.modal info Clientes -->
+
+
+
 </div>
 
 <footer id="rodape">
