@@ -31,11 +31,11 @@ public class Prestador extends Usuario{
         setPerfil(Perfil.PRESTADOR);
     }
 
-    public Prestador(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado) {
-        super(id, nome, email, senha, perfil, habilitado);
+    public Prestador(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, Endereco endereco) {
+        super(id, nome, email, senha, perfil, habilitado, endereco);
     }
-    public Prestador(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, String descricao, Float taxaPorHora, List<Servico> especialidades) {
-        super(id, nome, email, senha, perfil, habilitado);
+    public Prestador(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, String descricao, Float taxaPorHora, List<Servico> especialidades, Endereco endereco) {
+        super(id, nome, email, senha, perfil, habilitado,endereco);
         this.descricao = descricao;
         this.taxaPorHora = taxaPorHora;
         this.especialidades = especialidades;

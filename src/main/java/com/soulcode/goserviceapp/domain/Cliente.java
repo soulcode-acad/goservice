@@ -3,6 +3,7 @@ package com.soulcode.goserviceapp.domain;
 import com.soulcode.goserviceapp.domain.enums.Perfil;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -19,14 +20,14 @@ public class Cliente extends Usuario{
         super();
         setPerfil(Perfil.CLIENTE);
     }
-    public Cliente(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, String telefone, String cpf, LocalDate dataNascimento) {
-        super(id, nome, email, senha, perfil, habilitado);
+    public Cliente(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, String telefone, String cpf, LocalDate dataNascimento, Endereco endereco) {
+        super(id, nome, email, senha, perfil, habilitado, endereco);
         this.telefone = telefone;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
     }
-    public Cliente(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado) {
-        super(id, nome, email, senha, perfil, habilitado);
+    public Cliente(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, Endereco endereco) {
+        super(id, nome, email, senha, perfil, habilitado, endereco);
     }
 
     public String getTelefone() {
@@ -52,6 +53,7 @@ public class Cliente extends Usuario{
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+
 
     @Override
     public boolean equals(Object o) {
