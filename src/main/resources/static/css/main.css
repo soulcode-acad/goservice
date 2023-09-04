@@ -27,24 +27,13 @@
     width: 95px;
 }
 
-.cards{
+.cardsHome{
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 15px;
-    padding: 40px;
-    gap: 30px;
-}
-
-.btn-ht {
-    margin-left: 5px;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-}
-
-.card-text{
-    margin-bottom: 50px;
+    padding: 20px;
+    gap: 40px;
 }
