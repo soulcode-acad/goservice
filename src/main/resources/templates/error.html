@@ -1,0 +1,16 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+    <title>Ocorreu um erro</title>
+</head>
+<body>
+
+<main id="content" class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <img th:src="@{/assets/img/errors/erroGenerico.jpg}" width="300px">
+    <h1>Acorreu um erro</h1>
+    <p>erro</p>
+    <a href="/" type="button" class="btn btn-outline-primary me-3">Voltar para home</a>
+</main>
+
+</body>
+</html>
