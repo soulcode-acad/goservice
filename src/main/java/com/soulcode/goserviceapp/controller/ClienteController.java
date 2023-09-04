@@ -89,9 +89,14 @@ public class ClienteController {
             Authentication authentication,
             RedirectAttributes attributes) {
         try {
+            Prestador prestador = prestadorService.findById(prestadorId);
+            if(!agendamentoService.isHorarioDisponivel(prestador, data, hora)) {
+                throw new ConflitoHorarioException("Indisponível: O prestador já possui um agendamento nesse horário.");
+            }
+            System.out.println("passou por aqui");
             agendamentoService.create(authentication, servicoId, prestadorId, data, hora);
             attributes.addFlashAttribute("successMessage", "Agendamento realizado com sucesso. Aguardando confirmação.");
-        } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException | ServicoNaoEncontradoException ex) {
+        } catch (UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException | ServicoNaoEncontradoException | ConflitoHorarioException ex) {
             attributes.addFlashAttribute("errorMessage", ex.getMessage());
         } catch (Exception ex) {
             attributes.addFlashAttribute("errorMessage", "Erro ao finalizar agendamento.");
