@@ -12,6 +12,7 @@
         <h2>Dashboard</h2>
 
         <div class="card w-100 mt-5">
+            <h3 class="card-header">Autenticações</h3>
             <div class="card-body">
 
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
@@ -32,6 +33,38 @@
                         <td th:text="${log?.nome}"></td>
                         <td th:text="${log?.email}"></td>
                         <td th:text="${log?.dataLog}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card w-100 mt-5">
+            <h3 class="card-header">Agendamentos</h3>
+            <div class="card-body">
+
+                <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
+                <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+
+                <table class="table w-100">
+                    <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Prestador</th>
+                        <th>Serviço</th>
+                        <th>Status do Agendamento</th>
+                        <th>Data do Agendamento</th>
+                        <th>Hora do agendamento</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="log : ${logsAgendamento}">
+                        <td th:text="${log?.cliente}"></td>
+                        <td th:text="${log?.prestador}"></td>
+                        <td th:text="${log?.servico}"></td>
+                        <td th:text="${log?.statusAgendamento}"></td>
+                        <td th:text="${log?.data}"></td>
+                        <td th:text="${log?.hora}"></td>
                     </tr>
                     </tbody>
                 </table>

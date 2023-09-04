@@ -30,3 +30,14 @@
 .grafico {
     margin-top: 50px;
 }
+
+.cardsHome{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 20px;
+    gap: 40px;
+}
