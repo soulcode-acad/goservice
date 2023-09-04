@@ -49,10 +49,7 @@ public class AgendamentoService {
         agendamento.setCliente(cliente);
         agendamento.setPrestador(prestador);
         agendamento.setServico(servico);
-        try{agendamento.setData(data);}
-        catch(DataInvalidaException e) {
-        e.getMessage();
- }
+        agendamento.setData(data);
         agendamento.setHora(hora);
 
         return agendamentoRepository.save(agendamento);

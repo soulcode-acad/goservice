@@ -1,11 +1,18 @@
-const dataAtual = new Date().toISOString().split('T')[0];
-document.getElementById('data').min = dataAtual;
+var dataAtual = new Date().toISOString().split('T')[0];
+document.getElementById("data").min = dataAtual;
 
-var dataHoraAtual = new Date().toISOString().slice(0, 16);
-document.getElementById("data-hora").min = dataHoraAtual;
-function atualizarDataHoraAtual() {
-var campoDataHora = document.getElementById("data-hora");
- campoDataHora.value = dataHoraAtual;
+
+function validarHorario() {
+ var dataNova = document.getElementById("data").value;
+ var horaSelecionada = document.getElementById("hora").value;
+ var horaAtual = new Date().toLocaleTimeString('en-US', {hour12: false});
+
+ if (horaSelecionada < horaAtual && dataNova <= dataAtual) {
+  alert("Por favor, selecione um horário válido.");
+  document.getElementById("hora").value = horaAtual;
  }
- window.addEventListener("load", atualizarDataHoraAtual);
+}
+
+document.getElementById("hora").addEventListener("change", validarHorario);
+
 
