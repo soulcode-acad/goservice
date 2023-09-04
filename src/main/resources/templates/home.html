@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
 <head>
     <link th:src="@{/resources/static/js/script.js}">
 
@@ -7,17 +8,26 @@
 </head>
 <body>
 <main id="content">
+
     <div th:replace="fragments/header :: header" class="head"></div>
   <div class="carrossel-banner">
+
+
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
 
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                        aria-label="Slide 6"></button>
 
             </div>
             <div class="carousel-inner">
@@ -40,81 +50,133 @@
                     <img th:src="@{/assets/img/banners/6.png}" class="d-block w-100" alt="...">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
     </div>
-    <div style="display:flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;" class="cards">
-        <div class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
-            <img th:src="@{/assets/img/banners/1.png}" class="card-img-top" alt="...">
+    <div style="display:flex;flex-wrap: wrap;align-items: center; justify-content: center;" class="cards">
+
+        <div class="card"
+             style="width: 20rem;margin:10px 20px;display: inline-block;height: 620px; text-align: justify">
+            <img th:src="@{/assets/img/prormos/1.png}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Manutenção</h5>
-                <p class="card-text"> Um prestador de serviços de manutenção é um profissional especializado em cuidar da conservação, reparo e ajustes em equipamentos, sistemas ou instalações. </p>
-                <a href="#" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
-                   data-bs-custom-class="custom-tooltip"
-                   data-bs-title="Agende um tecnico de manutenção especializado em cuidar da conservação">Agende aqui</a>
+
+
+                <h5 class="card-title">Seja Go Service</h5>
+                <p class="card-text"> A maior plataforma de autônomos do Brasil, unindo talento e demanda em um só
+                    lugar, conectando profissionais e impulsionando o sucesso. </p>
+                <div class="d-flex w-100 justify-content-center mt-auto">
+                    <a href="/auth/cadastro" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Seja Go Service e venha conosco!">Cadraste-se</a></div>
+
             </div>
         </div>
-        <div   class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
-            <img th:src="@{/assets/img/banners/2.png}" class="card-img-top" alt="...">
+        <div class="card" style="width: 20rem;margin:10px 20px;display: inline-block;height: 620px;text-align: justify">
+            <img th:src="@{/assets/img/prormos/2.png}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Mecânico</h5>
-                <p class="card-text">Um prestador de serviços mecânico é um profissional especializado em realizar reparos, manutenção e ajustes em veículos automotores, máquinas ou equipamentos que envolvem componentes mecânicos. </p>
-                <a href="#" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
-                   data-bs-custom-class="custom-tooltip"
-                   data-bs-title="Agende um mecânico especializado em reparos">Agende aqui</a>
+
+
+                <h5 class="card-title">Go Service</h5>
+                <p class="card-text">Seja um profissional Go Service, expanda seu negócio com nosso apoio, alcance novos
+                    clientes e construa reputação sólida. </p>
+                <div class="d-flex w-100 justify-content-center mt-auto">
+                    <a href="/auth/cadastro" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Expanda seu negócio com nosso apoio">Cadraste-se</a></div>
+
             </div>
         </div>
-        <div class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
-            <img th:src="@{/assets/img/banners/3.png}" class="card-img-top" alt="...">
+        <div class="card" style="width:20rem;margin:10px 20px;display: inline-block;height: 620px; text-align: justify">
+            <img th:src="@{/assets/img/prormos/3.png}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Cuidador de idosos</h5>
-                <p class="card-text">Um prestador de serviços cuidador de idosos é um profissional dedicado ao cuidado e assistência de pessoas idosas que necessitam de ajuda em suas atividades diárias devido a limitações físicas, cognitivas ou de saúde. </p>
-                <a href="#" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
-                   data-bs-custom-class="custom-tooltip"
-                   data-bs-title="Agende um cuidador de idosos">Agende aqui</a>
+
+                <h5 class="card-title">Aulas Particulares</h5>
+                <p class="card-text">Invista em seu aprendizado com confiança. Faça aulas particulares com professores
+                    especializados a partir de apenas R$49,90. </p>
+                <div class="d-flex w-100 justify-content-center mt-auto">
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um professor especializado">Contratar</a></div>
+
             </div>
         </div>
-        <div class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
-            <img th:src="@{/assets/img/banners/4.png}" class="card-img-top" alt="...">
+        <div class="card" style="width: 20rem;margin:20px 20px;display: inline-block;height: 620px;text-align: justify">
+            <img th:src="@{/assets/img/prormos/4.png}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Go Agent</h5>
-                <p class="card-text">Um prestador de serviços é um profissional ou empresa que oferece uma ampla gama de serviços para atender às necessidades de seus clientes ou clientes. </p>
-                <a href="#" class="btn btn-primary"data-bs-toggle="tooltip" data-bs-placement="top"
-                   data-bs-custom-class="custom-tooltip"
-                   data-bs-title="Agende um GoAgent especializado em diversos serviços ">Agende aqui</a>
+
+                <h5 class="card-title">Go Agents</h5>
+                <p class="card-text">Contrate os Go Agents: especialistas em serviços de todas as áreas, prontos para
+                    atender às suas necessidades com excelência. </p>
+                <div class="d-flex w-100 justify-content-center mt-auto">
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um especialista em diversas áreas">Contratar</a></div>
+
             </div>
         </div>
-        <div class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
-            <img th:src="@{/assets/img/banners/5.png}" class="card-img-top" alt="...">
+        <div class="card"
+             style="width: 20rem;margin:10px 20px;display: inline-block;height: 650px; text-align: justify">
+            <img th:src="@{/assets/img/prormos/5.png}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title"> Seja um Go Agent</h5>
-                <p class="card-text">"Faça parte da nossa equipe de prestadores de serviços e transforme suas habilidades em oportunidades de sucesso! Junte-se a nós e alcance novos horizontes profissionais."</p>
-                <a href="#" class="btn btn-primary"data-bs-toggle="tooltip" data-bs-placement="top"
-                   data-bs-custom-class="custom-tooltip"
-                   data-bs-title="Faça parte da nossa equipe!">Cadastre-se aqui</a>
+
+                <h5 class="card-title">Personal Shopper</h5>
+                <p class="card-text">Personal shopper é um profissional que presta consultoria em compras, auxiliando a
+                    pessoa na escolha e compra de produtos. Esse serviço pode ser presencial ou online. </p>
+                <div class="d-flex w-100 justify-content-center mt-auto">
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um personal shopper sendo presencial ou online">Contratar</a></div>
+
             </div>
         </div>
-        <div class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
-            <img th:src="@{/assets/img/banners/6.png}" class="card-img-top" alt="...">
+        <div class="card" style="width: 20rem;margin:10px 20px;display: inline-block;height: 650px;text-align: justify">
+            <img th:src="@{/assets/img/prormos/6.png}" class="card-img-top" alt="...">
+                <h5 class="card-title">Social Media</h5>
+                <p class="card-text">O social media gerencia perfis, monitora resultados, agenda posts e cria conteúdo
+                    para atrair seguidores em redes sociais. Conforme o perfil do cliente que deseja alcançar.</p>
+                <div class="d-flex w-100 justify-content-center">
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um social media para gerenciar seus perfis">Contratar</a></div>
+            </div>
+        </div>
+        <div class="card" style="width: 20rem;margin:10px 20px;display: inline-block;height: 650px;text-align: justify">
+            <img th:src="@{/assets/img/prormos/7.png}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Seja Cliente Go Service</h5>
-                <p class="card-text">"Cadastre-se agora e aproveite um desconto exclusivo de 50% no seu primeiro serviço! Economia garantida, qualidade assegurada."</p>
-                <a href="#" class="btn btn-primary"data-bs-toggle="tooltip" data-bs-placement="top"
-                   data-bs-custom-class="custom-tooltip"
-                   data-bs-title="Aproveite nosso desconto exclusivo de 50%">Cadastre-se aqui</a>
+                <h5 class="card-title">Personal Assistant</h5>
+                <p class="card-text">O Personal Assistant ajuda pessoas ocupadas com tarefas cotidianas,
+                    desde compras até gestão de agenda e organização. O Personal Assistant é treinado para a
+                    execução. </p>
+                <div class="d-flex w-100 justify-content-center mt-auto">
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um assistente pessoal para te ajudar com tarefas cotidianas">Contratar</a></div>
+            </div>
+        </div>
+        <div class="card" style="width: 20rem;margin:10px 20px;display: inline-block;height: 650px;text-align: justify">
+            <img th:src="@{/assets/img/prormos/8.png}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Advogado</h5>
+                <p class="card-text">A importância do advogado em contratos: garantia de legalidade e segurança.
+                    Contrate um profissional experiente. Contrate um experiente para tranquilidade."</p>
+                <div class="d-flex w-100 justify-content-center mt-auto">
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um advogado">Contratar</a></div>
+
             </div>
         </div>
     </div>
+    <div th:replace="fragments/footer :: footer"></div>
 </main>
 </body>
 </html>
