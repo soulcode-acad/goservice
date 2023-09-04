@@ -1,10 +1,7 @@
 package com.soulcode.goserviceapp.domain;
 
 import com.soulcode.goserviceapp.domain.enums.Perfil;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 
 import java.util.ArrayList;
@@ -18,12 +15,18 @@ public class Prestador extends Usuario{
     @Min(value = 10, message = "O valor minimo de taxa cobrada por hora é 10.")
     private Float taxaPorHora;
 
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
+
+
     @ManyToMany
     @JoinTable(
             name = "prestadores_servicos",
             joinColumns = @JoinColumn(name = "prestador_id"),
             inverseJoinColumns = @JoinColumn(name = "servico_id")
     )
+
     private List<Servico> especialidades;
 
     public Prestador(){

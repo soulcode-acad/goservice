@@ -64,7 +64,7 @@ public class AdministradorController {
     }
 
     @GetMapping(value = "/servicos/editar/{id}")
-    public ModelAndView editService(@PathVariable Long id) {
+    public ModelAndView editService(Long id) {
         ModelAndView mv = new ModelAndView("editarServico");
         try {
             Servico servico = servicoService.findById(id);
