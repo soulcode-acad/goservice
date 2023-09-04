@@ -6,7 +6,6 @@ import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.domain.enums.StatusAgendamento;
 import com.soulcode.goserviceapp.repository.AgendamentoRepository;
-import com.soulcode.goserviceapp.service.exceptions.AgendamentoNaoEncontradoException;
 import com.soulcode.goserviceapp.service.exceptions.StatusAgendamentoImutavelException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -41,8 +40,6 @@ import java.util.Optional;
         }
 
 
-<<<<<<< HEAD
-
 
 
         public Agendamento create(Authentication authentication, Long servicoId, Long prestadorId, LocalDate data, LocalTime hora) {
@@ -62,11 +59,9 @@ import java.util.Optional;
 
         
 
-=======
-        return agendamentoRepository.save(agendamento);
-    }
+
+
     @Cacheable(cacheNames = "redisCache")
->>>>>>> 8392d4d45b4bc4d077a20ec42a1af6134cc8ad6f
     public List<Agendamento> findByCliente(Authentication authentication){
         System.err.println("BUSCANDO AGENDAMENTOS CLIENTE NO BANCO...");
         Cliente cliente = clienteService.findAuthenticated(authentication);

@@ -1,6 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
 <head>
+    <link th:src="@{/resources/static/js/script.js}">
     <title>Dados Cadastrais | GoService</title>
 </head>
 <body>
@@ -46,7 +47,9 @@
                         <div class="form-text"></div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
+                    <button type="submit" class="btn btn-primary"data-bs-toggle="tooltip" data-bs-placement="top"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Clique aqui para salvar seus dados cadastrais">Salvar <i class="bi bi-save2 ms-2"></i></button>
                 </form>
             </div>
         </div>

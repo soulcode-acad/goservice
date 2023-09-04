@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
 <head>
+    <link th:src="@{/resources/static/js/script.js}">
     <meta charset="UTF-8">
     <title>Editar Serviço</title>
 </head>
@@ -47,7 +48,9 @@
                             <option value="Treinamento">Treinamento</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
+                    <button type="submit" class="btn btn-primary"data-bs-toggle="tooltip" data-bs-placement="top"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Salve a Edição dos serviços">Salvar <i class="bi bi-save2 ms-2"></i></button>
                 </form>
             </div>
         </div>

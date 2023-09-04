@@ -1,6 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
 <head>
+    <link th:src="@{/resources/static/js/script.js}">
     <title>Alterar Senha | GoService</title>
 </head>
 <body>
@@ -29,7 +30,9 @@
                         <div class="form-text"></div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Alterar <i class="bi bi-pencil-fill ms-2"></i></button>
+                    <button type="submit" class="btn btn-primary"data-bs-toggle="tooltip" data-bs-placement="top"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Confirmar alteração de senha">Alterar <i class="bi bi-pencil-fill ms-2"></i></button>
                 </form>
             </div>
         </div>

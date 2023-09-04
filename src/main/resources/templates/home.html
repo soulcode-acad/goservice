@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
 <head>
+    <link th:src="@{/resources/static/js/script.js}">
+
     <title>GoService | Home</title>
 </head>
 <body>
 <main id="content">
-<<<<<<< HEAD
     <div th:replace="fragments/header :: header" class="head"></div>
-=======
-    <div th:replace="fragments/header :: header"></div>
   <div class="carrossel-banner">
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
@@ -60,7 +59,9 @@
             <div class="card-body">
                 <h5 class="card-title">Manutenção</h5>
                 <p class="card-text"> Um prestador de serviços de manutenção é um profissional especializado em cuidar da conservação, reparo e ajustes em equipamentos, sistemas ou instalações. </p>
-                <a href="#" class="btn btn-primary">Agende aqui</a>
+                <a href="#" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                   data-bs-custom-class="custom-tooltip"
+                   data-bs-title="Agende um tecnico de manutenção especializado em cuidar da conservação">Agende aqui</a>
             </div>
         </div>
         <div   class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
@@ -68,7 +69,9 @@
             <div class="card-body">
                 <h5 class="card-title">Mecânico</h5>
                 <p class="card-text">Um prestador de serviços mecânico é um profissional especializado em realizar reparos, manutenção e ajustes em veículos automotores, máquinas ou equipamentos que envolvem componentes mecânicos. </p>
-                <a href="#" class="btn btn-primary">Agende aqui</a>
+                <a href="#" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                   data-bs-custom-class="custom-tooltip"
+                   data-bs-title="Agende um mecânico especializado em reparos">Agende aqui</a>
             </div>
         </div>
         <div class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
@@ -76,7 +79,9 @@
             <div class="card-body">
                 <h5 class="card-title">Cuidador de idosos</h5>
                 <p class="card-text">Um prestador de serviços cuidador de idosos é um profissional dedicado ao cuidado e assistência de pessoas idosas que necessitam de ajuda em suas atividades diárias devido a limitações físicas, cognitivas ou de saúde. </p>
-                <a href="#" class="btn btn-primary">Agende aqui</a>
+                <a href="#" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                   data-bs-custom-class="custom-tooltip"
+                   data-bs-title="Agende um cuidador de idosos">Agende aqui</a>
             </div>
         </div>
         <div class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
@@ -84,7 +89,9 @@
             <div class="card-body">
                 <h5 class="card-title">Go Agent</h5>
                 <p class="card-text">Um prestador de serviços é um profissional ou empresa que oferece uma ampla gama de serviços para atender às necessidades de seus clientes ou clientes. </p>
-                <a href="#" class="btn btn-primary">Agende aqui</a>
+                <a href="#" class="btn btn-primary"data-bs-toggle="tooltip" data-bs-placement="top"
+                   data-bs-custom-class="custom-tooltip"
+                   data-bs-title="Agende um GoAgent especializado em diversos serviços ">Agende aqui</a>
             </div>
         </div>
         <div class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
@@ -92,7 +99,9 @@
             <div class="card-body">
                 <h5 class="card-title"> Seja um Go Agent</h5>
                 <p class="card-text">"Faça parte da nossa equipe de prestadores de serviços e transforme suas habilidades em oportunidades de sucesso! Junte-se a nós e alcance novos horizontes profissionais."</p>
-                <a href="#" class="btn btn-primary">Cadastre-se aqui</a>
+                <a href="#" class="btn btn-primary"data-bs-toggle="tooltip" data-bs-placement="top"
+                   data-bs-custom-class="custom-tooltip"
+                   data-bs-title="Faça parte da nossa equipe!">Cadastre-se aqui</a>
             </div>
         </div>
         <div class="card" style="width: 25rem;margin:10px 20px;display: inline-block;height: 450px;">
@@ -100,12 +109,12 @@
             <div class="card-body">
                 <h5 class="card-title">Seja Cliente Go Service</h5>
                 <p class="card-text">"Cadastre-se agora e aproveite um desconto exclusivo de 50% no seu primeiro serviço! Economia garantida, qualidade assegurada."</p>
-                <a href="#" class="btn btn-primary">Cadastre-se aqui</a>
+                <a href="#" class="btn btn-primary"data-bs-toggle="tooltip" data-bs-placement="top"
+                   data-bs-custom-class="custom-tooltip"
+                   data-bs-title="Aproveite nosso desconto exclusivo de 50%">Cadastre-se aqui</a>
             </div>
         </div>
     </div>
->>>>>>> 454fb5e675ee8a88a930420b543c6bfe9be74c01
 </main>
-
 </body>
 </html>

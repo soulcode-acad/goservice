@@ -1,6 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
 <head>
+    <link th:src="@{/resources/static/js/script.js}">
     <title>Agenda | GoService</title>
 </head>
 <body>
@@ -39,12 +40,16 @@
                         <td th:text="${agendamento.hora}"></td>
                         <td th:text="${agendamento.statusAgendamento.descricao}"></td>
                         <td>
-                            <button class="btn btn-danger" style="width: 8rem" th:disabled="${not agendamento.isCancelable()}" data-bs-toggle="modal" th:data-bs-target="'#cancelModal' + ${agendamento.id}">
+                            <button class="btn btn-danger" style="width: 8rem" th:disabled="${not agendamento.isCancelable()}" data-bs-toggle="modal" th:data-bs-target="'#cancelModal' + ${agendamento.id}"data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-custom-class="custom-tooltip"
+                                    data-bs-title="Cancele o agendamento">
                                 Cancelar <i class="bi bi-x-square-fill ms-2"></i>
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-primary" style="width: 8rem" th:disabled="${not agendamento.isConfirmable()}" data-bs-toggle="modal" th:data-bs-target="'#confirmModal' + ${agendamento.id}">
+                            <button class="btn btn-primary" style="width: 8rem" th:disabled="${not agendamento.isConfirmable()}" data-bs-toggle="modal" th:data-bs-target="'#confirmModal' + ${agendamento.id}"data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-custom-class="custom-tooltip"
+                                    data-bs-title="Confirme o agendamento">
                                 Confirmar <i class="bi bi-check-square-fill ms-2"></i>
                             </button>
                         </td>
@@ -77,7 +82,9 @@
                         <p th:text="${agendamento.cliente.dataNascimento}"></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Feche o agendamento">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -97,8 +104,12 @@
                     </div>
                     <form class="modal-footer" method="post" th:action="@{/prestador/agenda/cancelar}">
                         <input type="hidden" name="agendamentoId" th:value="${agendamento.id}">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Volte a ação anterior">Voltar</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal"data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Cancele o agendamento de serviço">Cancelar</button>
                     </form>
                 </div>
             </div>
@@ -117,8 +128,13 @@
                     </div>
                     <form class="modal-footer" method="post" th:action="@{/prestador/agenda/confirmar}">
                         <input type="hidden" name="agendamentoId" th:value="${agendamento.id}">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Confirmar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Volte a ação anterior">Voltar</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Confirme o Agendamento do seu serviço">Confirmar</button>
+
                     </form>
                 </div>
             </div>

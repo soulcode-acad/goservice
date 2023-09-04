@@ -44,12 +44,18 @@
                     </ul>
                 </div>
                 <!-- Link para Dúvidas Frequentes (Acessível a todos) -->
-                <li><a class="nav-link" href="/faq">Dúvidas Frequentes</a></li>
+                <li><a class="nav-link" href="/faq" data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Confira as duvidas frequentes aqui!">>Dúvidas Frequentes</a></li>
             </ul>
 
             <div class="text-end" th:if="${not #authorization.expression('isAuthenticated()')}">
-                <a href="/auth/login" type="button" class="btn btn-outline-primary me-3">Login</a>
-                <a href="/auth/cadastro" type="button" class="btn btn-primary">Cadastre-se</a>
+                <a href="/auth/login" type="button" class="btn btn-outline-primary me-3"data-bs-toggle="tooltip" data-bs-placement="top"
+                   data-bs-custom-class="custom-tooltip"
+                   data-bs-title="Faça aqui o seu login">Login</a>
+                <a href="/auth/cadastro" type="button" class="btn btn-primary"data-bs-toggle="tooltip" data-bs-placement="top"
+                   data-bs-custom-class="custom-tooltip"
+                   data-bs-title="Cadastre-se aqui">Cadastre-se</a>
             </div>
 
             <div class="dropdown text-end" th:if="${#authorization.expression('isAuthenticated()')}">
