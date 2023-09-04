@@ -110,4 +110,8 @@ public class AgendamentoService {
         }
         throw new StatusAgendamentoImutavelException();
     }
+    public Long notificarAgendamentosPendentes(Authentication authentication){
+        Cliente cliente = clienteService.findAuthenticated(authentication);
+        return agendamentoRepository.notificarAgendamentosPendentes(cliente.getEmail());
+    }
 }
