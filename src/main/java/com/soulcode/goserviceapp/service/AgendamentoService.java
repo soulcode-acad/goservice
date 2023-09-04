@@ -1,9 +1,6 @@
 package com.soulcode.goserviceapp.service;
 
-import com.soulcode.goserviceapp.domain.Agendamento;
-import com.soulcode.goserviceapp.domain.Cliente;
-import com.soulcode.goserviceapp.domain.Prestador;
-import com.soulcode.goserviceapp.domain.Servico;
+import com.soulcode.goserviceapp.domain.*;
 import com.soulcode.goserviceapp.domain.enums.StatusAgendamento;
 import com.soulcode.goserviceapp.repository.AgendamentoRepository;
 import com.soulcode.goserviceapp.service.exceptions.StatusAgendamentoImutavelException;
@@ -21,6 +18,9 @@ import java.util.Optional;
     public class AgendamentoService {
         @Autowired
         private AgendamentoRepository agendamentoRepository;
+
+        @Autowired
+        private AgendamentoLogService agendamentoLogService;
 
         @Autowired
         private ServicoService servicoService;
@@ -53,6 +53,15 @@ import java.util.Optional;
             agendamento.setData(data);
             agendamento.setHora(hora);
 
+            AgendamentoLog log = new AgendamentoLog();
+            log.setCliente(cliente);
+            log.setPrestador(prestador);
+            log.setServico(servico);
+            log.setData(data);
+            log.setHora(hora);
+            agendamentoLogService.create(log);
+
+
             return agendamentoRepository.save(agendamento);
         }
 
@@ -80,6 +89,20 @@ import java.util.Optional;
         Agendamento agendamento = findById(id);
         if(agendamento.getStatusAgendamento().equals(StatusAgendamento.AGUARDANDO_CONFIRMACAO)){
             agendamento.setStatusAgendamento(StatusAgendamento.CANCELADO_PELO_PRESTADOR);
+
+
+            Cliente cliente = agendamento.getCliente();
+            Servico servico = agendamento.getServico();
+            LocalDate data = agendamento.getData();
+            LocalTime hora = agendamento.getHora();
+            AgendamentoLog log = new AgendamentoLog();
+            log.setStatusAgendamento(StatusAgendamento.CANCELADO_PELO_PRESTADOR);
+            log.setCliente(cliente);
+            log.setPrestador(prestador);
+            log.setServico(servico);
+            log.setData(data);
+            log.setHora(hora);
+            agendamentoLogService.create(log);
             agendamentoRepository.save(agendamento);
             return;
         }
@@ -91,6 +114,18 @@ import java.util.Optional;
         Agendamento agendamento = findById(id);
         if(agendamento.getStatusAgendamento().equals(StatusAgendamento.AGUARDANDO_CONFIRMACAO)){
             agendamento.setStatusAgendamento(StatusAgendamento.CONFIRMADO);
+            Cliente cliente = agendamento.getCliente();
+            Servico servico = agendamento.getServico();
+            LocalDate data = agendamento.getData();
+            LocalTime hora = agendamento.getHora();
+            AgendamentoLog log = new AgendamentoLog();
+            log.setStatusAgendamento(StatusAgendamento.CONFIRMADO);
+            log.setCliente(cliente);
+            log.setPrestador(prestador);
+            log.setServico(servico);
+            log.setData(data);
+            log.setHora(hora);
+            agendamentoLogService.create(log);
             agendamentoRepository.save(agendamento);
             return;
         }
@@ -102,6 +137,19 @@ import java.util.Optional;
         Agendamento agendamento = findById(id);
         if (agendamento.getStatusAgendamento().equals(StatusAgendamento.AGUARDANDO_CONFIRMACAO)){
             agendamento.setStatusAgendamento(StatusAgendamento.CANCELADO_PELO_CLIENTE);
+
+            Prestador prestador = agendamento.getPrestador();
+            Servico servico = agendamento.getServico();
+            LocalDate data = agendamento.getData();
+            LocalTime hora = agendamento.getHora();
+            AgendamentoLog log = new AgendamentoLog();
+            log.setStatusAgendamento(StatusAgendamento.CANCELADO_PELO_CLIENTE);
+            log.setCliente(cliente);
+            log.setPrestador(prestador);
+            log.setServico(servico);
+            log.setData(data);
+            log.setHora(hora);
+            agendamentoLogService.create(log);
             agendamentoRepository.save(agendamento);
             return;
         }
@@ -113,6 +161,19 @@ import java.util.Optional;
         Agendamento agendamento = findById(id);
         if (agendamento.getStatusAgendamento().equals(StatusAgendamento.CONFIRMADO)){
             agendamento.setStatusAgendamento(StatusAgendamento.CONCLUIDO);
+
+            Prestador prestador = agendamento.getPrestador();
+            Servico servico = agendamento.getServico();
+            LocalDate data = agendamento.getData();
+            LocalTime hora = agendamento.getHora();
+            AgendamentoLog log = new AgendamentoLog();
+            log.setStatusAgendamento(StatusAgendamento.CONCLUIDO);
+            log.setCliente(cliente);
+            log.setPrestador(prestador);
+            log.setServico(servico);
+            log.setData(data);
+            log.setHora(hora);
+            agendamentoLogService.create(log);
             agendamentoRepository.save(agendamento);
             return;
         }
