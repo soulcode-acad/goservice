@@ -1,5 +1,7 @@
 package com.soulcode.goserviceapp.domain;
-import org.springframework.data.annotation.Id;
+
+
+import jakarta.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
@@ -30,7 +32,7 @@ public class UsuarioLog {
         this.perfil = perfil;
     }
 
-    public UsuarioLog (Usuario usuario){
+    public UsuarioLog(Usuario usuario) {
         this.nome = usuario.getNome();
         this.email = usuario.getEmail();
         this.perfil = usuario.getPerfil().getDescricao();
