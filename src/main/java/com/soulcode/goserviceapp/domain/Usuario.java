@@ -2,6 +2,7 @@ package com.soulcode.goserviceapp.domain;
 
 import com.soulcode.goserviceapp.domain.enums.Perfil;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,6 +48,7 @@ public class Usuario implements UserDetails {
         this.perfil=perfil;
         this.habilitado=habilitado;
     }
+
 
     public Long getId() {
         return id;
@@ -95,6 +97,8 @@ public class Usuario implements UserDetails {
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
     }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,5 +1,6 @@
 package com.soulcode.goserviceapp.repository;
 
+import com.soulcode.goserviceapp.domain.Endereco;
 import com.soulcode.goserviceapp.domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -24,4 +25,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     @Query(value = "SELECT u.perfil AS perfil, COUNT(*) AS quantidade FROM usuarios AS u GROUP BY u.perfil", nativeQuery = true)
     List<Usuario> findbyPerfil();
+
+//    @Query (value = "SELECT * FROM endereco JOIN usuario ON ")
+//    List<Endereco> findbyEndereco();
 }
