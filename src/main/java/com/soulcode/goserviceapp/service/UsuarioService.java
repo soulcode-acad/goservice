@@ -14,6 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 @Service
 public class UsuarioService {
 
@@ -36,6 +39,10 @@ public class UsuarioService {
 
     public List<Usuario> findAll(){
         return usuarioRepository.findAll();
+    }
+
+    public Page<Usuario> findAllWithPagination(Pageable pageable) {
+        return usuarioRepository.findAll(pageable);
     }
 
     public Usuario findById(Long id){

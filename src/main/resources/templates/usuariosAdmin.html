@@ -79,6 +79,28 @@
                     </tr>
                     </tbody>
                 </table>
+
+               <div class="d-flex justify-content-center align-items-center mt-4">
+                   <nav class="text-center">
+                       <span class="page-link">Exibindo [[${usuarios.number * usuarios.size + 1}]] - [[${(usuarios.number + 1) * usuarios.size}]] de [[${usuarios.totalElements}]] usuários.</span>
+                       <ul class="pagination">
+
+                           <li class="page-item" th:classappend="${usuarios.hasPrevious()} ? '' : 'disabled'">
+                               <a class="page-link" th:href="@{/admin/usuarios(page=${usuarios.number - 1})}">Anterior</a>
+                           </li>
+
+                           <li th:each="pageNumber : ${#numbers.sequence(0, usuarios.totalPages - 1)}"
+                               th:classappend="${usuarios.number == pageNumber} ? 'active' : ''">
+                               <a class="page-link" th:href="@{/admin/usuarios(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+                           </li>
+
+                           <li class="page-item" th:classappend="${usuarios.hasNext()} ? '' : 'disabled'">
+                               <a class="page-link" th:href="@{/admin/usuarios(page=${usuarios.number + 1})}">Próximo</a>
+                           </li>
+                       </ul>
+                   </nav>
+               </div>
+
             </div>
         </div>
     </main>
