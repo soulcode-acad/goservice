@@ -50,6 +50,74 @@
             </div>
         </div>
 
+        <div>
+            <div class="titulo"></div>
+            <script>
+                let numAdm = 0;
+                let numCliente = 0;
+                let numPrestador = 0;
+                let numTotal;
+                let percentualCliente;
+                let percentualPrestador;
+                let percentualAdm;
+
+            </script>
+            <div class="grafico" th:each="usuario : ${usuarios}">
+                <script th:inline="javascript">
+                    if ([[${usuario.perfil.descricao}]] === "Administrador") {
+                        numAdm++;
+                    } else if ([[${usuario.perfil.descricao}]] === "Cliente") {
+                        numCliente++;
+                    } else {
+                        numPrestador++;
+                    }
+                    numTotal = numAdm + numCliente + numPrestador;
+
+                    console.log("Perfis adm = " + numAdm);
+                    console.log("Perfis cliente = " + numCliente);
+                    console.log("Perfis prestador = " + numPrestador);
+                    console.log("Total = " + numTotal);
+
+                    percentualCliente = (numCliente / numTotal) * 100;
+                    percentualPrestador = (numPrestador / numTotal) * 100;
+                    percentualAdm = (numAdm / numTotal) * 100;
+                </script>
+            </div>
+            <div class="grafico">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+            <script>
+                  const ctx = document.getElementById('myChart');
+
+                  new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                      labels: ['Percentual de Administradores', 'Percentual de Prestadores', 'Percentual de Clientes'],
+                      datasets: [{
+                        label: 'Quantidade de Usuários por Perfil',
+                        data: [percentualAdm.toFixed(2), percentualPrestador.toFixed(2), percentualCliente.toFixed(2)],
+                        backgroundColor: [
+                        'rgba(30, 143, 225, 0.8)',
+                        'rgba(208, 224, 102, 0.8)',
+                        'rgba(80, 208, 88, 0.8)'
+                        ],
+                        borderWidth: 1
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
+                </script>
+            </div>
+
         <div class="card w-100 mt-5">
             <div class="card-body">
                 <h5 class="card-title mb-2">Usuários cadastrados</h5>
@@ -126,6 +194,6 @@
     </div>
     <div th:replace="fragments/footer :: footer"></div>
 </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
