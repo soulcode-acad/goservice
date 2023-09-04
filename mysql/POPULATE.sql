@@ -23,7 +23,7 @@ VALUE ("Administrador", "Ludmila Souza", "ludmila.souza@soulcode.com", "ADMIN", 
 -- POPULATE SERVICOS
 INSERT INTO servicos (categoria, descricao, nome)
 VALUES
-    ('Tecnologia', 'Desenvolvimento de aplicativos web modernos e interativos.', 'Desenvolvimento de Aplicativos Web'),
+    ('Tecnologia', 'Desenvolvimento de aplicativos web moder nos e interativos.', 'Desenvolvimento de Aplicativos Web'),
     ('Tecnologia', 'Desenvolvimento de software personalizado para atender às suas necessidades.', 'Desenvolvimento de Software Personalizado'),
     ('Tecnologia', 'Consultoria em Tecnologia da Informação para orientar seus projetos.', 'Consultoria em Tecnologia da Informação'),
     ('Desenvolvimento de Sites', 'Criação de sites responsivos e otimizados para dispositivos móveis.', 'Criação de Sites Responsivos'),
@@ -78,6 +78,24 @@ VALUES ("Cliente", "João da Silva", "joao.silva@gmail.com", "CLIENTE", "$2y$10$
 	   ("Cliente", "Thiago Oliveira", "thiago.oliveira@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
 	   ("Cliente", "Larissa Gonçalves", "larissa.goncalves@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwmy", 1);
 
+INSERT INTO usuarios (dtype, nome, email, perfil, senha, habilitado)
+VALUES 
+  ("Cliente", "Isabela Santos", "isabela.santos@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Gustavo Lima", "gustavo.lima@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Luana Oliveira", "luana.oliveira@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Rafaela Souza", "rafaela.souza@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Eduardo Pereira", "eduardo.pereira@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Fernando Silva", "fernando.silva@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Roberto Santos", "roberto.santos@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Carla Ferreira", "carla.ferreira@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "André Oliveira", "andre.oliveira@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Mariana Silva", "mariana.silva@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Felipe Lima", "felipe.lima@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Patrícia Souza", "patricia.souza@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Thiago Rodrigues", "thiago.rodrigues@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Camila Pereira", "camila.pereira@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Lucas Fernandes", "lucas.fernandes@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1),
+  ("Cliente", "Renata Oliveira", "renata.oliveira@gmail.com", "CLIENTE", "$2y$10$p4EGF5amLX3FrffrNXvWuuXr7/PXCbIXw1AAcoJhqFlDgfVlFwUwm", 1);
 
 -- POPULATE PRESTADOR/SERVICOS
 
@@ -99,7 +117,106 @@ VALUES
     (14, 18),
     (15, 19);
 
-DROP TABLE prestadores_servicos;
-DROP TABLE agendamentos;
-DROP TABLE usuarios;
+-- POPULATE AGENDAMENTOS
+
+INSERT INTO agendamentos (cliente_id, prestador_id, servico_id, status_agendamento, data, hora,  data_hora_registro)
+	VALUES 
+    (20, 5, 1, 'AGUARDANDO_CONFIRMACAO', '2023-09-04', '10:00:00', NOW()),
+    (21, 5, 1, 'CONFIRMADO', '2023-09-05', '11:00:00', NOW()),
+    (22, 5, 1, 'CONCLUIDO', '2023-09-06', '12:00:00', NOW()),
+    (23, 5, 1, 'CANCELADO_PELO_CLIENTE', '2023-09-07', '13:00:00', NOW()),
+    (24, 5, 1, 'CANCELADO_PELO_PRESTADOR', '2023-09-08', '14:00:00', NOW());
+    
+INSERT INTO agendamentos (cliente_id, prestador_id, servico_id, status_agendamento, data, hora,  data_hora_registro)
+	VALUES
+    (25, 6, 2, 'AGUARDANDO_CONFIRMACAO', '2023-02-04', '10:00:00', NOW()),
+    (26, 6, 2, 'CONFIRMADO', '2023-02-05', '11:00:00', NOW()),
+    (27, 6, 2, 'CONCLUIDO', '2023-02-06', '12:00:00', NOW()),
+    (28, 6, 2, 'CANCELADO_PELO_CLIENTE', '2023-02-07', '13:00:00', NOW()),
+    (29, 6, 2, 'CANCELADO_PELO_PRESTADOR', '2023-02-08', '14:00:00', NOW()),
+    --
+	(30, 7, 3, 'AGUARDANDO_CONFIRMACAO', '2023-03-04', '10:00:00', NOW()),
+    (31, 7, 3, 'CONFIRMADO', '2023-03-05', '11:00:00', NOW()),
+    (32, 7, 3, 'CONCLUIDO', '2023-03-06', '12:00:00', NOW()),
+    (33, 7, 3, 'CANCELADO_PELO_CLIENTE', '2023-03-07', '13:00:00', NOW()),
+    (34, 7, 3, 'CANCELADO_PELO_PRESTADOR', '2023-03-08', '14:00:00', NOW()),
+    --
+    (30, 7, 3, 'AGUARDANDO_CONFIRMACAO', '2023-03-04', '10:00:00', NOW()),
+    (31, 7, 3, 'CONFIRMADO', '2023-03-05', '11:00:00', NOW()),
+    (32, 7, 3, 'CONCLUIDO', '2023-03-06', '12:00:00', NOW()),
+    (33, 7, 3, 'CANCELADO_PELO_CLIENTE', '2023-03-07', '13:00:00', NOW()),
+    (34, 7, 3, 'CANCELADO_PELO_PRESTADOR', '2023-03-08', '14:00:00', NOW()),
+    --
+    (35, 8, 4, 'AGUARDANDO_CONFIRMACAO', '2023-04-04', '10:00:00', NOW()),
+    (36, 8, 4, 'CONFIRMADO', '2023-04-05', '11:00:00', NOW()),
+    (37, 8, 4, 'CONCLUIDO', '2023-04-06', '12:00:00', NOW()),
+    (38, 8, 4, 'CANCELADO_PELO_CLIENTE', '2023-04-07', '13:00:00', NOW()),
+    (39, 8, 4, 'CANCELADO_PELO_PRESTADOR', '2023-04-08', '14:00:00', NOW()),
+    --
+    (40, 9, 5, 'AGUARDANDO_CONFIRMACAO', '2023-05-04', '10:00:00', NOW()),
+    (41, 9, 5, 'CONFIRMADO', '2023-05-05', '11:00:00', NOW()),
+    (42, 9, 5, 'CONCLUIDO', '2023-05-06', '12:00:00', NOW()),
+    (43, 9, 5, 'CANCELADO_PELO_CLIENTE', '2023-05-07', '13:00:00', NOW()),
+    (44, 9, 5, 'CANCELADO_PELO_PRESTADOR', '2023-05-08', '14:00:00', NOW()),
+    --
+    (45, 10, 6, 'AGUARDANDO_CONFIRMACAO', '2023-06-04', '10:00:00', NOW()),
+    (46, 10, 6, 'CONFIRMADO', '2023-06-05', '11:00:00', NOW()),
+    (47, 10, 6, 'CONCLUIDO', '2023-06-06', '12:00:00', NOW()),
+    (48, 10, 6, 'CANCELADO_PELO_CLIENTE', '2023-06-07', '13:00:00', NOW()),
+    (49, 10, 6, 'CANCELADO_PELO_PRESTADOR', '2023-06-08', '14:00:00', NOW()),
+    --
+    (50, 11, 7, 'AGUARDANDO_CONFIRMACAO', '2023-04-04', '10:00:00', NOW()),
+    (20, 11, 7, 'CONFIRMADO', '2023-04-05', '11:00:00', NOW()),
+    (21, 11, 7, 'CONCLUIDO', '2023-04-06', '12:00:00', NOW()),
+    (22, 11, 7, 'CANCELADO_PELO_CLIENTE', '2023-04-07', '13:00:00', NOW()),
+    (23, 11, 7, 'CANCELADO_PELO_PRESTADOR', '2023-04-08', '14:00:00', NOW()),
+    --
+    (24, 12, 8, 'AGUARDANDO_CONFIRMACAO', '2023-07-04', '10:00:00', NOW()),
+    (25, 12, 8, 'CONFIRMADO', '2023-07-05', '11:00:00', NOW()),
+    (26, 12, 8, 'CONCLUIDO', '2023-07-06', '12:00:00', NOW()),
+    (27, 12, 8, 'CANCELADO_PELO_CLIENTE', '2023-07-07', '13:00:00', NOW()),
+    (28, 12, 8, 'CANCELADO_PELO_PRESTADOR', '2023-07-08', '14:00:00', NOW()),
+    --
+    (29, 13, 9, 'AGUARDANDO_CONFIRMACAO', '2023-08-04', '10:00:00', NOW()),
+    (30, 13, 9, 'CONFIRMADO', '2023-08-05', '11:00:00', NOW()),
+    (31, 13, 9, 'CONCLUIDO', '2023-08-06', '12:00:00', NOW()),
+    (32, 13, 9, 'CANCELADO_PELO_CLIENTE', '2023-08-07', '13:00:00', NOW()),
+    (33, 13, 9, 'CANCELADO_PELO_PRESTADOR', '2023-08-08', '14:00:00', NOW()),
+    --
+    (34, 14, 10, 'AGUARDANDO_CONFIRMACAO', '2023-10-04', '10:00:00', NOW()),
+    (35, 14, 10, 'CONFIRMADO', '2023-10-05', '11:00:00', NOW()),
+    (36, 14, 10, 'CONCLUIDO', '2023-10-06', '12:00:00', NOW()),
+    (37, 14, 10, 'CANCELADO_PELO_CLIENTE', '2023-10-07', '13:00:00', NOW()),
+    (38, 14, 10, 'CANCELADO_PELO_PRESTADOR', '2023-10-08', '14:00:00', NOW()),
+    --
+    (39, 15, 11, 'AGUARDANDO_CONFIRMACAO', '2023-11-04', '10:00:00', NOW()),
+    (40, 15, 11, 'CONFIRMADO', '2023-11-05', '11:00:00', NOW()),
+    (41, 15, 11, 'CONCLUIDO', '2023-11-06', '12:00:00', NOW()),
+    (42, 15, 11, 'CANCELADO_PELO_CLIENTE', '2023-11-07', '13:00:00', NOW()),
+    (43, 15, 11, 'CANCELADO_PELO_PRESTADOR', '2023-11-08', '14:00:00', NOW()),
+    --
+    (44, 16, 12, 'AGUARDANDO_CONFIRMACAO', '2023-01-04', '10:00:00', NOW()),
+    (45, 16, 12, 'CONFIRMADO', '2023-01-05', '11:00:00', NOW()),
+    (46, 16, 12, 'CONCLUIDO', '2023-01-06', '12:00:00', NOW()),
+    (47, 16, 12, 'CANCELADO_PELO_CLIENTE', '2023-01-07', '13:00:00', NOW()),
+    (48, 16, 12, 'CANCELADO_PELO_PRESTADOR', '2023-01-08', '14:00:00', NOW()),
+    --
+	(49, 17, 13, 'AGUARDANDO_CONFIRMACAO', '2023-12-04', '10:00:00', NOW()),
+    (50, 17, 13, 'CONFIRMADO', '2023-12-05', '11:00:00', NOW()),
+    (20, 17, 13, 'CONCLUIDO', '2023-12-06', '12:00:00', NOW()),
+    (21, 17, 13, 'CANCELADO_PELO_CLIENTE', '2023-12-07', '13:00:00', NOW()),
+    (22, 17, 13, 'CANCELADO_PELO_PRESTADOR', '2023-12-08', '14:00:00', NOW()),
+    --
+	(23, 18, 14, 'AGUARDANDO_CONFIRMACAO', '2023-09-15', '10:00:00', NOW()),
+    (24, 18, 14, 'CONFIRMADO', '2023-08-06', '11:00:00', NOW()),
+    (25, 18, 14, 'CONCLUIDO', '2023-07-11', '12:00:00', NOW()),
+    (26, 18, 14, 'CANCELADO_PELO_CLIENTE', '2023-01-12', '13:00:00', NOW()),
+    (27, 18, 14, 'CANCELADO_PELO_PRESTADOR', '2023-01-23', '14:00:00', NOW()),
+    --
+	(28, 19, 15, 'AGUARDANDO_CONFIRMACAO', '2023-12-14', '10:00:00', NOW()),
+    (29, 19, 15, 'CONFIRMADO', '2023-11-15', '11:00:00', NOW()),
+    (30, 19, 15, 'CONCLUIDO', '2023-05-16', '12:00:00', NOW()),
+    (31, 19, 15, 'CANCELADO_PELO_CLIENTE', '2023-04-17', '13:00:00', NOW()),
+    (32, 19, 15, 'CANCELADO_PELO_PRESTADOR', '2023-06-25', '14:00:00', NOW());
+
 
