@@ -34,13 +34,18 @@ public class AdministradorController {
     private UsuarioLogService usuarioLogService;
 
     @GetMapping(value = "/servicos")
-    public ModelAndView servicos() {
+    public ModelAndView servicos(@RequestParam(name = "page", defaultValue = "0") int page) {
         ModelAndView mv = new ModelAndView("servicosAdmin");
+
+        int pageSize = 10;
+
+        Pageable pageable = PageRequest.of(page, pageSize);
+
         try {
-            List<Servico> servicos = servicoService.findAll();
+            Page<Servico> servicos = servicoService.findAllWithPagination(pageable);
             mv.addObject("servicos", servicos);
         } catch (Exception ex) {
-            mv.addObject("errorMessage", "Erro ao buscar dados de serviços.");
+            mv.addObject("errorMessage", "Erro ao buscar dados de usuários.");
         }
         return mv;
     }
