@@ -50,4 +50,14 @@ public class ServicoService {
     public List<Servico> findByPrestadorEmail(String email) {
         return servicoRepository.findByPrestadorEmail(email);
     }
+
+    public List<Servico> totalByPagina(Integer numPagina){
+        if (numPagina<=0){
+            numPagina=(1-1)*10;
+            return servicoRepository.totalByPagina(numPagina);
+        }else {
+            numPagina=(numPagina-1)*10;
+            return servicoRepository.totalByPagina(numPagina);
+        }
+    }
 }

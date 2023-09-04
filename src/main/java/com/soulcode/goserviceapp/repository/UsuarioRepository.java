@@ -27,4 +27,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
             "FROM usuarios\n" +
             "GROUP BY perfil", nativeQuery = true)
     List<Usuario> totalByUsuarioPerfil(String perfil);
+
+    @Query(value="SELECT * FROM usuarios LIMIT ?, 10", nativeQuery = true)
+    List<Usuario> totalByPagina(Integer numPagina);
+
 }

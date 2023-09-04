@@ -95,4 +95,13 @@ public class UsuarioService {
     public List<Usuario> totalByUsuarioPerfil(String perfil) {
         return usuarioRepository.totalByUsuarioPerfil(perfil);
     }
+    public List<Usuario> totalByPagina(Integer numPagina){
+        if (numPagina<=0){
+            numPagina=(1-1)*10;
+            return usuarioRepository.totalByPagina(numPagina);
+        }else {
+            numPagina=(numPagina-1)*10;
+            return usuarioRepository.totalByPagina(numPagina);
+        }
+    }
 }

@@ -20,17 +20,17 @@ select * from endereco;
 insert into usuarios (dtype, nome, email, perfil, senha, habilitado)
 value ("Administrador", "adm1", "adm1@email.com", "ADMIN", "$2a$10$r3r9V682sIhE/61jZjqkauT.08pxrBx.GE1T.yEogN5r8Ly2S8eTK", 1); # 123456
 
- alter table usuarios drop column cidade;
- alter table usuarios drop column logradouro;
- alter table usuarios drop column numero;
- alter table usuarios drop column uf;
- alter table usuarios drop column endereco;
- alter table usuarios drop column endereco_id;
- 
- 
+ -- alter table usuarios drop column cidade;
+ -- alter table usuarios drop column logradouro;
+ -- alter table usuarios drop column numero;
+ -- alter table usuarios drop column uf;
+ -- alter table usuarios drop column endereco;
+ -- alter table usuarios drop column endereco_id;
+
+
 -- POPULATE
-INSERT INTO servicos (categoria, descricao, nome) 
-VALUES 
+INSERT INTO servicos (categoria, descricao, nome)
+VALUES
     ('Limpeza', 'Serviço de limpeza residencial', 'Limpeza Residencial'),
     ('Treinamento', 'Treinamento corporativo em liderança', 'Treinamento em Liderança'),
     ('Saúde', 'Consulta médica de clínico geral', 'Consulta Clínico Geral'),
