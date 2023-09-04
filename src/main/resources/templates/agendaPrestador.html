@@ -108,9 +108,8 @@
                     <div class="modal-body">
                         <p>Nome: <strong th:text="${agendamento.cliente.nome}"></strong></p>
                         <p>Email: <strong th:text="${agendamento.cliente.email}"></strong></p>
-                        <p>Telefone: <strong th:text="${agendamento.cliente?.telefone}"></strong></p>
-                        <p>CPF: <strong th:text="${agendamento.cliente?.cpf}"></strong></p>
-                        <p>Data de Nascimento: <strong th:text="${agendamento.cliente?.dataNascimento}"></strong></p>
+                        <p>Telefone: <strong th:text="${agendamento?.cliente.telefone}"></strong></p>
+                        <p>Data de Nascimento: <strong th:text="${agendamento?.cliente.dataNascimento}"></strong></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
