@@ -19,4 +19,8 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> 
 
     @Query(value = "SELECT * FROM agendamentos WHERE data BETWEEN ? AND ? AND prestador_id = ? ORDER BY data", nativeQuery = true)
     List<Agendamento> findByDataAgendamento(LocalDate dataInicio, LocalDate dataFim, Long prestadorId);
+
+    @Query(value = "SELECT * FROM agendamentos WHERE data BETWEEN ? AND ? AND cliente_id = ? ORDER BY data", nativeQuery = true)
+    List<Agendamento> findByDataHistoricoAgendamento(LocalDate dataInicio, LocalDate dataFim, Long clienteId);
+
 }

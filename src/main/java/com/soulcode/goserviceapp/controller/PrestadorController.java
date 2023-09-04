@@ -124,8 +124,6 @@ public class PrestadorController {
     public String findAgendamentoByData(@RequestParam(required = false) LocalDate dataInicio, @RequestParam(required = false) LocalDate dataFim, Authentication authentication, RedirectAttributes attributes) {
         try {
             List<Agendamento> agendamentos = agendamentoService.findByDataAgendamento(authentication, dataInicio, dataFim);
-            System.out.println(dataInicio);
-            System.out.println(dataFim);
             attributes.addFlashAttribute("agendamentosPorData", agendamentos);
         } catch (UsuarioNaoEncontradoException | UsuarioNaoAutenticadoException e) {
             attributes.addFlashAttribute("errorMessage", e.getMessage());
