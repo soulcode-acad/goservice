@@ -18,4 +18,6 @@ public interface PrestadorRepository extends JpaRepository<Prestador, Long> {
                     " JOIN servicos s ON s.id = p.servico_id" +
                     " WHERE s.id = ?", nativeQuery = true)
     List<Prestador> findByServicoId(Long id);
+
 }
+

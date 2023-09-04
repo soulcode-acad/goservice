@@ -2,12 +2,16 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
       th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
 <head>
+    <link th:src="@{/resources/static/js/script.js}">
+
     <title>GoService | Home</title>
 </head>
 <body>
 <main id="content">
-    <div th:replace="fragments/header :: header"></div>
-    <div class="carrossel-banner">
+
+    <div th:replace="fragments/header :: header" class="head"></div>
+  <div class="carrossel-banner">
+
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -67,7 +71,9 @@
                 <p class="card-text"> A maior plataforma de autônomos do Brasil, unindo talento e demanda em um só
                     lugar, conectando profissionais e impulsionando o sucesso. </p>
                 <div class="d-flex w-100 justify-content-center mt-auto">
-                    <a href="/auth/cadastro" class="btn btn-primary" style="align-self: center">Cadraste-se</a></div>
+                    <a href="/auth/cadastro" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Seja Go Service e venha conosco!">Cadraste-se</a></div>
             </div>
         </div>
         <div class="card" style="width: 20rem;margin:10px 20px;display: inline-block;height: 620px;text-align: justify">
@@ -77,7 +83,9 @@
                 <p class="card-text">Seja um profissional Go Service, expanda seu negócio com nosso apoio, alcance novos
                     clientes e construa reputação sólida. </p>
                 <div class="d-flex w-100 justify-content-center mt-auto">
-                    <a href="/auth/cadastro" class="btn btn-primary" style="align-self: center">Cadraste-se</a></div>
+                    <a href="/auth/cadastro" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Expanda seu negócio com nosso apoio">Cadraste-se</a></div>
             </div>
         </div>
         <div class="card" style="width:20rem;margin:10px 20px;display: inline-block;height: 620px; text-align: justify">
@@ -87,7 +95,9 @@
                 <p class="card-text">Invista em seu aprendizado com confiança. Faça aulas particulares com professores
                     especializados a partir de apenas R$49,90. </p>
                 <div class="d-flex w-100 justify-content-center mt-auto">
-                    <a href="/auth/login" class="btn btn-primary" style="align-self: center">Contratar</a></div>
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um professor especializado">Contratar</a></div>
             </div>
         </div>
         <div class="card" style="width: 20rem;margin:20px 20px;display: inline-block;height: 620px;text-align: justify">
@@ -97,7 +107,9 @@
                 <p class="card-text">Contrate os Go Agents: especialistas em serviços de todas as áreas, prontos para
                     atender às suas necessidades com excelência. </p>
                 <div class="d-flex w-100 justify-content-center mt-auto">
-                    <a href="/auth/login" class="btn btn-primary" style="align-self: center">Contratar</a></div>
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um especialista em diversas áreas">Contratar</a></div>
             </div>
         </div>
         <div class="card"
@@ -108,17 +120,22 @@
                 <p class="card-text">Personal shopper é um profissional que presta consultoria em compras, auxiliando a
                     pessoa na escolha e compra de produtos. Esse serviço pode ser presencial ou online. </p>
                 <div class="d-flex w-100 justify-content-center mt-auto">
-                    <a href="/auth/login" class="btn btn-primary" style="align-self: center">Contratar</a></div>
+
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um personal shopper sendo presencial ou online">Contratar</a></div>
+
             </div>
         </div>
         <div class="card" style="width: 20rem;margin:10px 20px;display: inline-block;height: 650px;text-align: justify">
             <img th:src="@{/assets/img/prormos/6.png}" class="card-img-top" alt="...">
-            <div class="card-body">
                 <h5 class="card-title">Social Media</h5>
                 <p class="card-text">O social media gerencia perfis, monitora resultados, agenda posts e cria conteúdo
                     para atrair seguidores em redes sociais. Conforme o perfil do cliente que deseja alcançar.</p>
                 <div class="d-flex w-100 justify-content-center">
-                    <a href="/auth/login" class="btn btn-primary" style="align-self: center">Contratar</a></div>
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um social media para gerenciar seus perfis">Contratar</a></div>
             </div>
         </div>
         <div class="card" style="width: 20rem;margin:10px 20px;display: inline-block;height: 650px;text-align: justify">
@@ -129,17 +146,25 @@
                     desde compras até gestão de agenda e organização. O Personal Assistant é treinado para a
                     execução. </p>
                 <div class="d-flex w-100 justify-content-center mt-auto">
-                    <a href="/auth/login" class="btn btn-primary" style="align-self: center">Contratar</a></div>
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um assistente pessoal para te ajudar com tarefas cotidianas">Contratar</a></div>
             </div>
         </div>
         <div class="card" style="width: 20rem;margin:10px 20px;display: inline-block;height: 650px;text-align: justify">
             <img th:src="@{/assets/img/prormos/8.png}" class="card-img-top" alt="...">
             <div class="card-body">
+
                 <h5 class="card-title">Advogado</h5>
                 <p class="card-text">A importância do advogado em contratos: garantia de legalidade e segurança.
                     Contrate um profissional experiente. Contrate um experiente para tranquilidade."</p>
                 <div class="d-flex w-100 justify-content-center mt-auto">
-                    <a href="/auth/login" class="btn btn-primary" style="align-self: center">Contratar</a></div>
+
+                    <a href="/auth/login" class="btn btn-primary" style="align-self: center"data-bs-toggle="tooltip" data-bs-placement="top"
+                       data-bs-custom-class="custom-tooltip"
+                       data-bs-title="Contrate um advogado">Contratar</a></div>
+
+
             </div>
         </div>
     </div>

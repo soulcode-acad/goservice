@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface ServicoRepository extends JpaRepository<Servico, Long> {
 
+
     @Query(value =
             "SELECT s.*" +
             " FROM servicos s" +

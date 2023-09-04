@@ -1,6 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
 <head>
+    <link th:src="@{/resources/static/js/script.js}">
     <title>Histórico de Agendamento | GoService</title>
 </head>
 <body>
@@ -37,12 +38,16 @@
                         <td th:text="${agendamento.hora}"></td>
                         <td th:text="${agendamento.statusAgendamento.descricao}"></td>
                         <td>
-                            <button class="btn btn-danger" style="width: 8rem" th:disabled="${not agendamento.isCancelable()}" data-bs-toggle="modal" th:data-bs-target="'#cancelModal' + ${agendamento.id}">
+                            <button class="btn btn-danger" style="width: 8rem" th:disabled="${not agendamento.isCancelable()}" data-bs-toggle="modal" th:data-bs-target="'#cancelModal' + ${agendamento.id}"data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-custom-class="custom-tooltip"
+                                    data-bs-title="Cancele seu agendamento">
                                 Cancelar <i class="bi bi-x-square-fill ms-2"></i>
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-primary" style="width: 8rem" th:disabled="${not agendamento.isRealizable()}" data-bs-toggle="modal" th:data-bs-target="'#completeModal' + ${agendamento.id}">
+                            <button class="btn btn-primary" style="width: 8rem" th:disabled="${not agendamento.isRealizable()}" data-bs-toggle="modal" th:data-bs-target="'#completeModal' + ${agendamento.id}"data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-custom-class="custom-tooltip"
+                                    data-bs-title="Conclua o agendamento">
                                 Concluir <i class="bi bi-check-square-fill ms-2"></i>
                             </button>
                         </td>
@@ -65,8 +70,12 @@
                     </div>
                     <form class="modal-footer" method="post" th:action="@{/cliente/historico/cancelar}">
                         <input type="hidden" name="agendamentoId" th:value="${agendamento.id}">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Volte para a ação anterior">Voltar</button>
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal"data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Cancele o agendamento do serviço">Cancelar</button>
                     </form>
                 </div>
             </div>
@@ -85,8 +94,12 @@
                     </div>
                     <form class="modal-footer" method="post" th:action="@{/cliente/historico/concluir}">
                         <input type="hidden" name="agendamentoId" th:value="${agendamento.id}">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Concluir</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Volte uma ação anterior">Voltar</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"data-bs-toggle="tooltip" data-bs-placement="top"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Conclua o agendamento">Concluir</button>
                     </form>
                 </div>
             </div>
