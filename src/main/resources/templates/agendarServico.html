@@ -18,7 +18,7 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <form method="get" th:action="@{/cliente/agendar}">
+                <form method="get" th:action="@{/cliente/agendar}" class="row g-3 needs-validation" novalidate>
                     <div class="mb-3">
                         <div class="w-100 d-flex gap-3">
                             <select class="form-select" id="especialidade" name="especialidade" required>

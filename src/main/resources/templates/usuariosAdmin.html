@@ -18,21 +18,21 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <form method="post" th:action="@{/admin/usuarios}">
+                <form method="post" th:action="@{/admin/usuarios}" class="row g-3 needs-validation" novalidate>
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
-                        <div class="form-text"></div>
+                        <div class="invalid-feedback">Por favor, digite seu nome</div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
                         <input type="email" class="form-control" id="email" name="email" required>
-                        <div class="form-text"></div>
+                        <div class="invalid-feedback">Por favor, digite seu email</div>
                     </div>
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha<span class="text-danger">*</span></label>
                         <input type="password" class="form-control" id="senha" name="senha" required>
-                        <div class="form-text"></div>
+                        <div class="invalid-feedback">Por favor, digite sua senha</div>
                     </div>
                     <div class="mb-3">
                         <label for="perfil" class="form-label">Perfil<span class="text-danger">*</span></label>
@@ -42,7 +42,7 @@
                             <option value="PRESTADOR">Prestador</option>
                             <option value="ADMIN">Administrador</option>
                         </select>
-                        <div class="form-text"></div>
+                        <div class="invalid-feedback">Por favor, selecione um perfil</div>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>

@@ -18,17 +18,18 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <form method="post" th:action="@{/cliente/dados}">
-                    <input type="hidden" name="id" th:field="*{cliente.id}">
+                <form method="post" th:action="@{/cliente/dados}" class="row g-3 needs-validation" novalidate >
+                    <input type="hidden" name="id" class="form-control" th:field="*{cliente.id}">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="nome" name="nome" th:field="*{cliente.nome}" required>
-                        <div class="form-text"></div>
+                        <div class="invalid-feedback">Por favor, digite seu nome</div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
                         <input type="email" class="form-control" id="email" name="email" th:field="*{cliente.email}" required>
                         <div class="form-text"></div>
+                        <div class="invalid-feedback">Por favor, digite seu email</div>
                     </div>
                     <div class="mb-3">
                         <label for="cpf" class="form-label">Telefone</label>
