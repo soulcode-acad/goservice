@@ -17,16 +17,16 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <form method="post" th:action="@{/auth/password/new}">
+                <form method="post" th:action="@{/auth/password/new}" class="row g-3 needs-validation" novalidate >
                     <div class="mb-3">
                         <label for="senhaAtual" class="form-label">Senha Atual<span class="text-danger">*</span></label>
                         <input type="password" class="form-control" id="senhaAtual" name="senhaAtual" required>
-                        <div class="form-text"></div>
+                        <div class="invalid-feedback"> Por favor, digite sua senha </div>
                     </div>
                     <div class="mb-3">
                         <label for="senhaNova" class="form-label">Senha Nova<span class="text-danger">*</span></label>
                         <input type="password" class="form-control" id="senhaNova" name="senhaNova" required>
-                        <div class="form-text"></div>
+                        <div class="invalid-feedback"> Por favor, repete sua senha </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Alterar <i class="bi bi-pencil-fill ms-2"></i></button>

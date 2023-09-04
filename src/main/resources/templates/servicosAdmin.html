@@ -18,16 +18,16 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <form method="post" th:action="@{/admin/servicos}">
+                <form method="post" th:action="@{/admin/servicos}" class="row g-3 needs-validation" novalidate >
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
-                        <div class="form-text"></div>
+                        <div class="invalid-feedback">Por favor, digite seu nome</div>
                     </div>
                     <div class="mb-3">
                         <label for="descricao" class="form-label">Descrição<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="descricao" name="descricao" required>
-                        <div class="form-text"></div>
+                        <div class="invalid-feedback">Por favor, digite sua descrição</div>
                     </div>
                     <div class="mb-3">
                         <label for="categoria" class="form-label">Categoria<span class="text-danger">*</span></label>
@@ -44,6 +44,7 @@
                             <option value="Saúde">Saúde</option>
                             <option value="Treinamento">Treinamento</option>
                         </select>
+                        <div class="invalid-feedback">Por favor, selecione uma categoria</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
                 </form>
