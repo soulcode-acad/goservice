@@ -104,9 +104,7 @@ public class Agendamento implements Serializable{
     }
 
     public void setData(LocalDate data) {
-          if(data.isBefore(LocalDate.now())){
-                throw new DataInvalidaException();
-            }
+       this.data = data;
     }
 
     public LocalTime getHora() {
