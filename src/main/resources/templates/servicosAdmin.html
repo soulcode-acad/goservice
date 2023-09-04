@@ -82,6 +82,28 @@
                     </tr>
                     </tbody>
                 </table>
+
+                <div class="d-flex justify-content-center align-items-center mt-4">
+                    <nav class="text-center">
+                        <span class="page-link">Exibindo [[${servicos.number * servicos.size + 1}]] - [[${(servicos.number + 1) * servicos.size}]] de [[${servicos.totalElements}]] serviços.</span>
+                        <ul class="pagination">
+
+                            <li class="page-item" th:classappend="${servicos.hasPrevious()} ? '' : 'disabled'">
+                                <a class="page-link" th:href="@{/admin/servicos(page=${servicos.number - 1})}">Anterior</a>
+                            </li>
+
+                            <li th:each="pageNumber : ${#numbers.sequence(0, servicos.totalPages - 1)}"
+                                th:classappend="${servicos.number == pageNumber} ? 'active' : ''">
+                                <a class="page-link" th:href="@{/admin/servicos(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+                            </li>
+
+                            <li class="page-item" th:classappend="${servicos.hasNext()} ? '' : 'disabled'">
+                                <a class="page-link" th:href="@{/admin/servicos(page=${servicos.number + 1})}">Próximo</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
             </div>
         </div>
     </main>
