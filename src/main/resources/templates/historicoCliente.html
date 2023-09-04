@@ -31,7 +31,8 @@
                     </thead>
                     <tbody>
                     <tr th:each="agendamento : ${agendamentos}">
-                        <td th:text="${agendamento.prestador.nome}"></td>
+                       <a href="#prestadorModal"><td th:text="${agendamento.prestador.nome}" data-bs-toggle="modal" class="link-opacity-100-hover btn btn-secondary" popovertarget="my-popover" data-bs-placement="right" data-bs-title="Visualizar dados do prestador" th:data-bs-target="'#prestadorModal' + ${agendamento.prestador.id}"></td></a>
+                        <div popover id="my-popover">Greetings, one and all!</div>
                         <td th:text="${agendamento.servico.nome}"></td>
                         <td th:text="${agendamento.data}"></td>
                         <td th:text="${agendamento.hora}"></td>
@@ -88,6 +89,27 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Concluir</button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para o Prestador -->
+    <div class="modal fade" th:each="agendamento : ${agendamentos}" th:id="'prestadorModal' + ${agendamento.prestador.id}" tabindex="-1" aria-labelledby="prestadorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="prestadorModalLabel">Detalhes do Prestador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Nome do Prestador: <span th:text="${agendamento.prestador.nome}"></span></p>
+                    <p>Email do Prestador: <span th:text="${agendamento.prestador.email}"></span></p>
+                    <p>Descrição do Prestador: <span th:text="${agendamento.prestador.descricao}"></span></p>
+                    <p>Taxa por Hora: <span th:text="${agendamento.prestador.taxaPorHora}"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
