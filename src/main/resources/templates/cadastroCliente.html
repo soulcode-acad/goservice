@@ -8,7 +8,9 @@
 <main id="content" class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
     <div style="width: 22rem">
         <form method="post" th:action="@{/auth/cadastro}">
-            <img th:src="@{/assets/img/logos/2.png}">
+            <div  class="d-flex justify-content-center align-items-center">
+                <img th:src="@{/assets/img/logos/2.png}" width="200px" class="d-fixed">
+            </div>
 
             <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
             <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
