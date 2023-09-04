@@ -16,6 +16,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 @Controller
 @RequestMapping(value = "/admin")
 public class AdministradorController {
@@ -91,10 +95,15 @@ public class AdministradorController {
     }
 
     @GetMapping(value = "/usuarios")
-    public ModelAndView usuarios() {
+    public ModelAndView usuarios(@RequestParam(name = "page", defaultValue = "0") int page) {
         ModelAndView mv = new ModelAndView("usuariosAdmin");
+
+        int pageSize = 10;
+
+        Pageable pageable = PageRequest.of(page, pageSize);
+
         try {
-            List<Usuario> usuarios = usuarioService.findAll();
+            Page<Usuario> usuarios = usuarioService.findAllWithPagination(pageable);
             mv.addObject("usuarios", usuarios);
         } catch (Exception ex) {
             mv.addObject("errorMessage", "Erro ao buscar dados de usuários.");
