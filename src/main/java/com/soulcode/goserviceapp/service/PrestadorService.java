@@ -1,5 +1,6 @@
 package com.soulcode.goserviceapp.service;
 
+import com.soulcode.goserviceapp.domain.Endereco;
 import com.soulcode.goserviceapp.domain.Prestador;
 import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.repository.PrestadorRepository;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +20,9 @@ import java.util.Optional;
 public class PrestadorService {
     @Autowired
     private PrestadorRepository prestadorRepository;
+
+    @Autowired
+    private EnderecoService enderecoService;
 
     @Autowired
     private ServicoService servicoService;
@@ -48,6 +54,8 @@ public class PrestadorService {
         updatedPrestador.setEmail(prestador.getEmail());
         updatedPrestador.setDescricao(prestador.getDescricao());
         updatedPrestador.setTaxaPorHora(prestador.getTaxaPorHora());
+        Endereco endereco = enderecoService.salvarOuAtualizarPrestador(prestador);
+        updatedPrestador.setEndereco(endereco);
         return prestadorRepository.save(updatedPrestador);
     }
 

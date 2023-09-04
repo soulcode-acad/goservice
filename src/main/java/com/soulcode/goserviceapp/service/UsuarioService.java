@@ -59,17 +59,17 @@ public class UsuarioService {
     }
 
     private Administrador createAndSaveAdministrador(Usuario u){
-        Administrador admin = new Administrador(u.getId(), u.getNome(), u.getEmail(), u.getSenha(), u.getPerfil(), u.getHabilitado());
+        Administrador admin = new Administrador(u.getId(), u.getNome(), u.getEmail(), u.getSenha(), u.getPerfil(), u.getHabilitado(), u.getEndereco());
         return usuarioRepository.save(admin);
     }
 
     private Prestador createAndSavePrestador(Usuario u) {
-        Prestador prestador = new Prestador(u.getId(), u.getNome(), u.getEmail(), u.getSenha(), u.getPerfil(), u.getHabilitado());
+        Prestador prestador = new Prestador(u.getId(), u.getNome(), u.getEmail(), u.getSenha(), u.getPerfil(), u.getHabilitado(), u.getEndereco());
         return usuarioRepository.save(prestador);
     }
 
     private Cliente createAndSaveCliente(Usuario u) {
-        Cliente cliente = new Cliente(u.getId(), u.getNome(), u.getEmail(), u.getSenha(), u.getPerfil(), u.getHabilitado());
+        Cliente cliente = new Cliente(u.getId(), u.getNome(), u.getEmail(), u.getSenha(), u.getPerfil(), u.getHabilitado(), u.getEndereco());
         return usuarioRepository.save(cliente);
     }
 
