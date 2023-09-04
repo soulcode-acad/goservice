@@ -131,4 +131,13 @@ public class AgendamentoService {
         Cliente cliente = clienteService.findAuthenticated(authentication);
         return agendamentoRepository.notificarAgendamentosPendentes(cliente.getEmail());
     }
+
+    public List<Agendamento> buscarPorPeriodo(LocalDate dataInicio, LocalDate dataFim, Authentication authentication) {
+        Prestador prestador = prestadorService.findAuthenticated(authentication);
+        if (dataInicio == null || dataFim == null) {
+            throw new RuntimeException();
+        }
+        return agendamentoRepository.findByDataAgendamentoBetween(dataInicio, dataFim, prestador.getId());
+    }
+
 }

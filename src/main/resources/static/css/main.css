@@ -32,3 +32,7 @@
     letter-spacing: 0.1px;
     text-decoration:underline;
 }
+
+#dataFim, #dataInicio {
+    width: 220px;
+}

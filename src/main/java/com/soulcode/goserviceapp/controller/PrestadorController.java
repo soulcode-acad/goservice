@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -143,4 +144,22 @@ public class PrestadorController {
         }
         return "redirect:/prestador/agenda";
     }
+
+    @PostMapping(value="agenda/buscarPorData")
+    public String buscarPorData(
+            @RequestParam (required = false) LocalDate dataInicio,@RequestParam (required = false) LocalDate dataFim,
+            Authentication authentication,RedirectAttributes attributes){
+        try{
+            List<Agendamento> agendamentos = agendamentoService.buscarPorPeriodo(dataInicio, dataFim, authentication);
+            attributes.addFlashAttribute("agendamentosPorData", agendamentos);
+        } catch (UsuarioNaoEncontradoException | UsuarioNaoAutenticadoException ex) {
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
+        } catch (RuntimeException ex) {
+            attributes.addFlashAttribute("errorMessage", "Favor inserir uma data válida.");
+        } catch (Exception ex) {
+            attributes.addFlashAttribute("errorMessage", "Erro ao buscar os agendamentos por data.");
+        }
+        return "redirect:/prestador/agenda";
+    }
+
 }
