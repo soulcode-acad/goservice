@@ -1,8 +1,6 @@
 package com.soulcode.goserviceapp.controller;
 
-import com.soulcode.goserviceapp.domain.Agendamento;
-import com.soulcode.goserviceapp.domain.Prestador;
-import com.soulcode.goserviceapp.domain.Servico;
+import com.soulcode.goserviceapp.domain.*;
 import com.soulcode.goserviceapp.service.*;
 import com.soulcode.goserviceapp.service.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +38,6 @@ public class PrestadorController {
     @GetMapping(value = "/dados")
     public ModelAndView dados(Authentication authentication) {
         ModelAndView mv = new ModelAndView("dadosPrestador");
-        System.out.println(enderecoService.getEstados());
-        mv.addObject("estados", enderecoService.getEstados());
         try {
             Prestador prestador = prestadorService.findAuthenticated(authentication);
             mv.addObject("prestador", prestador);
@@ -72,6 +68,34 @@ public class PrestadorController {
             return "redirect:/auth/login";
         }
         return "redirect:/prestador/dados";
+    }
+
+    @GetMapping(value = "/endereco")
+    public ModelAndView endereco(Authentication authentication) {
+        ModelAndView mv = new ModelAndView("enderecoPrestador");
+        try {
+            Prestador prestador = prestadorService.findAuthenticated(authentication);
+            mv.addObject("estados", enderecoService.getEstados());
+            mv.addObject("endereco", prestador.getEndereco());
+            mv.addObject("prestador", prestador);
+        } catch (EnderecoNaoEncontradoException ex) {
+            mv.addObject("errorMessage", ex.getMessage());
+        } catch (Exception ex) {
+            mv.addObject("errorMessage", "Erro ao buscar dados do endereço.");
+        }
+        return mv;
+    }
+    @PostMapping(value = "/endereco")
+    public String alterarEndereco(Endereco endereco, RedirectAttributes attributes) {
+        try {
+            enderecoService.update(endereco);
+            attributes.addFlashAttribute("successMessage", "Endereço alterado com sucesso");
+        } catch(UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException ex) {
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
+        } catch (Exception ex) {
+            attributes.addFlashAttribute("errorMessage", "Erro ao alterar o endereço");
+        }
+        return "redirect:/prestador/endereco";
     }
 
     @PostMapping(value = "/dados/especialidade/remover")

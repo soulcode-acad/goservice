@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<head>
+  <title>Endereço | GoService</title>
+</head>
+<body>
+
+<div id="content">
+  <div th:replace="fragments/header :: header"></div>
+
+  <div class="container my-4 mainBox">
+    <h2>Endereço</h2>
+
+    <div class="card w-100 mt-5">
+      <div class="card-body">
+        <h5 class="card-title mb-2">Alterar Endereço</h5>
+
+        <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success"
+             role="alert"></div>
+        <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger"
+             role="alert"></div>
+
+        <form method="post" th:action="@{/prestador/endereco}">
+          <input type="hidden" name="prestadorId" th:value="${prestadorId}" th:field="*{endereco.id}">
+          <div class="col-md-8">
+            <label for="cidade" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="cidade" name="cidade" th:value="${cidade}" th:field="*{endereco.cidade}" >
+          </div>
+          <div class="col-8">
+            <label for="logradouro" class="form-label">Logradouro</label>
+            <input type="text" class="form-control" id="logradouro" name="logradouro" th:value="${logradouro}"
+                   placeholder="Insira o nome da sua rua, avenida ou alameda." th:field="*{endereco.logradouro}" >
+          </div>
+          <div class="col-md-4">
+            <label for="numero" class="form-label">Número</label>
+            <input type="text" class="form-control" id="numero" name="numero" th:value="${numero}" th:field="*{endereco.numero}">
+          </div>
+          <div class="mb-5">
+            <label for="uf" class="form-label">Estado</label>
+            <select class="form-select" id="uf" name="uf"  th:value="${uf}" th:field="*{endereco.uf}">
+              <option value="" selected>Selecione seu estado</option>
+              <option th:each="estado : ${estados}" th:value="${estado}" th:text="${estado}">...</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2-mb-2"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div th:replace="fragments/footer :: footer"></div>
+</div>
+
+</body>
+</html>
