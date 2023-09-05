@@ -31,4 +31,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query(value="SELECT * FROM usuarios LIMIT ?, 10", nativeQuery = true)
     List<Usuario> totalByPagina(Integer numPagina);
 
+    @Query(value = "SELECT * FROM usuarios u WHERE u.nome LIKE %?1%", nativeQuery = true)
+    List<Usuario> findByNome(String nome);
+
 }
