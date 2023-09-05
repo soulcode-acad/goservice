@@ -18,20 +18,23 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <form method="post" th:action="@{/admin/usuarios}">
+                <form method="post" th:action="@{/admin/usuarios}" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
+                        <div class="invalid-feedback">Por favor, insira um nome.</div>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
                         <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="invalid-feedback">Por favor, insira um email.</div>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha<span class="text-danger">*</span></label>
                         <input type="password" class="form-control" id="senha" name="senha" required>
+                        <div class="invalid-feedback">Por favor, insira uma senha.</div>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
@@ -42,6 +45,7 @@
                             <option value="PRESTADOR">Prestador</option>
                             <option value="ADMIN">Administrador</option>
                         </select>
+                        <div class="invalid-feedback">Por favor, escolha uma das opções.</div>
                         <div class="form-text"></div>
                     </div>
 
