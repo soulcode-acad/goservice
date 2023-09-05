@@ -56,33 +56,46 @@
 
         <div class="card w-100 mt-5">
             <div class="card-body">
-                <h5 class="card-title mb-2">Usuários cadastrados</h5>
+                <div class="d-flex justify-content">
+                    <h5 class="card-title mb-2">Usuários cadastrados</h5>
+                    <form action="buscar-usuario" method="get" class="d-flex ms-auto"  >
+                        <input class="form-control me-2" type="search" name ="pesquisa-user"  placeholder="Pesquisar Usuario" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+                    </form>
+                </div>
+                <div class="card-body" th:if="${#lists.isEmpty(usuarios)}">
+                    <h5>Nenhum resultado encontrado.</h5>
+                </div>
 
-                <table class="table w-100">
-                    <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Perfil</th>
-                        <th>Editar</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="usuario : ${usuarios}">
-                        <td th:text="${usuario.nome}"></td>
-                        <td th:text="${usuario.email}"></td>
-                        <td th:text="${usuario.perfil.descricao}"></td>
-                        <td>
-                            <button th:if="${usuario.habilitado}" class="btn btn-danger" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#disableModal' + ${usuario.id}">
-                                Desabilitar <i class="bi bi-person-fill-x ms-2"></i>
-                            </button>
-                            <button th:if="not ${usuario.habilitado}" class="btn btn-success" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#enableModal' + ${usuario.id}">
-                                Habilitar <i class="bi bi-person-fill-check ms-2"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div th:unless="${#lists.isEmpty(usuarios)}">
+                    <table class="table w-100">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Perfil</th>
+                            <th>Editar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="usuario : ${usuarios}">
+                            <td th:text="${usuario.nome}"></td>
+                            <td th:text="${usuario.email}"></td>
+                            <td th:text="${usuario.perfil.descricao}"></td>
+                            <td>
+                                <button th:if="${usuario.habilitado}" class="btn btn-danger" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#disableModal' + ${usuario.id}">
+                                    Desabilitar <i class="bi bi-person-fill-x ms-2"></i>
+                                </button>
+                                <button th:if="not ${usuario.habilitado}" class="btn btn-success" style="width: 9rem" data-bs-toggle="modal" th:data-bs-target="'#enableModal' + ${usuario.id}">
+                                    Habilitar <i class="bi bi-person-fill-check ms-2"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
             </div>
         </div>
     </main>

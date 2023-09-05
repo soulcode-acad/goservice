@@ -104,4 +104,7 @@ public class UsuarioService {
             return usuarioRepository.totalByPagina(numPagina);
         }
     }
+    public List<Usuario> findByNome(String nome){
+        return usuarioRepository.findByNome(nome);
+    }
 }
