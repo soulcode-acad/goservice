@@ -8,7 +8,7 @@
 <main id="content" class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
     <div style="width: 22rem">
 
-        <form method="post" th:action="@{/auth/login}">
+        <form method="post" th:action="@{/auth/login}" class="needs-validation" novalidate>
             <a href="/" class="d-flex align-items-center justify-content-center">
                 <img src="/assets/img/logos/2.png" alt="logo goservice" width="200" >
             </a>
@@ -20,10 +20,12 @@
             <div class="mb-3">
                 <label class="form-label" for="username">E-mail<span class="text-danger">*</span></label>
                 <input type="email" class="form-control" id="username" name="username" required>
+                <div class="invalid-feedback">Por favor, insira um email.</div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="password">Senha<span class="text-danger">*</span></label>
                 <input type="password" class="form-control" id="password" name="password" required>
+                <div class="invalid-feedback">Por favor, insira a senha.</div>
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit">Entrar</button>
         </form>
@@ -37,6 +39,5 @@
         </div>
     </div>
 </main>
-
 </body>
 </html>

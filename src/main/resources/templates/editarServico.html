@@ -19,16 +19,18 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <form th:if="${servico != null}" method="post" th:action="@{/admin/servicos/editar}">
+                <form th:if="${servico != null}" method="post" th:action="@{/admin/servicos/editar}" class="needs-validation" novalidate>
                     <input type="hidden" name="id" th:field="*{servico.id}" required>
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="nome" name="nome" th:field="*{servico.nome}" required>
+                        <div class="invalid-feedback">Por favor, insira algum nome.</div>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="descricao" class="form-label">Descrição<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="descricao" name="descricao" th:field="*{servico.descricao}" required>
+                        <div class="invalid-feedback">Por favor, insira alguma descrição.</div>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
@@ -46,6 +48,7 @@
                             <option value="Saúde">Saúde</option>
                             <option value="Treinamento">Treinamento</option>
                         </select>
+                        <div class="invalid-feedback">Por favor, selecione alguma opção.</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
                 </form>

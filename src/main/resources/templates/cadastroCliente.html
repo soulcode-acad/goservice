@@ -10,7 +10,7 @@
         <a href="/" class="d-flex align-items-center justify-content-center">
             <img src="/assets/img/logos/2.png" alt="logo goservice" width="200" >
         </a>
-        <form method="post" th:action="@{/auth/cadastro}">
+        <form method="post" th:action="@{/auth/cadastro}" class="needs-validation" novalidate>
             <h1 class="h3 mb-3 fw-normal text-center">Cadastre-se | GoService</h1>
 
             <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
@@ -19,14 +19,17 @@
             <div class="mb-3">
                 <label class="form-label" for="nome">Nome<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="nome" name="nome" required>
+                <div class="invalid-feedback">Por favor, insira seu nome.</div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="email">E-mail<span class="text-danger">*</span></label>
                 <input type="email" class="form-control" id="email" name="email" required>
+                <div class="invalid-feedback">Por favor, insira seu email.</div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="senha">Senha<span class="text-danger">*</span></label>
                 <input type="password" class="form-control" id="senha" name="senha" required>
+                <div class="invalid-feedback">Por favor, preencha o campo.</div>
             </div>
             <div class="form-check text-start my-3">
                 <input class="form-check-input" type="checkbox" id="termos" required>

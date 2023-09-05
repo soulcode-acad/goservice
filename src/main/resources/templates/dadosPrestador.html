@@ -18,16 +18,18 @@
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
                 <div th:if="${errorMessage != null}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
 
-                <form th:if="${prestador != null}" method="post" th:action="@{/prestador/dados}">
+                <form th:if="${prestador != null}" method="post" th:action="@{/prestador/dados}" class="needs-validation" novalidate>
                     <input type="hidden" name="id" th:field="*{prestador.id}">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="nome" name="nome" th:field="*{prestador.nome}" required>
+                        <div class="invalid-feedback">Por favor, insira um email.</div>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail<span class="text-danger">*</span></label>
                         <input type="email" class="form-control" id="email" name="email" th:field="*{prestador.email}" required>
+                        <div class="invalid-feedback">Por favor, insira um email.</div>
                         <div class="form-text"></div>
                     </div>
                     <div class="mb-3">
@@ -70,11 +72,12 @@
 
                 <h5 class="card-title mb-2 mt-5">Especialidades</h5>
 
-                <form class="d-flex gap-3 my-3" method="post" th:action="@{/prestador/dados/especialidade/adicionar}">
+                <form class="d-flex gap-3 my-3" method="post" th:action="@{/prestador/dados/especialidade/adicionar}" class="needs-validation" novalidate>
                     <select class="form-select" id="servicoId" name="servicoId" required>
                         <option value="" disabled selected>Selecione uma especialidade</option>
                         <option th:each="servico : ${servicos}" th:value="${servico.id}" th:text="${servico.nome}"></option>
                     </select>
+                    <div class="invalid-feedback">Por favor, insira um email.</div>
                     <button type="submit" class="btn btn-primary" style="width: 9rem">Adicionar <i class="bi bi-plus-circle ms-2"></i></button>
                 </form>
 
