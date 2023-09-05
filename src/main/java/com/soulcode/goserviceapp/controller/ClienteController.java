@@ -6,16 +6,12 @@ import com.soulcode.goserviceapp.service.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -37,9 +33,9 @@ public class ClienteController {
     @Autowired
     private UsuarioService usuarioService;
 
-    //    @Autowired
-//    private Endereco endereco;
-//
+   @Autowired
+   private Endereco endereco;
+
     @Autowired
     private EnderecoService enderecoService;
 
@@ -47,8 +43,6 @@ public class ClienteController {
     @GetMapping(value = "/dados")
     public ModelAndView dados(Authentication authentication) {
         ModelAndView mv = new ModelAndView("dadosCliente");
-        System.out.println(enderecoService.getEstados());
-        mv.addObject("estados", enderecoService.getEstados());
         try {
             Cliente cliente = clienteService.findAuthenticated(authentication);
             mv.addObject("cliente", cliente);
@@ -76,6 +70,36 @@ public class ClienteController {
         }
         return "redirect:/cliente/dados";
     }
+
+    @GetMapping(value = "/endereco")
+    public ModelAndView endereco(Authentication authentication) {
+        ModelAndView mv = new ModelAndView("enderecoCliente");
+        try {
+            Cliente cliente = clienteService.findAuthenticated(authentication);
+            mv.addObject("estados", enderecoService.getEstados());
+            mv.addObject("endereco", cliente.getEndereco());
+            mv.addObject("cliente", cliente);
+        } catch (EnderecoNaoEncontradoException ex) {
+            mv.addObject("errorMessage", ex.getMessage());
+        } catch (Exception ex) {
+            mv.addObject("errorMessage", "Erro ao buscar dados do endereço.");
+        }
+        return mv;
+    }
+
+    @PostMapping(value = "/endereco")
+    public String alterarEndereco(Endereco endereco, RedirectAttributes attributes) {
+        try {
+            enderecoService.update(endereco);
+            attributes.addFlashAttribute("successMessage", "Endereço alterado com sucesso");
+        } catch(UsuarioNaoAutenticadoException | UsuarioNaoEncontradoException ex) {
+            attributes.addFlashAttribute("errorMessage", ex.getMessage());
+        } catch (Exception ex) {
+            attributes.addFlashAttribute("errorMessage", "Erro ao alterar o endereço");
+        }
+        return "redirect:/cliente/endereco";
+    }
+
 
     @GetMapping(value = "/agendar")
     public ModelAndView agendar(@RequestParam(name = "especialidade", required = false) Long servicoId) {

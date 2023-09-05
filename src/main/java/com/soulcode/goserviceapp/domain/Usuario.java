@@ -35,12 +35,13 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private Perfil perfil;
 
-    @OneToOne
-    @JoinColumn(name = "endereco_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false, name = "endereco_id")
     private Endereco endereco;
 
     public Usuario(){
         this.habilitado =true;
+        this.endereco = new Endereco();
     }
 
     public Usuario(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, Endereco endereco){
@@ -126,6 +127,7 @@ public class Usuario implements UserDetails {
     public String getUsername() {
         return email;
     }
+
 
     @Override
     public boolean isAccountNonExpired() {

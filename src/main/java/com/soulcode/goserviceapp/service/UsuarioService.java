@@ -1,9 +1,6 @@
 package com.soulcode.goserviceapp.service;
 
-import com.soulcode.goserviceapp.domain.Administrador;
-import com.soulcode.goserviceapp.domain.Cliente;
-import com.soulcode.goserviceapp.domain.Prestador;
-import com.soulcode.goserviceapp.domain.Usuario;
+import com.soulcode.goserviceapp.domain.*;
 import com.soulcode.goserviceapp.repository.UsuarioRepository;
 import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoAutenticadoException;
 import com.soulcode.goserviceapp.service.exceptions.UsuarioNaoEncontradoException;
