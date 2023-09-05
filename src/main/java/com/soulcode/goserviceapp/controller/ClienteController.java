@@ -33,6 +33,9 @@ public class ClienteController {
     @Autowired
     private UsuarioService usuarioService;
 
+   @Autowired
+   private Endereco endereco;
+
     @Autowired
     private EnderecoService enderecoService;
 
@@ -62,7 +65,7 @@ public class ClienteController {
             attributes.addFlashAttribute("errorMessage", "Erro ao alterar dados cadastrais.");
         }
         Boolean emailModified = usuarioService.updatedEmail(cliente);
-        if (emailModified == true){
+        if (emailModified == true) {
             return "redirect:/auth/login";
         }
         return "redirect:/cliente/dados";
@@ -104,7 +107,7 @@ public class ClienteController {
         try {
             List<Servico> servicos = servicoService.findAll();
             mv.addObject("servicos", servicos);
-            if(servicoId != null) {
+            if (servicoId != null) {
                 List<Prestador> prestadores = prestadorService.findByServicoId(servicoId);
                 mv.addObject("prestadores", prestadores);
                 mv.addObject("servicoId", servicoId);
@@ -181,4 +184,20 @@ public class ClienteController {
         }
         return "redirect:/cliente/historico";
     }
+
+    @PostMapping(value = "/historico/busca")
+    public String findAgendamentoByData(@RequestParam(required = false) LocalDate dataInicio, @RequestParam(required = false) LocalDate dataFim, Authentication authentication, RedirectAttributes attributes) {
+        try {
+            List<Agendamento> agendamentos = clienteService.findByDataAgendamento(authentication, dataInicio, dataFim);
+            attributes.addFlashAttribute("agendamentosPorData", agendamentos);
+        } catch (UsuarioNaoEncontradoException | UsuarioNaoAutenticadoException e) {
+            attributes.addFlashAttribute("errorMessage", e.getMessage());
+        } catch (RuntimeException e) {
+            attributes.addFlashAttribute("errorMessage", "Insira uma data válida");
+        } catch (Exception e) {
+            attributes.addFlashAttribute("errorMessage", "Erro ao exibir dados");
+        }
+        return "redirect:/cliente/historico";
+    }
+
 }
