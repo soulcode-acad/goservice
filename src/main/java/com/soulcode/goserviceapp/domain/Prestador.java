@@ -1,10 +1,7 @@
 package com.soulcode.goserviceapp.domain;
 
 import com.soulcode.goserviceapp.domain.enums.Perfil;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 
 import java.util.ArrayList;
@@ -26,6 +23,9 @@ public class Prestador extends Usuario{
     )
     private List<Servico> especialidades;
 
+    @ManyToOne
+    private Endereco endereco;
+
     public Prestador(){
         super();
         setPerfil(Perfil.PRESTADOR);
@@ -34,11 +34,13 @@ public class Prestador extends Usuario{
     public Prestador(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado) {
         super(id, nome, email, senha, perfil, habilitado);
     }
-    public Prestador(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, String descricao, Float taxaPorHora, List<Servico> especialidades) {
+
+    public Prestador(Long id, String nome, String email, String senha, Perfil perfil, Boolean habilitado, String descricao, Float taxaPorHora, List<Servico> especialidades, Endereco endereco) {
         super(id, nome, email, senha, perfil, habilitado);
         this.descricao = descricao;
         this.taxaPorHora = taxaPorHora;
         this.especialidades = especialidades;
+        this.endereco = endereco;
     }
 
     public String getDescricao() {
@@ -65,6 +67,14 @@ public class Prestador extends Usuario{
         this.especialidades = especialidades;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
     public void addEspecialidade(Servico servico){
         if(especialidades == null){
             especialidades = new ArrayList<>();
@@ -86,7 +96,8 @@ public class Prestador extends Usuario{
         Prestador prestador = (Prestador) o;
         return Objects.equals(descricao, prestador.descricao)&&
                 Objects.equals(taxaPorHora, prestador.taxaPorHora) &&
-                Objects.equals(especialidades, prestador.especialidades);
+                Objects.equals(especialidades, prestador.especialidades)&&
+                Objects.equals(endereco, prestador.endereco);
     }
     @Override
     public int hashCode() {
