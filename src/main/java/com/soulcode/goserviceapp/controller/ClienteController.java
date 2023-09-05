@@ -33,9 +33,6 @@ public class ClienteController {
     @Autowired
     private UsuarioService usuarioService;
 
-   @Autowired
-   private Endereco endereco;
-
     @Autowired
     private EnderecoService enderecoService;
 
