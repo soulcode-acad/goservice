@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"  integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link rel="stylesheet" th:href="static/css/main.css">
 <head>
     <title>GoService | Home</title>
 </head>
@@ -8,6 +10,64 @@
 <main id="content">
     <div th:replace="fragments/header :: header"></div>
 </main>
-
+<section class="container">
+<div class="card">
+    <img th:src="assets/prormos/1.png" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5> class="card-title">Seja GoAgent</h5>
+        <p class="card-text"> Ganhe liberdade para escolher seus projetos, defina seu próprio horário e aproveite uma renda flexível. Junte-se à comunidade de agentes autônomos que estão moldando o futuro do trabalho.
+            Descubra o poder de ser um GoAgent e faça o seu próprio caminho para o sucesso!</p>
+        <a href="" class="btn btn-primary">Comece agora!!</a>
+    </div>
+</div>
+<div class="card">
+    <img th:src="assets/prormos/3.png" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Educação</h5>
+        <p class="card-text">Na GoService, acreditamos que a educação é a chave para o sucesso, e nossos professores são fundamentais para tornar essa visão uma realidade.
+            Junte-se a nós e descubra o poder do aprendizado com os professores da GoService.</p>
+    </div>
+    <div class="card">
+        <img th:src="assets/prormos/4.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Serviços</h5>
+            <p class="card-text">Com a GoService, você pode contar com uma plataforma versátil que conecta pessoas talentosas a clientes em busca de soluções práticas. Nossa missão é
+                facilitar a vida das pessoas, oferecendo serviços de alta qualidade e
+                conveniência em um mundo em constante mudança.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img th:src="assets/prormos/5.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Personal Shopper</h5>
+            <p class="card-text">Nossos shoppers pessoais são especialistas em entender suas necessidades e preferências,
+                garantindo que você receba recomendações sob medida. Eles estão sempre atualizados sobre as últimas tendências e as
+                melhores ofertas, tornando suas compras mais eficientes e gratificantes. Além disso, eles cuidam de todos os detalhes,
+                desde a pesquisa até a entrega, para que você possa desfrutar de uma experiência de compra sem preocupações.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img th:src="assets/prormos/6.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Bombe nas Redes Soci</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img th:src="assets/prormos/7.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img th:src="assets/prormos/8.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+</div>
+</section>
 </body>
 </html>
