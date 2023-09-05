@@ -45,7 +45,30 @@
                         <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" th:value="${cliente.dataNascimento}">
                         <div class="form-text"></div>
                     </div>
+<!--                    Endereco-->
+                    <div class="mb-3">
+                        <label for="uf" class="form-label">UF</label>
+                        <input type="text" class="form-control" id="uf" name="uf" th:field="*{cliente.endereco.uf}">
+                        <div class="form-text"></div>
+                    </div>
 
+                    <div class="mb-3">
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="cidade" name="cidade" th:field="*{cliente.endereco.cidade}">
+                        <div class="form-text"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="logradouro" class="form-label">Logradouro</label>
+                        <input type="text" class="form-control" id="logradouro" name="logradouro" th:field="*{cliente.endereco.logradouro}">
+                        <div class="form-text"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="numero" class="form-label">Número</label>
+                        <input type="text" class="form-control" id="numero" name="numero" th:field="*{cliente.endereco.numero}">
+                        <div class="form-text"></div>
+                    </div>
                     <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
                 </form>
             </div>
