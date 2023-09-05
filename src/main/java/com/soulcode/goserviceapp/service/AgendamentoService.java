@@ -7,6 +7,7 @@ import com.soulcode.goserviceapp.domain.Servico;
 import com.soulcode.goserviceapp.domain.enums.StatusAgendamento;
 import com.soulcode.goserviceapp.repository.AgendamentoRepository;
 import com.soulcode.goserviceapp.service.exceptions.AgendamentoNaoEncontradoException;
+import com.soulcode.goserviceapp.service.exceptions.HorarioIndisponivelException;
 import com.soulcode.goserviceapp.service.exceptions.StatusAgendamentoImutavelException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -50,8 +51,14 @@ public class AgendamentoService {
         agendamento.setServico(servico);
         agendamento.setData(data);
         agendamento.setHora(hora);
+        LocalTime horaPlus = hora.plusHours(1);
+        LocalTime horaMinus = hora.minusHours(1);
+        if (agendamentoRepository.findByPrestadorEmail(prestador.getEmail(), data, hora, horaMinus, horaPlus).isEmpty() ){
+            return agendamentoRepository.save(agendamento);
+        }else{
+            throw new HorarioIndisponivelException();
+        }
 
-        return agendamentoRepository.save(agendamento);
     }
     @Cacheable(cacheNames = "redisCache")
     public List<Agendamento> findByCliente(Authentication authentication){
@@ -63,10 +70,8 @@ public class AgendamentoService {
     @Cacheable(cacheNames = "redisCache")
     public List<Agendamento> findByPrestador(Authentication authentication, LocalDate dataMin, LocalDate dataMax ){
         System.err.println("BUSCANDO AGENDAMENTOS PRESTADOR NO BANCO...");
-        System.err.println(dataMax);
-        System.err.println(dataMin);
         Prestador prestador = prestadorService.findAuthenticated(authentication);
-        return  agendamentoRepository.findByPrestadorEmail(prestador.getEmail(),dataMin, dataMax);
+        return  agendamentoRepository.findByPrestadorEmailData(prestador.getEmail(),dataMin, dataMax);
     }
 
     public void cancelAgendaPrestador(Authentication authentication, Long id){
