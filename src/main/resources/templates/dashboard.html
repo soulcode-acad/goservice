@@ -12,6 +12,59 @@
         <h2>Dashboard</h2>
 
         <div class="card w-100 mt-5">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <script>
+            let qntadmin = 0;
+            let qntcliente = 0;
+            let qntprestador = 0;
+        </script>
+
+        <script th:inline="javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script th:inline="javascript">
+            let usuarios = [[${usuarios}]];
+            console.log(usuarios);
+
+            for (usuario of usuarios){
+                if (usuario.perfil === "ADMIN") {
+                    qntadmin++;
+                }
+                else if (usuario.perfil === "CLIENTE") {
+                    qntcliente++;
+                }
+                else {
+                    qntprestador++;
+                }
+            }
+        </script>
+
+        <script th:inline="javascript">
+            const ctx = document.getElementById('myChart');
+
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['Administrador', 'Cliente', 'Prestador'],
+                datasets: [{
+                  label: 'Perfis',
+                  data: [qntadmin, qntcliente, qntprestador],
+                  backgroundColor: ['rgba(106,90,205,0.5)','rgba(65,105,225,0.5)','rgba(70,130,180,0.5)'],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+        </script>
+
+        <div class="card w-100 mt-5">
             <div class="card-body">
 
                 <div th:if="${successMessage != null}" th:text="${successMessage}" class="alert alert-success" role="alert"></div>
