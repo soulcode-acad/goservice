@@ -3,21 +3,22 @@
     padding: 0;
     margin: 0;
 }
-.card{
+.card-publicity{
     background-color:#FDF5E6;
     width: 270px;
     height: 400px;
     margin: 10px;
     border-radius: 15px;
     text-align: center;
+    font-family: Arial,sans-serif;
 }
-.card-img-top{
+.img-top{
     height: 200px;
     margin-bottom: 15px;
     background-size:cover;
 }
 
-card:hover{
+.card-publicity:hover{
     background-color: #E0FFFF;
     color: #FFFFF0;
     cursor:pointer;
@@ -25,7 +26,7 @@ card:hover{
     transition: all 1s ease;
 }
 
-.container{
+.publicity-conteiner{
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
