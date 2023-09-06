@@ -27,6 +27,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/prestador/dados">Dados Cadastrais</a></li>
+                        <li><a class="dropdown-item" href="/prestador/endereco">Endereço</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/prestador/agenda">Agenda de Serviços</a></li>
                     </ul>
@@ -38,6 +39,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/cliente/dados">Dados Cadastrais</a></li>
+                        <li><a class="dropdown-item" href="/cliente/endereco">Endereço</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/cliente/agendar">Agendar Serviço</a></li>
                         <li><a class="dropdown-item" href="/cliente/historico">Histórico de Serviços</a></li>
@@ -52,7 +54,7 @@
 
             <div class="dropdown text-end" th:if="${#authorization.expression('isAuthenticated()')}">
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://w7.pngwing.com/pngs/268/996/png-transparent-account-avatar-profile-profile-icon-profile-picture-user-user-profile-business-and-management-line-icon-thumbnail.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="https://w7.pngwing.com/pngs/268/996/png-transparent-account-avatar-profile-profile-icon-profile-picture-user-user-profile-business-and-management-line-icon-thumbnail.png" alt="mdo" width="32" height="32" id="photo" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small">
                     <li><a class="dropdown-item" href="/auth/password/new">Editar Senha</a></li>
@@ -65,5 +67,11 @@
                 </ul>
             </div>
         </div>
+        <script defer th:inline="javascript" type="module">
+            import { showPhoto } from "/js/firebase.js"
+
+            let email = [[${email}]];
+            showPhoto(email);
+        </script>
     </div>
 </header>

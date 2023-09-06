@@ -14,8 +14,6 @@ public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
     Optional<Endereco> findById(Long id);
 
     @Modifying
-    @Query(value = "UPDATE enderecos e SET e.logradouro, e.numero, e.cidade, e.uf = ? WHERE id = ?", nativeQuery = true)
-    void updateEndereco(String endereco, String numero, String cidade, String uf);
-
-
+    @Query(value = "UPDATE enderecos e SET e.cidade = ?, e.logradouro = ?, e.numero = ?, e.uf = ? WHERE id = ?", nativeQuery = true)
+    void updateEnderecoById(String cidade, String logradouro, String numero, String uf, Long id);
 }
