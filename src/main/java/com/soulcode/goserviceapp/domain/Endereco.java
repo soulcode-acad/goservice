@@ -3,12 +3,13 @@ package com.soulcode.goserviceapp.domain;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 
 @Entity
 @Table(name = "enderecos")
-public class Endereco {
+public class Endereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
