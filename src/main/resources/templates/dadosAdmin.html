@@ -36,11 +36,12 @@
                         <input type="email" class="form-control" id="email" name="email" th:field="*{admin.email}" required>
                         <div class="form-text"></div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Salvar <i class="bi bi-save2 ms-2"></i></button>
+                    <button type="submit" class="btn btn-primary" id="change">Salvar <i class="bi bi-save2 ms-2"></i></button>
                 </form>
             </div>
         </div>
     </div>
+    <script defer th:src="@{/js/changePhoto.js}" type="module"></script>
     <div th:replace="fragments/footer :: footer"></div>
 </div>
 
