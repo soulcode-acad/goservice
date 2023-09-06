@@ -64,7 +64,6 @@ public class Cliente extends Usuario{
                 Objects.equals(cpf, cliente.cpf) &&
                 Objects.equals(dataNascimento, cliente.dataNascimento);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(telefone, cpf, dataNascimento);

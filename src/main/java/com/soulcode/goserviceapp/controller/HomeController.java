@@ -19,4 +19,7 @@ public class HomeController {
     @GetMapping (value ="/termoCondicoes")
     public String termoCondicoes () {return "termoCondicoes";}
 
+    @GetMapping (value = "/faq")
+    public String faq() {return "faq";}
+
 }

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})">
+
+<head>
+    <title>FAQS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+<div id="content">
+
+    <div th:replace="fragments/header :: header"></div>
+<main>
+
+    <div class="faqs">
+        <p class="titulo-faqs">FAQs</p>
+        <div class="perguntas-respostas">
+            <button class="btn btn-primary btn-faq" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1"
+                    aria-expanded="false" aria-controls="collapseExample">
+                <p class="p-faq">O que é o GoService? </p>
+            </button>
+
+            <div class="collapse" id="collapseExample1">
+                <div class="card card-body">
+                    <p class="p-faq">O GoService é um aplicativo de contratação de serviços da América Latina.
+                        Contamos com variados
+                        tipos de serviços disponíveis e profissionais cadastrados.</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="perguntas-respostas">
+            <button class="btn btn-primary btn-faq" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2"
+                    aria-expanded="false" aria-controls="collapseExample">
+                <p class="p-faq"> O GoService é confiável? </p>
+            </button>
+
+            <div class="collapse" id="collapseExample2">
+                <div class="card card-body">
+                    <p class="p-faq">Sim! O GoService é confiável. Somos uma empresa listada na B3 (NINJ3).
+                        Além disso, já recebemos diversos prêmios, como, por exemplo, os prêmios: iBest 2021 - Economia
+                        Colaborativa e Melhor Site do Ano pelo Digital Awards (2009).
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="perguntas-respostas">
+            <button class="btn btn-primary btn-faq" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3"
+                    aria-expanded="false" aria-controls="collapseExample">
+                <p class="p-faq"> O GoService vale a pena? </p>
+            </button>
+
+            <div class="collapse" id="collapseExample3">
+                <div class="card card-body">
+                    <p class="p-faq"> Sim! Vale muito a pena tanto para quem busca por um serviço como para quem é prestador de
+                        serviços.</p>
+                    <p class="p-faq">Para quem busca por um serviço:</p>
+                    <p class="p-faq">Além de não pagar nada para fazer seu cadastro na plataforma e nem para realizar um pedido,
+                        você pode se conectar com 1 próximos a você em até 48h.</p>
+                    <p class="p-faq">Para quem presta serviços:</p>
+                    <p class="p-faq">O profissional pode se cadastrar na nossa plataforma de forma gratuita e, ao prestar o serviço
+                        para um cliente da nossa plataforma,
+                        fica com 100% do valor do serviço.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="perguntas-respostas">
+            <button class="btn btn-primary btn-faq" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4"
+                    aria-expanded="false" aria-controls="collapseExample">
+                <p class="p-faq">Qual o horário de atendimento do GoService?</p>
+            </button>
+
+            <div class="collapse" id="collapseExample4">
+                <div class="card card-body">
+                    <p class="p-faq"> O horário de atendimento do GoService por chat e WhatsApp é de segunda a sábado, das 08h às 20h.
+                    </p>
+                    <p class="p-faq">Nos contatos realizados por e-mail, o prazo de retorno por um de nossos ninjas do atendimento é
+                        de até 1 (um) dia útil.</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="perguntas-respostas">
+            <button class="btn btn-primary btn-faq" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample5"
+                    aria-expanded="false" aria-controls="collapseExample">
+                <p class="p-faq">Quem pode se cadastrar como profissional GoService</p>
+            </button>
+
+            <div class="collapse" id="collapseExample5">
+                <div class="card card-body">
+                    <p class="p-faq">Qualquer pessoa que realize serviços pode se cadastrar como profissional no GoService.
+                        Basta ter formação ou habilidade em uma área específica de atuação.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="perguntas-respostas">
+            <button class="btn btn-primary btn-faq" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample6"
+                    aria-expanded="false" aria-controls="collapseExample">
+                <p class="p-faq">Caso o aplicativo apresente erros, como proceder?</p>
+            </button>
+
+            <div class="collapse" id="collapseExample6">
+                <div class="card card-body">
+                    <p class="p-faq"> Se você se cadastrou recentemente, certifique-se de que sua conta está confirmada (via e-mail).
+                    </p>
+                    <p class="p-faq">Se o problema persistir, envie um e-mail para contato@goservice.com.br com as seguintes
+                        informações:</p>
+                    <p class="p-faq">- E-mail cadastrado;</p>
+                    <p class="p-faq">- Telefone cadastrado;</p>
+                    <p class="p-faq">- Detalhes do que está acontecendo (se possível, encaminhe um print ou vídeo da tela).</p>
+                    <p class="p-faq">O prazo para correção do problema é de até 5 dias úteis a partir do contato com os nossos
+                        atendentes.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="perguntas-respostas">
+            <button class="btn btn-primary btn-faq" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample7"
+                    aria-expanded="false" aria-controls="collapseExample">
+                <p class="p-faq">Como faço para me cadastrar como cliente?</p>
+            </button>
+
+            <div class="collapse" id="collapseExample7">
+                <div class="card card-body">
+                    <p class="p-faq">No site,se cadastre com o seu e-mail, login e senha .</p>
+                    <p class="p-faq">Pronto! Você já está cadastrado no GoService e está pronto para escolher o serviço que desejar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="perguntas-respostas">
+            <button class="btn btn-primary btn-faq" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample8"
+                    aria-expanded="false" aria-controls="collapseExample">
+                <p class="p-faq">Quem é o responsável pelo serviço prestado?</p>
+            </button>
+
+            <div class="collapse" id="collapseExample8">
+                <div class="card card-body">
+                    <p class="p-faq">O responsável pelo serviço prestado é o profissional contratado por você no momento da negociação.
+                        O GoService é somente a plataforma que faz a conexão entre o cliente e o profissional.</p>
+                    <p class="p-faq">Ao fechar o serviço, é o cliente quem define as condições para o recebimento do profissional em sua residência.</p>
+                    <p class="p-faq">O indicado é definir um horário de sua preferência (geralmente, dentro do horário comercial) e os dias em que o serviço será realizado.</p>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="perguntas-respostas">
+            <button class="btn btn-primary btn-faq" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample9"
+                    aria-expanded="false" aria-controls="collapseExample">
+                <p class="p-faq">Contratei um prestador de serviço e tive problemas, e agora?</p>
+            </button>
+
+            <div class="collapse" id="collapseExample9">
+                <div class="card card-body">
+                    <p class="p-faq">Vamos te auxiliar para que consiga resolver esse problema o mais rápido possível com o profissional.</p>
+                    <p class="p-faq">Para isso, pedimos que nos envie um e-mail para: avaliacao@goservice.com.br. Neste e-mail, conte para gente:</p>
+                    <p class="p-faq">- O nome deste profissional;
+                    <p class="p-faq">- O(s) número(s) do telefone pelo qual(is) este profissional entrou em contato com você;</p>
+                    <p class="p-faq">- O e-mail que você utilizou na solicitação do pedido;</p>
+                    <p class="p-faq">- A data em que fez o seu pedido.</p>
+                    <p class="p-faq">Com estas informações, conseguiremos analisar o que aconteceu para te auxiliar de forma mais rápida.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 create database goservice_db;
 use goservice_db;
 
+
 -- CONSULTAS
 select * from usuarios u inner join endereco  e on e.id = u.endereco_id;
 select * from endereco;

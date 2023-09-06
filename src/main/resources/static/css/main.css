@@ -1,5 +1,39 @@
-
+/*carrocel*/
 #carouselExampleIndicators {
-  width: 80%; /* Defina a largura desejada em porcentagem ou pixels */
-  margin: 0 auto; /* Centralize o carrossel na página, se desejar */
+  width: 80%;
+  margin: 0 auto;
 }
+
+
+/*FAQs*/
+.faqs{
+    margin: 20px;
+}
+
+.perguntas-respostas{
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+.btn-faq{
+    width:100%;
+}
+
+.card{
+    border:none;
+
+}
+
+
+.p-faq{
+    text-align: justify;
+
+}
+
+
+
+
+
+
+
